@@ -7,7 +7,6 @@ class InputField extends PureComponent {
       <div>
         <div className="">
           <input {...input} type={type} placeholder={label} />
-          {touched && error && <span>{error}</span>}
         </div>
       </div>
     )

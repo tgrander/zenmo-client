@@ -3,6 +3,7 @@ import PlaidLink from './modules/plaid/plaid-link';
 
 import BigHeader from './styled_components/text/big-header';
 import Caption from './styled_components/text/caption';
+import Overview from './modules/dashboard/containers/Overview';
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         <BigHeader>ZENMO</BigHeader>
         <Caption>Financial Nirvana</Caption>
         <PlaidLink/>
+        <Overview/>
       </div>
     );
   }
