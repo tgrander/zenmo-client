@@ -6,7 +6,7 @@ class InputField extends PureComponent {
     return (
       <div>
         <div className="">
-          <input {...input} type={type} placeholder={label} />
+          <input {...input} type={type} placeholder="$0.00" />
         </div>
       </div>
     )

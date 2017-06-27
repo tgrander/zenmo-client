@@ -3,12 +3,16 @@ import { Field } from 'redux-form';
 
 import InputField from './InputField';
 
+import '../styles/overview.css';
+
 const Overview = () => (
   <section className="overview">
-    <div>
-
+    <div className="labels">
+      <div className="label">Checkings</div>
+      <div className="label">Savings</div>
+      <div className="label">Monthly Income</div>
     </div>
-    <form>
+    <form className="overview-amounts">
       <Field
         name="checkings"
         type="number"

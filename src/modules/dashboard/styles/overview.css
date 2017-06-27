@@ -2,3 +2,17 @@
   display: flex;
   flex-flow: row nowrap;
 }
+.labels,
+.overview-amounts {
+  display: flex;
+  flex-direction: column;
+}
+.overview-amounts {
+
+}
+.labels {
+  text-align: left;
+}
+.label {
+  font-size: 18px;
+}
