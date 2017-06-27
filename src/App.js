@@ -5,13 +5,14 @@ import BigHeader from './styled_components/text/big-header';
 import Caption from './styled_components/text/caption';
 import Overview from './modules/dashboard/containers/Overview';
 
+import './App.css';
+
 class App extends Component {
   render() {
     return (
       <div className="App">
         <BigHeader>ZENMO</BigHeader>
         <Caption>Financial Nirvana</Caption>
-        <PlaidLink/>
         <Overview/>
       </div>
     );
