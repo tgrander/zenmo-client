@@ -12,6 +12,10 @@ const Overview = ({
 }) => (
   <section className="overview">
 
+    <div className="trial-balance-sections">
+
+    </div>
+
     <div className="labels">
       <div className="label">Checkings</div>
       <div className="label">Savings</div>
