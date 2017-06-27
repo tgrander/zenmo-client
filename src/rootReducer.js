@@ -78,7 +78,7 @@ const assetsReducer = (state=defaultAssetsState, action) => {
       let modifyAssetAmountState = {...state}
       modifyAssetAmountState[action.label] = action.amount
       return modifyAssetAmountState
-      
+
     default:
       return state;
   }
@@ -109,5 +109,6 @@ const goalsReducer = (state, action) => {
 }
 
 export default combineReducers({
-  form: formReducer
+  form: formReducer,
+  assets: assetsReducer,
 })
