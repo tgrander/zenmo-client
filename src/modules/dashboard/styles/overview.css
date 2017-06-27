@@ -1,6 +1,7 @@
 .overview {
   display: flex;
   flex-flow: row nowrap;
+  font-size: 18px;
 }
 .labels,
 .overview-amounts {
@@ -10,9 +11,23 @@
 .overview-amounts {
 
 }
-.labels {
+.total,
+.labels,
+.bottom-line {
   text-align: left;
 }
+.labels {
+  padding-right: 30px;
+}
 .label {
-  font-size: 18px;
+
+}
+.total,
+.bottom-line {
+  font-weight: 400;
+  border-bottom: 2px solid black;
+  margin: 20px 0 20px 0;
+}
+.bottom-line {
+
 }
