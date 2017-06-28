@@ -5,7 +5,7 @@ import InputField from './InputField';
 
 import '../styles/overview.css';
 
-const Overview = ({
+const TrialBalance = ({
   totalAssets,
   totalExpenses,
   bottomLine
@@ -97,4 +97,4 @@ const Overview = ({
   </section>
 )
 
-export default Overview;
+export default TrialBalance;

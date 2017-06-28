@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import pipe from 'lodash/fp/flow';
 
-import Overview from '../components/Overview';
+import TrialBalance from '../components/TrialBalance';
 
 const form = reduxForm({form: 'overview'});
 
@@ -21,4 +21,4 @@ const redux = connect(
 export default pipe(
   form,
   redux
-)(Overview)
+)(TrialBalance)
