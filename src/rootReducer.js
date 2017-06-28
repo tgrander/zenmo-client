@@ -38,25 +38,6 @@ const REMOVE_GOAL = 'REMOVE_GOAL';
 const MODIFY_GOAL_LABEL = 'MODIFY_GOAL_LABEL';
 const MODIFY_GOAL_AMOUNT = 'MODIFY_GOAL_AMOUNT';
 
-const addAsset = label => ({
-  type: ADD_ASSET,
-  label
-})
-const removeAsset = label => ({
-  type: REMOVE_ASSET,
-  label
-})
-const modifyAssetLabel = (oldLabel, newLabel) => ({
-  type: MODIFY_ASSET_LABEL,
-  oldLabel,
-  newLabel
-})
-const modifyAssetAmount = (label, amount) => ({
-  type: MODIFY_ASSET_AMOUNT,
-  label,
-  amount
-})
-
 const assetsReducer = (state=defaultAssetsState, action) => {
   switch (action.type) {
     case ADD_ASSET:
