@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import PlaidLink from './modules/plaid/plaid-link';
+import PlaidLink from '../../plaid/plaid-link';
 
-import BigHeader from './styled_components/text/big-header';
-import Caption from './styled_components/text/caption';
-import Overview from './modules/dashboard/containers/Overview';
+import BigHeader from '../../../styled_components/text/big-header';
+import Caption from '../../../styled_components/text/caption';
+import Overview from '../../../modules/dashboard/containers/Overview';
 
-import './App.css';
+import '../styles/App.css';
 
 class App extends Component {
   render() {
