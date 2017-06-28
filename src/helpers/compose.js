@@ -1,4 +1,4 @@
-export const compose = () => {
+const compose = () => {
   const funcs = Array.protoype.slice.call(arguments);
 
   return funcs.reduce(function(f,g) {
@@ -7,3 +7,5 @@ export const compose = () => {
     };
   });
 }
+
+export default compose;
