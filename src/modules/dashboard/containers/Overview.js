@@ -1,16 +1,24 @@
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
+import pipe from 'lodash/fp/flow';
 
 import Overview from '../components/Overview';
-import compose from '../../../helpers/compose';
 
 const form = reduxForm({form: 'overview'});
 
-const mapStateToProps = state => {}
+const mapStateToProps = state => {
+  const { assets } = state;
+  return {
+    assets,
+  }
+}
 
-// const redux = connect()
+const redux = connect(
+  mapStateToProps,
+  {}
+)
 
-export default compose(
+export default pipe(
   form,
-  // redux
+  redux
 )(Overview)

@@ -3,18 +3,19 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
 const defaultAssetsState = {
-  checkings: 0,
+  'Checkings': 0,
+  'Savings': 0,
 }
 const defaultExpensesState = {
-  rent: 0,
-  'monthly-expenses': 0,
+  'Rent': 0,
+  'Monthly Expenses': 0,
 }
 const defaultLiabilitiesState = {
-  'student-loans': 0,
+  'Student Loans': 0,
 }
 const defaultGoalsState = {
-  'add-to-savings': 0,
-  'invest-in-stocks': 0
+  'Add to Savings': 0,
+  'Invest in Stocks': 0,
 }
 
 const ADD_ASSET = 'ADD_ASSET';
