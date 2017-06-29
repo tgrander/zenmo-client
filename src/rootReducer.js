@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
+import isEmpty from 'lodash/isEmpty';
 
 import * as assetConstants from './modules/trialBalance/constants/assets';
 
@@ -13,6 +14,7 @@ const defaultExpensesState = {
 }
 const defaultLiabilitiesState = {
   'Student Loans': 0,
+  'Bootcamp Loans': 0,
 }
 const defaultGoalsState = {
   'Add to Savings': 0,
@@ -61,25 +63,82 @@ const assetsReducer = (state=defaultAssetsState, action) => {
       return state;
   }
 }
-const expensesReducer = (state, action) => {
+const expensesReducer = (state=defaultExpensesState, action) => {
   switch (action.type) {
-    case 'expression':
+    case assetConstants.ADD_EXPENSE:
+      // let addAssetState = {...state}
+      // addAssetState[action.label] = 0
+      // return addAssetState
+
+    case assetConstants.REMOVE_EXPENSE:
+      // let removeAssetState = {...state}
+      // delete removeAssetState[action.label]
+      // return removeAssetState
+
+    case assetConstants.MODIFY_EXPENSE_LABEL:
+      // let modifyAssetLabelState = {...state}
+      // modifyAssetLabelState[action.newLabel] = state.oldLabel
+      // delete modifyAssetLabelState[action.oldLabel]
+      // return modifyAssetLabelState
+
+    case assetConstants.MODIFY_EXPENSE_AMOUNT:
+      // let modifyAssetAmountState = {...state}
+      // modifyAssetAmountState[action.label] = action.amount
+      // return modifyAssetAmountState
 
     default:
       return state;
   }
 }
-const liabilitiesReducer = (state, action) => {
+const liabilityReducer = (state=defaultExpensesState, action) => {
   switch (action.type) {
-    case 'expression':
+    case assetConstants.ADD_LIABILITY:
+      // let addAssetState = {...state}
+      // addAssetState[action.label] = 0
+      // return addAssetState
+
+    case assetConstants.REMOVE_LIABILITY:
+      // let removeAssetState = {...state}
+      // delete removeAssetState[action.label]
+      // return removeAssetState
+
+    case assetConstants.MODIFY_LIABILITY_LABEL:
+      // let modifyAssetLabelState = {...state}
+      // modifyAssetLabelState[action.newLabel] = state.oldLabel
+      // delete modifyAssetLabelState[action.oldLabel]
+      // return modifyAssetLabelState
+
+    case assetConstants.MODIFY_LIABILITY_AMOUNT:
+      // let modifyAssetAmountState = {...state}
+      // modifyAssetAmountState[action.label] = action.amount
+      // return modifyAssetAmountState
 
     default:
       return state;
   }
 }
-const goalsReducer = (state, action) => {
+const goalsReducer = (state=defaultExpensesState, action) => {
   switch (action.type) {
-    case 'expression':
+    case assetConstants.ADD_GOAL:
+      // let addAssetState = {...state}
+      // addAssetState[action.label] = 0
+      // return addAssetState
+
+    case assetConstants.REMOVE_GOAL:
+      // let removeAssetState = {...state}
+      // delete removeAssetState[action.label]
+      // return removeAssetState
+
+    case assetConstants.MODIFY_GOAL_LABEL:
+      // let modifyAssetLabelState = {...state}
+      // modifyAssetLabelState[action.newLabel] = state.oldLabel
+      // delete modifyAssetLabelState[action.oldLabel]
+      // return modifyAssetLabelState
+
+    case assetConstants.MODIFY_GOAL_AMOUNT:
+      // let modifyAssetAmountState = {...state}
+      // modifyAssetAmountState[action.label] = action.amount
+      // return modifyAssetAmountState
 
     default:
       return state;
@@ -89,4 +148,7 @@ const goalsReducer = (state, action) => {
 export default combineReducers({
   form: formReducer,
   assets: assetsReducer,
+  expenses: expensesReducer,
+  liabilities: liabilitiesReducer,
+  goals: goalsReducer,
 })
