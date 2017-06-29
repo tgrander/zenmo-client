@@ -1,4 +1,0 @@
-export const ADD_ASSET = 'ADD_ASSET';
-export const REMOVE_ASSET = 'REMOVE_ASSET';
-export const MODIFY_ASSET_LABEL = 'MODIFY_ASSET_LABEL';
-export const MODIFY_ASSET_AMOUNT = 'MODIFY_ASSET_AMOUNT';

@@ -19,8 +19,6 @@ const TrialBalance = ({
 
   console.log('FORM: ', trialBalance);
 
-  calculateTotal()
-
   return (
     <section className="overview">
 
