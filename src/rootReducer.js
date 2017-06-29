@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
-
 import { reducer as formReducer } from 'redux-form';
+
+import * as assetConstants from './modules/trialBalance/constants/assets';
 
 const defaultAssetsState = {
   'Checkings': 0,
@@ -17,11 +18,6 @@ const defaultGoalsState = {
   'Add to Savings': 0,
   'Invest in Stocks': 0,
 }
-
-const ADD_ASSET = 'ADD_ASSET';
-const REMOVE_ASSET = 'REMOVE_ASSET';
-const MODIFY_ASSET_LABEL = 'MODIFY_ASSET_LABEL';
-const MODIFY_ASSET_AMOUNT = 'MODIFY_ASSET_AMOUNT';
 
 const ADD_EXPENSE = 'ADD_EXPENSE';
 const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
@@ -40,23 +36,23 @@ const MODIFY_GOAL_AMOUNT = 'MODIFY_GOAL_AMOUNT';
 
 const assetsReducer = (state=defaultAssetsState, action) => {
   switch (action.type) {
-    case ADD_ASSET:
+    case assetConstants.ADD_ASSET:
       let addAssetState = {...state}
       addAssetState[action.label] = 0
       return addAssetState
 
-    case REMOVE_ASSET:
+    case assetConstants.REMOVE_ASSET:
       let removeAssetState = {...state}
       delete removeAssetState[action.label]
       return removeAssetState
 
-    case MODIFY_ASSET_LABEL:
+    case assetConstants.MODIFY_ASSET_LABEL:
       let modifyAssetLabelState = {...state}
       modifyAssetLabelState[action.newLabel] = state.oldLabel
       delete modifyAssetLabelState[action.oldLabel]
       return modifyAssetLabelState
 
-    case MODIFY_ASSET_AMOUNT:
+    case assetConstants.MODIFY_ASSET_AMOUNT:
       let modifyAssetAmountState = {...state}
       modifyAssetAmountState[action.label] = action.amount
       return modifyAssetAmountState

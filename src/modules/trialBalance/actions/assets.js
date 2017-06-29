@@ -1,18 +1,20 @@
+import * as constants from '../constants/assets';
+
 export const addAsset = label => ({
-  type: ADD_ASSET,
+  type: constants.ADD_ASSET,
   label
 })
 export const removeAsset = label => ({
-  type: REMOVE_ASSET,
+  type: constants.REMOVE_ASSET,
   label
 })
 export const modifyAssetLabel = (oldLabel, newLabel) => ({
-  type: MODIFY_ASSET_LABEL,
+  type: constants.MODIFY_ASSET_LABEL,
   oldLabel,
   newLabel
 })
 export const modifyAssetAmount = (label, amount) => ({
-  type: MODIFY_ASSET_AMOUNT,
+  type: constants.MODIFY_ASSET_AMOUNT,
   label,
   amount
 })
