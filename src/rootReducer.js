@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import isEmpty from 'lodash/isEmpty';
 
 import * as constants from './modules/trialBalance/constants';
 
@@ -56,6 +55,7 @@ const totalsReducer = (state=defaultTotalsState, action) => {
       return state;
   }
 }
+
 const assetsReducer = (state=defaultAssetsState, action) => {
   switch (action.type) {
     case constants.ADD_ASSET:
@@ -83,6 +83,7 @@ const assetsReducer = (state=defaultAssetsState, action) => {
       return state;
   }
 }
+
 const expensesReducer = (state=defaultExpensesState, action) => {
   switch (action.type) {
     case constants.ADD_EXPENSE:
@@ -110,6 +111,7 @@ const expensesReducer = (state=defaultExpensesState, action) => {
       return state;
   }
 }
+
 const liabilitiesReducer = (state=defaultLiabilitiesState, action) => {
   switch (action.type) {
     case constants.ADD_LIABILITY:
@@ -137,6 +139,7 @@ const liabilitiesReducer = (state=defaultLiabilitiesState, action) => {
       return state;
   }
 }
+
 const goalsReducer = (state=defaultGoalsState, action) => {
   switch (action.type) {
     case constants.ADD_GOAL:

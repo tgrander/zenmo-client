@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import InputField from './InputField';
+import AmountInput from './AmountInput';
 import AssetsTotal from '../containers/AssetsTotal';
 import ExpensesTotal from '../containers/ExpensesTotal';
 import LiabilitiesTotal from '../containers/LiabilitiesTotal';
@@ -58,37 +58,37 @@ const TrialBalance = ({
       <form className="overview-amounts">
         <Field
           name="Checkings"
-          component={InputField}
+          component={AmountInput}
           label="Checkings" />
         <Field
           name="Savings"
-          component={InputField}
+          component={AmountInput}
           label="Savings" />
         <Field
           name="Monthly Income"
-          component={InputField}
+          component={AmountInput}
           label="Monthly Income" />
 
         <AssetsTotal className="assets" />
 
         <Field
           name="Rent"
-          component={InputField}
+          component={AmountInput}
           label="Rent" />
         <Field
           name="Monthly Expenses"
-          component={InputField}
+          component={AmountInput}
           label="Monthly Expenses" />
 
         <ExpensesTotal className="expenses" />
 
         <Field
           name="Student Loans"
-          component={InputField}
+          component={AmountInput}
           label="Student Loans" />
         <Field
           name="Bootcamp Loans"
-          component={InputField}
+          component={AmountInput}
           label="Bootcamp Loans" />
 
         <LiabilitiesTotal className="liabilities" />
@@ -96,11 +96,11 @@ const TrialBalance = ({
 
         <Field
           name="Add to Savings"
-          component={InputField}
+          component={AmountInput}
           label="Add to Savings" />
         <Field
           name="Invest in Stocks"
-          component={InputField}
+          component={AmountInput}
           label="Invest in Stocks" />
 
         <GoalsTotal className="goals" />

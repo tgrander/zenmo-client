@@ -1,4 +1,5 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from 'react'
+import debounce from 'lodash/debounce'
 
 class InputField extends PureComponent {
   render() {
