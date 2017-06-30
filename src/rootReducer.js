@@ -2,27 +2,60 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import isEmpty from 'lodash/isEmpty';
 
-
-
 import * as constants from './modules/trialBalance/constants';
 
 const defaultAssetsState = {
-  'Checkings': 0,
-  'Savings': 0,
+  'Checkings': 4800,
+  'Savings': 5050,
+  'Monthly Income': 6200
 }
 const defaultExpensesState = {
-  'Rent': 0,
-  'Monthly Expenses': 0,
+  'Rent': 2000,
+  'Monthly Expenses': 1500,
 }
 const defaultLiabilitiesState = {
-  'Student Loans': 0,
-  'Bootcamp Loans': 0,
+  'Student Loans': 500,
+  'Bootcamp Loans': 500,
 }
 const defaultGoalsState = {
-  'Add to Savings': 0,
-  'Invest in Stocks': 0,
+  'Add to Savings': 1000,
+  'Invest in Stocks': 200,
+}
+const defaultTotalsState = {
+  assetsTotal: 0,
+  expensesTotal: 0,
+  liabilitiesTotal: 0,
+  goalsTotal: 0,
+  netIncome: 0,
+  bottomLine: 0,
 }
 
+const totalsReducer = (state=defaultTotalsState, action) => {
+  switch (action.type) {
+    case constants.RECALCULATE_ASSETS_TOTAL:
+      return {
+        ...state,
+        assetsTotal: action.total
+      }
+    case constants.RECALCULATE_EXPENSES_TOTAL:
+      return {
+        ...state,
+        assetsTotal: action.total
+      }
+    case constants.RECALCULATE_LIABILITIES_TOTAL:
+      return {
+        ...state,
+        assetsTotal: action.total
+      }
+    case constants.RECALCULATE_GOALS_TOTAL:
+      return {
+        ...state,
+        assetsTotal: action.total
+      }
+    default:
+      return state;
+  }
+}
 const assetsReducer = (state=defaultAssetsState, action) => {
   switch (action.type) {
     case constants.ADD_ASSET:
@@ -77,7 +110,7 @@ const expensesReducer = (state=defaultExpensesState, action) => {
       return state;
   }
 }
-const liabilitiesReducer = (state=defaultExpensesState, action) => {
+const liabilitiesReducer = (state=defaultLiabilitiesState, action) => {
   switch (action.type) {
     case constants.ADD_LIABILITY:
       // let addAssetState = {...state}
@@ -104,7 +137,7 @@ const liabilitiesReducer = (state=defaultExpensesState, action) => {
       return state;
   }
 }
-const goalsReducer = (state=defaultExpensesState, action) => {
+const goalsReducer = (state=defaultGoalsState, action) => {
   switch (action.type) {
     case constants.ADD_GOAL:
       // let addAssetState = {...state}

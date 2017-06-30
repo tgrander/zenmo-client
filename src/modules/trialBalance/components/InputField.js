@@ -2,10 +2,10 @@ import React, { PureComponent } from 'react';
 
 class InputField extends PureComponent {
   render() {
-    const { input, type, label } = this.props;
+    const { input, type, label, className } = this.props;
     return (
       <div>
-        <div className="">
+        <div className={className || ''}>
           <input {...input} type={type} placeholder="0.00" />
         </div>
       </div>

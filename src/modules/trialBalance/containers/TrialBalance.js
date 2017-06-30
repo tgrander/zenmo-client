@@ -8,10 +8,26 @@ import * as assetActions from '../actions/assets';
 const form = reduxForm({form: 'trialBalance'});
 
 const mapStateToProps = state => {
-  const { assets, form: { trialBalance } } = state;
+  const {
+    assets,
+    expenses,
+    liabilities,
+    goals,
+    form: { trialBalance }
+  } = state;
+
   return {
     assets,
-    trialBalance
+    expenses,
+    liabilities,
+    goals,
+    trialBalance,
+    initialValues: {
+      ...assets,
+      ...expenses,
+      ...liabilities,
+      ...goals,
+    }
   }
 }
 

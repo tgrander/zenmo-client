@@ -31,3 +31,15 @@
 .bottom-line {
 
 }
+.assets,
+.goals,
+.positive {
+  /*green*/
+  color: rgb(53, 196, 96);
+}
+.expenses,
+.liabilities,
+.negative {
+  /*red*/
+  color: rgb(239, 43, 43);
+}

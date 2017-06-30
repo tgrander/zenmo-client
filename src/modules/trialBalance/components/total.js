@@ -1,8 +1,11 @@
 import React from 'react';
 
-function Total({ total }) {
+function Total({ total, className }) {
   return (
-    <div className="total">{total}</div>
+    <div
+      className={className ? `label total ${className}` : `label total`}>
+      {total}
+    </div>
   )
 }
 
