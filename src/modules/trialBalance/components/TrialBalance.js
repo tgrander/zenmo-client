@@ -58,17 +58,14 @@ const TrialBalance = ({
       <form className="overview-amounts">
         <Field
           name="Checkings"
-          type="number"
           component={InputField}
           label="Checkings" />
         <Field
           name="Savings"
-          type="number"
           component={InputField}
           label="Savings" />
         <Field
           name="Monthly Income"
-          type="number"
           component={InputField}
           label="Monthly Income" />
 
@@ -76,12 +73,10 @@ const TrialBalance = ({
 
         <Field
           name="Rent"
-          type="number"
           component={InputField}
           label="Rent" />
         <Field
           name="Monthly Expenses"
-          type="number"
           component={InputField}
           label="Monthly Expenses" />
 
@@ -89,12 +84,10 @@ const TrialBalance = ({
 
         <Field
           name="Student Loans"
-          type="number"
           component={InputField}
           label="Student Loans" />
         <Field
           name="Bootcamp Loans"
-          type="number"
           component={InputField}
           label="Bootcamp Loans" />
 
@@ -103,12 +96,10 @@ const TrialBalance = ({
 
         <Field
           name="Add to Savings"
-          type="number"
           component={InputField}
           label="Add to Savings" />
         <Field
           name="Invest in Stocks"
-          type="number"
           component={InputField}
           label="Invest in Stocks" />
 

@@ -6,7 +6,10 @@ class InputField extends PureComponent {
     return (
       <div>
         <div className={className || ''}>
-          <input {...input} type={type} placeholder="0.00" />
+          <input {...input}
+            type='number'
+            defaultValue={input.value}
+            placeholder="0.00" />
         </div>
       </div>
     )
@@ -14,3 +17,5 @@ class InputField extends PureComponent {
 }
 
 export default InputField;
+
+// <input {...input} type={type} placeholder="0.00" />
