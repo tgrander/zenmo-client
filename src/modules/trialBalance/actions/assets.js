@@ -1,4 +1,4 @@
-import * as constants from '../constants/assets';
+import * as constants from '../constants';
 
 export const addAsset = label => ({
   type: constants.ADD_ASSET,

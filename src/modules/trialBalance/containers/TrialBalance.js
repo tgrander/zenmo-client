@@ -3,11 +3,11 @@ import { reduxForm } from 'redux-form';
 import pipe from 'lodash/fp/flow';
 
 import TrialBalance from '../components/TrialBalance';
-import * as assetActions from '../actions/assets';
+import * as assetActions from '../actions/Assets';
 
 const form = reduxForm({form: 'trialBalance'});
 
-const mapStateToProps = state => { 
+const mapStateToProps = state => {
   const {
     assets,
     expenses,
