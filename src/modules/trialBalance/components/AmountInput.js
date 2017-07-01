@@ -3,6 +3,11 @@ import debounce from 'lodash/debounce'
 
 class InputField extends PureComponent {
   render() {
+
+    const onChange = () => {
+      
+    }
+
     const { input, type, label, className } = this.props;
     return (
       <div>

@@ -4,7 +4,7 @@ import withHandlers from 'recompose/withHandlers'
 import pipe from 'lodash/fp/flow'
 import AmountInput from '../components/AmountInput'
 
-// import { } from 
+import {  } from
 
 const redux = connect(
   null,
