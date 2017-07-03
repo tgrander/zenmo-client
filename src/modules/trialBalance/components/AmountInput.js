@@ -5,10 +5,10 @@ class InputField extends PureComponent {
   render() {
 
     const onChange = () => {
-      
+
     }
 
-    const { input, type, label, className } = this.props;
+    const { input, type, name, className } = this.props;
     return (
       <div>
         <div className={className || ''}>

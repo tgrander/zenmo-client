@@ -59,37 +59,37 @@ const TrialBalance = ({
         <Field
           name="Checkings"
           component={AmountInput}
-          label="Checkings" />
+          section="assets" />
         <Field
           name="Savings"
           component={AmountInput}
-          label="Savings" />
+          section="assets" />
         <Field
           name="Monthly Income"
           component={AmountInput}
-          label="Monthly Income" />
+          section="assets" />
 
         <AssetsTotal className="assets" />
 
         <Field
           name="Rent"
           component={AmountInput}
-          label="Rent" />
+          section="expenses" />
         <Field
           name="Monthly Expenses"
           component={AmountInput}
-          label="Monthly Expenses" />
+          section="expenses" />
 
         <ExpensesTotal className="expenses" />
 
         <Field
           name="Student Loans"
           component={AmountInput}
-          label="Student Loans" />
+          section="liabilities" />
         <Field
           name="Bootcamp Loans"
           component={AmountInput}
-          label="Bootcamp Loans" />
+          section="liabilities" />
 
         <LiabilitiesTotal className="liabilities" />
         <div className="bottom-line">{bottomLine ? bottomLine : 0.00}</div>
@@ -97,11 +97,11 @@ const TrialBalance = ({
         <Field
           name="Add to Savings"
           component={AmountInput}
-          label="Add to Savings" />
+          section="goals" />
         <Field
           name="Invest in Stocks"
           component={AmountInput}
-          label="Invest in Stocks" />
+          section="goals" />
 
         <GoalsTotal className="goals" />
 
