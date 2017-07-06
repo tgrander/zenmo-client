@@ -8,20 +8,16 @@ class InputField extends PureComponent {
 
     }
 
-    const { input, type, name, className } = this.props;
+    const { input, name, className } = this.props;
     return (
-      <div>
-        <div className={className || ''}>
-          <input {...input}
-            type='number'
-            defaultValue={input.value}
-            placeholder="0.00" />
-        </div>
+      <div className={className || ''}>
+        <input {...input}
+          type='number'
+          defaultValue={input.value}
+          placeholder="0.00" />
       </div>
     )
   }
 }
 
 export default InputField;
-
-// <input {...input} type={type} placeholder="0.00" />
