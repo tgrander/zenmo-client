@@ -7,14 +7,13 @@ function SignUp({ handleSubmit, signup, submitting, pristine }) {
   return(
     <form onSubmit={handleSubmit(signup)}>
       <Field
-        name="name"
-        component={InputField} />
-      <Field
         name="email"
-        component={InputField} />
+        component={InputField}
+        label="Email" />
       <Field
         name="password"
-        component={InputField} />
+        component={InputField}
+        label="Password" />
       <button type="submit" disabled={ pristine || submitting }>
         Sign Up
       </button>
