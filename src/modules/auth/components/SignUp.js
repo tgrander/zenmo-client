@@ -18,6 +18,9 @@ function SignUp({}) {
         name="verifyPassword"
         component={InputField}
       />
+    <button type="submit">
+      Sign Up
+    </button>
     </form>
   )
 }

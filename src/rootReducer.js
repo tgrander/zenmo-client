@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
+import { combineEpics } from 'redux-observable';
 
 import * as constants from './modules/trialBalance/constants';
 
@@ -167,6 +168,10 @@ const goalsReducer = (state=defaultGoalsState, action) => {
       return state;
   }
 }
+
+export const rootEpic = combineEpics({
+
+})
 
 export default combineReducers({
   form: formReducer,
