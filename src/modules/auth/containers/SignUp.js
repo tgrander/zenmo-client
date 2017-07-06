@@ -5,7 +5,7 @@ import { auth } from '../../../firebase';
 
 import SignUp from '../components/SignUp';
 
-const form = reduxForm({form: 'signin'});
+const form = reduxForm({form: 'signup'});
 
 const handlers = withHandlers({
   signup: props => values => {
