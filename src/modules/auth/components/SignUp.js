@@ -3,24 +3,21 @@ import { Field } from 'redux-form';
 
 import InputField from '../../shared/form/InputField';
 
-function SignUp({}) {
+function SignUp({ handleSubmit, signup, submitting, pristine }) {
   return(
-    <form>
+    <form onSubmit={handleSubmit(signup)}>
+      <Field
+        name="name"
+        component={InputField} />
       <Field
         name="email"
-        component={InputField}
-      />
+        component={InputField} />
       <Field
         name="password"
-        component={InputField}
-      />
-      <Field
-        name="verifyPassword"
-        component={InputField}
-      />
-    <button type="submit">
-      Sign Up
-    </button>
+        component={InputField} />
+      <button type="submit" disabled={ pristine || submitting }>
+        Sign Up
+      </button>
     </form>
   )
 }

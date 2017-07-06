@@ -2,6 +2,8 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import { combineEpics } from 'redux-observable';
 
+import { pingEpic } from './rxjs/epics/trialBalance';
+
 import * as constants from './modules/trialBalance/constants';
 
 const defaultAssetsState = {
@@ -169,9 +171,9 @@ const goalsReducer = (state=defaultGoalsState, action) => {
   }
 }
 
-export const rootEpic = combineEpics({
-
-})
+export const rootEpic = combineEpics(
+  pingEpic,
+)
 
 export default combineReducers({
   form: formReducer,

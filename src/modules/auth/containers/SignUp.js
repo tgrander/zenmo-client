@@ -7,12 +7,13 @@ import SignUp from '../components/SignUp';
 const form = reduxForm({form: 'signin'});
 
 const handlers = withHandlers({
-  signUp: (props) => (values) => {
-    const { handleSubmit } = props;
-
-  }
+  signup: props => values => {
+    const { email, password } = values;
+    console.log('VALUES: ', values);
+  },
 })
 
-export default (
+export default pipe(
   form,
+  handlers,
 )(SignUp)
