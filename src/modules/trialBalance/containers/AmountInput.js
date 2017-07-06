@@ -26,8 +26,9 @@ const handlers = withHandlers({
   onChange: (props) => (e) => {
     const { section } = props
     const updateAmountFunction = props[section]
+    console.log();
     debounce(
-      () => updateAmountFunction(e.target.value), 
+      () => updateAmountFunction(e.target.value),
       800
     )
   }
