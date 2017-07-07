@@ -5,7 +5,7 @@ import 'rxjs';
 
 import registerServiceWorker from './registerServiceWorker';
 import store from './store';
-import App from './modules/app/components/App';
+import App from './modules/app/containers/App';
 
 function Root() {
   return (
