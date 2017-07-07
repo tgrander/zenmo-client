@@ -26,7 +26,7 @@ const currentUser = auth.currentUser;
 
 const redux = connect(
   state => ({
-    
+
   }),
   {
     setCurrentUser
