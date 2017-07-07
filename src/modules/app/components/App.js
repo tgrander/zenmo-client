@@ -18,9 +18,14 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       hasSetCurrentUser: false,
+    }
+  }
+
+  componentDidMount() {
+    if (!this.state.hasSetCurrentUser) {
+      
     }
   }
 
