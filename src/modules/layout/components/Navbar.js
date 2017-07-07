@@ -1,22 +1,25 @@
 import React from 'react';
 import { auth } from '../../../firebase';
+import { Link } from 'react-router-dom';
 
 import '../styles/navbar.css'
 
 function Navbar({ currentUser }) {
   return (
     <nav>
-      <div className="logo">ZENMO</div>
+      <Link className="logo" to="/">
+        ZENMO
+      </Link>
       {
         currentUser ?
         <div className="links no-auth">
-          <a>Sign In</a>
-          <a>Sign Up</a>
+          <Link to="/signin">Sign In</Link>
+          <Link to="/signup">Sign Up</Link>
         </div> :
         <div className="links auth">
-          <a>Overview</a>
-          <a>Expenses</a>
-          <a>Stats</a>
+          <Link to="/trial-balance">Overview</Link>
+          <Link to="/expenses">Expenses</Link>
+          <Link to="/stats">Stats</Link>
           <a onClick={e => auth.signOut()}>
             Logout
           </a>

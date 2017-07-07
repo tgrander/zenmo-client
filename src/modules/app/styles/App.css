@@ -16,6 +16,10 @@ body {
 .App > *:not(:last-child) {
   margin-bottom: 2rem;
 }
+a {
+  text-decoration: none;
+  color: black;
+}
 input[type="number"] {
   border: 0px;
   background-color: transparent;
