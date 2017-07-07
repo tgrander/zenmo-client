@@ -5,7 +5,9 @@ const propTypes = {
 }
 
 function Navbar({  }) {
-  return <div>
+  return (
+    <div></div>
+  )
 }
 
 export default Navbar;
