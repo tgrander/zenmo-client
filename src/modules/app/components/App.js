@@ -4,8 +4,7 @@ import PlaidLink from '../../plaid/plaid-link';
 import SignUp from '../../auth/containers/SignUp';
 import SignIn from '../../auth/containers/SignIn';
 
-import BigHeader from '../../../styled_components/text/big-header';
-import Caption from '../../../styled_components/text/caption';
+import Navbar from '../../layout/containers/Navbar';
 import TrialBalance from '../../../modules/trialBalance/containers/TrialBalance';
 
 import { auth } from '../../../firebase';
@@ -16,10 +15,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <BigHeader>ZENMO</BigHeader>
-        <Caption>Financial Nirvana</Caption>
-        <SignUp/>
-        <SignIn/>
+        <Navbar />
         <button onClick={e => auth.signOut()}>
           Signout
         </button>
