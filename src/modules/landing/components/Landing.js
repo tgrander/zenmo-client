@@ -10,3 +10,5 @@ function Landing({}) {
     </section>
   )
 }
+
+export default Landing;

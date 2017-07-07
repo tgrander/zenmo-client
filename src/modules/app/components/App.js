@@ -15,7 +15,17 @@ import { auth } from '../../../firebase';
 import '../styles/App.css';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      hasSetCurrentUser: false,
+    }
+  }
+
   render() {
+
     return (
       <Router>
         <div className="App">

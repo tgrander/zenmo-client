@@ -21,7 +21,13 @@ auth.onAuthStateChanged(function(user) {
   }
 });
 
-const redux = connect(null)
+const currentUser = auth.currentUser;
+
+const redux = connect(
+  state => ({
+    currentUser
+  })
+)
 
 export default pipe(
   redux,
