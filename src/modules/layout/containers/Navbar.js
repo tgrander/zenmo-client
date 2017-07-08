@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 
 const redux = connect(
   state => ({
-    currentUser: {}
+    
   })
 )
 

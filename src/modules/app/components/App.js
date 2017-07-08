@@ -35,7 +35,7 @@ class App extends Component {
       <Router>
         <div className="App">
 
-          <Navbar />
+          <Navbar currentUser={this.props.currentUser} />
 
           <Route exact path="/" component={Landing} />
           <Route path="/signup" component={SignUp} />
