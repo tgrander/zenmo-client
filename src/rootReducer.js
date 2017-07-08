@@ -54,6 +54,16 @@ const totalsReducer = (state=defaultTotalsState, action) => {
         ...state,
         goalsTotal: action.goalsTotal
       }
+    case constants.UPDATE_NET_INCOME:
+      return {
+        ...state,
+        netIncome: action.netIncome
+      }
+    case constants.UPDATE_LEFTOVER:
+      return {
+        ...state,
+        leftover: action.leftover
+      }
     break;
     default:
       return state;

@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import compose from 'recompose/compose'
+import withHandlers from 'recompose/withHandlers';
 
+import { updateNetIncome } from '../actions/totals';
 import Total from '../components/Total';
 
 const calculateNetIncome = (assetsTotal, expensesTotal, liabilitiesTotal) => {
@@ -10,7 +12,6 @@ const calculateNetIncome = (assetsTotal, expensesTotal, liabilitiesTotal) => {
   }
   return netIncome;
 }
-
 
 const mapStateToProps = state => {
   const {
@@ -26,9 +27,19 @@ const mapStateToProps = state => {
 }
 
 const redux = connect(
-  mapStateToProps
+  mapStateToProps,
+  {
+    updateNetIncome
+  }
 )
+
+const handlers = withHandlers({
+  updateTotal: ({ updateNetIncome }) => total => {
+    updateNetIncome(total)
+  }
+})
 
 export default compose(
   redux,
+  handlers,
 )(Total)

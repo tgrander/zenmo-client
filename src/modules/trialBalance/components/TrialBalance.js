@@ -9,6 +9,7 @@ import LiabilitiesTotal from '../containers/LiabilitiesTotal';
 import GoalsTotal from '../containers/GoalsTotal';
 
 import NetIncome from '../containers/NetIncome';
+import Leftover from '../containers/Leftover';
 
 import '../styles/overview.css';
 
@@ -139,7 +140,7 @@ const TrialBalance = ({
 
         <GoalsTotal className="goals" />
 
-        <div className="bottom-line">{bottomLine ? bottomLine : 0.00}</div>
+        <Leftover />
       </form>
 
     </section>
