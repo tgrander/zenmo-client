@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Landing({}) {
+function Landing() {
   return (
     <section>
       <h2>ZENMO</h2>

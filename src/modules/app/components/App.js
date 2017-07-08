@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PlaidLink from '../../plaid/plaid-link';
 import {
   BrowserRouter as Router,
   Route

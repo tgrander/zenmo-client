@@ -1,14 +1,10 @@
 import React, { PureComponent } from 'react'
-import debounce from 'lodash/debounce'
 
 class InputField extends PureComponent {
   render() {
 
-    const onChange = () => {
+    const { input, className } = this.props;
 
-    }
-
-    const { input, name, className } = this.props;
     return (
       <div className={className || ''}>
         <input {...input}

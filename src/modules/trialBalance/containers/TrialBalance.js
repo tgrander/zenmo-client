@@ -1,9 +1,12 @@
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import pipe from 'lodash/fp/flow';
+import branch from 'recompose/branch';
 
 import TrialBalance from '../components/TrialBalance';
 import * as assetActions from '../actions/Assets';
+
+import requiresAuth from '../../../helpers/requiresAuth';
 
 const form = reduxForm({form: 'trialBalance'});
 
@@ -38,5 +41,6 @@ const redux = connect(
 
 export default pipe(
   form,
-  redux
+  redux,
+  requiresAuth,
 )(TrialBalance)

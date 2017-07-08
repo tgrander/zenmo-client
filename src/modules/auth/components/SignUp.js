@@ -1,7 +1,5 @@
 import React from 'react';
 import { Field } from 'redux-form';
-// import { Route } from 'react-router-dom';
-import { withRouter } from 'react-router-dom'
 
 import InputField from '../../shared/form/InputField';
 

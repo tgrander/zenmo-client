@@ -41,21 +41,25 @@ const totalsReducer = (state=defaultTotalsState, action) => {
         ...state,
         assetsTotal: action.total
       }
+    break;
     case constants.RECALCULATE_EXPENSES_TOTAL:
       return {
         ...state,
         assetsTotal: action.total
       }
+    break;
     case constants.RECALCULATE_LIABILITIES_TOTAL:
       return {
         ...state,
         assetsTotal: action.total
       }
+    break;
     case constants.RECALCULATE_GOALS_TOTAL:
       return {
         ...state,
         assetsTotal: action.total
       }
+    break;
     default:
       return state;
   }
@@ -67,23 +71,23 @@ const assetsReducer = (state=defaultAssetsState, action) => {
       let addAssetState = {...state}
       addAssetState[action.label] = 0
       return addAssetState
-
+    break;
     case constants.REMOVE_ASSET:
       let removeAssetState = {...state}
       delete removeAssetState[action.label]
       return removeAssetState
-
+    break;
     case constants.MODIFY_ASSET_LABEL:
       let modifyAssetLabelState = {...state}
       modifyAssetLabelState[action.newLabel] = state.oldLabel
       delete modifyAssetLabelState[action.oldLabel]
       return modifyAssetLabelState
-
+    break;
     case constants.MODIFY_ASSET_AMOUNT:
       let modifyAssetAmountState = {...state}
       modifyAssetAmountState[action.label] = action.amount
       return modifyAssetAmountState
-
+    break;
     default:
       return state;
   }
@@ -95,23 +99,23 @@ const expensesReducer = (state=defaultExpensesState, action) => {
       // let addAssetState = {...state}
       // addAssetState[action.label] = 0
       // return addAssetState
-
+    break;
     case constants.REMOVE_EXPENSE:
       // let removeAssetState = {...state}
       // delete removeAssetState[action.label]
       // return removeAssetState
-
+    break;
     case constants.MODIFY_EXPENSE_LABEL:
       // let modifyAssetLabelState = {...state}
       // modifyAssetLabelState[action.newLabel] = state.oldLabel
       // delete modifyAssetLabelState[action.oldLabel]
       // return modifyAssetLabelState
-
+    break;
     case constants.MODIFY_EXPENSE_AMOUNT:
       // let modifyAssetAmountState = {...state}
       // modifyAssetAmountState[action.label] = action.amount
       // return modifyAssetAmountState
-
+    break;
     default:
       return state;
   }
@@ -123,23 +127,23 @@ const liabilitiesReducer = (state=defaultLiabilitiesState, action) => {
       // let addAssetState = {...state}
       // addAssetState[action.label] = 0
       // return addAssetState
-
+    break;
     case constants.REMOVE_LIABILITY:
       // let removeAssetState = {...state}
       // delete removeAssetState[action.label]
       // return removeAssetState
-
+    break;
     case constants.MODIFY_LIABILITY_LABEL:
       // let modifyAssetLabelState = {...state}
       // modifyAssetLabelState[action.newLabel] = state.oldLabel
       // delete modifyAssetLabelState[action.oldLabel]
       // return modifyAssetLabelState
-
+    break;
     case constants.MODIFY_LIABILITY_AMOUNT:
       // let modifyAssetAmountState = {...state}
       // modifyAssetAmountState[action.label] = action.amount
       // return modifyAssetAmountState
-
+    break;
     default:
       return state;
   }
@@ -151,23 +155,23 @@ const goalsReducer = (state=defaultGoalsState, action) => {
       // let addAssetState = {...state}
       // addAssetState[action.label] = 0
       // return addAssetState
-
+    break;
     case constants.REMOVE_GOAL:
       // let removeAssetState = {...state}
       // delete removeAssetState[action.label]
       // return removeAssetState
-
+    break;
     case constants.MODIFY_GOAL_LABEL:
       // let modifyAssetLabelState = {...state}
       // modifyAssetLabelState[action.newLabel] = state.oldLabel
       // delete modifyAssetLabelState[action.oldLabel]
       // return modifyAssetLabelState
-
+    break;
     case constants.MODIFY_GOAL_AMOUNT:
       // let modifyAssetAmountState = {...state}
       // modifyAssetAmountState[action.label] = action.amount
       // return modifyAssetAmountState
-
+    break;
     default:
       return state;
   }
@@ -184,4 +188,5 @@ export default combineReducers({
   liabilities: liabilitiesReducer,
   goals: goalsReducer,
   auth: authReducer,
+  totals: totalsReducer,
 })

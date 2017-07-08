@@ -6,7 +6,7 @@ import withState from 'recompose/withState';
 
 import Total from '../components/Total'
 import calculateTotal from '../../../helpers/calculateTotal'
-import animateAmountChange from '../../../helpers/animateAmountChange'
+// import animateAmountChange from '../../../helpers/animateAmountChange'
 import { updateAssetsTotal } from '../actions/index'
 
 const mapStateToProps = state => ({

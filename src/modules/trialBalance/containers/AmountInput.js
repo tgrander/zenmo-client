@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import withHandlers from 'recompose/withHandlers'
 import pipe from 'lodash/fp/flow'
-import debounce from 'lodash/debounce'
 
 import AmountInput from '../components/AmountInput'
 import {
@@ -23,15 +22,15 @@ const redux = connect(
 )
 
 const handlers = withHandlers({
-  onChange: (props) => (e) => {
-    const { section } = props
-    const updateAmountFunction = props[section]
-    console.log();
-    debounce(
-      () => updateAmountFunction(e.target.value),
-      800
-    )
-  }
+  // onChange: (props) => (e) => {
+  //   const { section } = props
+  //   const updateAmountFunction = props[section]
+  //   console.log();
+  //   debounce(
+  //     () => updateAmountFunction(e.target.value),
+  //     800
+  //   )
+  // }
 })
 
 export default pipe(
