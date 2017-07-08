@@ -87,9 +87,10 @@ const assetsReducer = (state=defaultAssetsState, action) => {
       return modifyAssetLabelState
     break;
     case constants.MODIFY_ASSET_AMOUNT:
-      let modifyAssetAmountState = {...state}
-      modifyAssetAmountState[action.label] = action.amount
-      return modifyAssetAmountState
+      return {
+        ...state,
+        [action.label]: action.amount
+      }
     break;
     default:
       return state;
@@ -115,9 +116,10 @@ const expensesReducer = (state=defaultExpensesState, action) => {
       // return modifyAssetLabelState
     break;
     case constants.MODIFY_EXPENSE_AMOUNT:
-      // let modifyAssetAmountState = {...state}
-      // modifyAssetAmountState[action.label] = action.amount
-      // return modifyAssetAmountState
+      return {
+        ...state,
+        [action.label]: action.amount
+      }
     break;
     default:
       return state;
@@ -143,9 +145,10 @@ const liabilitiesReducer = (state=defaultLiabilitiesState, action) => {
       // return modifyAssetLabelState
     break;
     case constants.MODIFY_LIABILITY_AMOUNT:
-      // let modifyAssetAmountState = {...state}
-      // modifyAssetAmountState[action.label] = action.amount
-      // return modifyAssetAmountState
+      return {
+        ...state,
+        [action.label]: action.amount
+      }
     break;
     default:
       return state;
@@ -171,9 +174,10 @@ const goalsReducer = (state=defaultGoalsState, action) => {
       // return modifyAssetLabelState
     break;
     case constants.MODIFY_GOAL_AMOUNT:
-      // let modifyAssetAmountState = {...state}
-      // modifyAssetAmountState[action.label] = action.amount
-      // return modifyAssetAmountState
+      return {
+        ...state,
+        [action.label]: action.amount
+      }
     break;
     default:
       return state;
