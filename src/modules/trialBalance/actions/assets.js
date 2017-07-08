@@ -25,7 +25,7 @@ export const modifyAssetAmount = (label, amount) => ({
   amount
 })
 
-export const updateAssetsTotal = total => ({
+export const updateAssetsTotal = assetsTotal => ({
   type: RECALCULATE_ASSETS_TOTAL,
-  total
+  assetsTotal
 })

@@ -24,7 +24,7 @@ export const modifyExpenseAmount = (label, amount) => ({
   label,
   amount
 })
-export const updateExpensesTotal = (total) => ({
+export const updateExpensesTotal = expensesTotal => ({
   type: RECALCULATE_EXPENSES_TOTAL,
-  total
+  expensesTotal
 })

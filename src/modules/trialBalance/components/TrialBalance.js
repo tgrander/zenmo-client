@@ -8,6 +8,8 @@ import ExpensesTotal from '../containers/ExpensesTotal';
 import LiabilitiesTotal from '../containers/LiabilitiesTotal';
 import GoalsTotal from '../containers/GoalsTotal';
 
+import NetIncome from '../containers/NetIncome';
+
 import '../styles/overview.css';
 
 const TrialBalance = ({
@@ -40,9 +42,9 @@ const TrialBalance = ({
   currentUser,
 }) => {
 
-  if (!currentUser) {
-    return <Redirect to="/" push />
-  }
+  // if (!currentUser) {
+  //   return <Redirect to="/" push />
+  // }
 
   return (
     <section className="overview">
@@ -121,7 +123,8 @@ const TrialBalance = ({
           onChangeAction={modifyLiabilityAmount} />
 
         <LiabilitiesTotal className="liabilities" />
-        <div className="bottom-line">{bottomLine ? bottomLine : 0.00}</div>
+
+        <NetIncome />
 
         <Field
           name="Add to Savings"

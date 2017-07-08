@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 
-function Total({ total, className, updateTotal, updateAssetsTotal }) {
+class Total extends PureComponent {
 
-  // if (updateTotal) {
-  //   updateTotal()
-  // }
+  componentWillReceiveProps(nextProps) {
+    console.log('NEXT TOTAL: ', nextProps);
+    console.log('CURR TOTAL: ', this.props.total);
+    const { updateTotal, total } = this.props;
+    if (total !== nextProps.total && updateTotal) {
+      updateTotal();
+    }
+  }
 
-  return (
-    <div
-      className={className ? `label total ${className}` : `label total`}>
-      {total}
-    </div>
-  )
+  render() {
+    const { total, className, updateTotal, updateAssetsTotal } = this.props;
+    return (
+      <div
+        className={className ? `label total ${className}` : `label total`}>
+        {total}
+      </div>
+    )
+  }
 }
 
 export default Total;
