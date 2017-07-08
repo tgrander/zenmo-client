@@ -9,16 +9,16 @@ import { pingEpic } from './rxjs/epics/trialBalance';
 import * as constants from './modules/trialBalance/constants';
 
 const defaultExpensesState = {
-  'Rent': 2000,
-  'Monthly Expenses': 1500,
+  'Rent': 0,
+  'Monthly Expenses': 0,
 }
 const defaultLiabilitiesState = {
-  'Student Loans': 500,
-  'Bootcamp Loans': 500,
+  'Student Loans': 0,
+  'Bootcamp Loans': 0,
 }
 const defaultGoalsState = {
-  'Add to Savings': 1000,
-  'Invest in Stocks': 200,
+  'Add to Savings': 0,
+  'Invest in Stocks': 0,
 }
 const defaultTotalsState = {
   assetsTotal: 0,
@@ -64,34 +64,37 @@ const totalsReducer = (state=defaultTotalsState, action) => {
 * ASSETS
 */
 const defaultAssetsState = {
-  'Checkings': 4800,
-  'Savings': 5050,
-  'Monthly Income': 6200
+  'Checkings': 0,
+  'Savings': 0,
+  'Monthly Income': 0
 }
 const assetsReducer = (state=defaultAssetsState, action) => {
   switch (action.type) {
     case constants.ADD_ASSET:
-      let addAssetState = {...state}
-      addAssetState[action.label] = 0
-      return addAssetState
-    break;
+      return {
+        ...state,
+        [action.label]: 0
+      }
+
     case constants.REMOVE_ASSET:
       let removeAssetState = {...state}
       delete removeAssetState[action.label]
       return removeAssetState
-    break;
+
     case constants.MODIFY_ASSET_LABEL:
-      let modifyAssetLabelState = {...state}
-      modifyAssetLabelState[action.newLabel] = state.oldLabel
+      let modifyAssetLabelState = {
+        ...state,
+        [action.newLabel]: state.oldLabel
+      }
       delete modifyAssetLabelState[action.oldLabel]
       return modifyAssetLabelState
-    break;
+
     case constants.MODIFY_ASSET_AMOUNT:
       return {
         ...state,
         [action.label]: action.amount
       }
-    break;
+
     default:
       return state;
   }
