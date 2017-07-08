@@ -9,7 +9,7 @@ import {
   modifyExpenseAmount,
   modifyLiabilityAmount,
   modifyGoalAmount,
-} from '../actions/index.js'
+} from '../actions/assets.js';
 
 const redux = connect(
   null,

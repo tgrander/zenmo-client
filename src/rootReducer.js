@@ -34,25 +34,25 @@ const totalsReducer = (state=defaultTotalsState, action) => {
     case constants.RECALCULATE_ASSETS_TOTAL:
       return {
         ...state,
-        assetsTotal: action.total
+        total: action.total
       }
     break;
     case constants.RECALCULATE_EXPENSES_TOTAL:
       return {
         ...state,
-        assetsTotal: action.total
+        total: action.total
       }
     break;
     case constants.RECALCULATE_LIABILITIES_TOTAL:
       return {
         ...state,
-        assetsTotal: action.total
+        total: action.total
       }
     break;
     case constants.RECALCULATE_GOALS_TOTAL:
       return {
         ...state,
-        assetsTotal: action.total
+        total: action.total
       }
     break;
     default:

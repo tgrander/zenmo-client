@@ -1,20 +1,31 @@
-import * as constants from '../constants';
+import {
+  ADD_ASSET,
+  REMOVE_ASSET,
+  MODIFY_ASSET_LABEL,
+  MODIFY_ASSET_AMOUNT,
+  RECALCULATE_ASSETS_TOTAL,
+} from '../constants';
 
 export const addAsset = label => ({
-  type: constants.ADD_ASSET,
+  type: ADD_ASSET,
   label
 })
 export const removeAsset = label => ({
-  type: constants.REMOVE_ASSET,
+  type: REMOVE_ASSET,
   label
 })
 export const modifyAssetLabel = (oldLabel, newLabel) => ({
-  type: constants.MODIFY_ASSET_LABEL,
+  type: MODIFY_ASSET_LABEL,
   oldLabel,
   newLabel
 })
 export const modifyAssetAmount = (label, amount) => ({
-  type: constants.MODIFY_ASSET_AMOUNT,
+  type: MODIFY_ASSET_AMOUNT,
   label,
   amount
+})
+
+export const updateAssetsTotal = total => ({
+  type: RECALCULATE_ASSETS_TOTAL,
+  total
 })

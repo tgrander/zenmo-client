@@ -3,27 +3,28 @@ import {
   REMOVE_GOAL,
   MODIFY_GOAL_LABEL,
   MODIFY_GOAL_AMOUNT,
+  RECALCULATE_GOALS_TOTAL,
 } from '../constants';
 
 export const addGoal = label => ({
-  type: constants.ADD_GOAL,
+  type: ADD_GOAL,
   label
 })
 export const removeGoal = label => ({
-  type: constants.REMOVE_GOAL,
+  type: REMOVE_GOAL,
   label
 })
 export const modifyGoalLabel = (oldLabel, newLabel) => ({
-  type: constants.MODIFY_GOAL_LABEL,
+  type: MODIFY_GOAL_LABEL,
   oldLabel,
   newLabel
 })
 export const modifyGoalAmount = (label, amount) => ({
-  type: constants.MODIFY_GOAL_AMOUNT,
+  type: MODIFY_GOAL_AMOUNT,
   label,
   amount
 })
 export const updateGoalsTotal = (total) => ({
-  type: constants.RECALCULATE_GOALS_TOTAL,
+  type: RECALCULATE_GOALS_TOTAL,
   total
 })

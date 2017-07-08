@@ -6,24 +6,24 @@ import {
 } from '../constants';
 
 export const addLiability = label => ({
-  type: constants.ADD_LIABILITY,
+  type: ADD_LIABILITY,
   label
 })
 export const removeLiability = label => ({
-  type: constants.REMOVE_LIABILITY,
+  type: REMOVE_LIABILITY,
   label
 })
 export const modifyLiabilityLabel = (oldLabel, newLabel) => ({
-  type: constants.MODIFY_LIABILITY_LABEL,
+  type: MODIFY_LIABILITY_LABEL,
   oldLabel,
   newLabel
 })
 export const modifyLiabilityAmount = (label, amount) => ({
-  type: constants.MODIFY_LIABILITY_AMOUNT,
+  type: MODIFY_LIABILITY_AMOUNT,
   label,
   amount
 })
 export const updateLiabilitiesTotal = (total) => ({
-  type: constants.RECALCULATE_LIABILITIES_TOTAL,
+  type: RECALCULATE_LIABILITIES_TOTAL,
   total
 })
