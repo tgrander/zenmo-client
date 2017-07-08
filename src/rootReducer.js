@@ -2,6 +2,8 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import { combineEpics } from 'redux-observable';
 
+import authReducer from './modules/auth/reducers/auth';
+
 import { pingEpic } from './rxjs/epics/trialBalance';
 
 import * as constants from './modules/trialBalance/constants';
@@ -181,4 +183,5 @@ export default combineReducers({
   expenses: expensesReducer,
   liabilities: liabilitiesReducer,
   goals: goalsReducer,
+  auth: authReducer,
 })

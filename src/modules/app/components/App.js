@@ -24,9 +24,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    if (!this.state.hasSetCurrentUser) {
-      
-    }
+    auth.onAuthStateChanged(currentUser => {
+      this.props.setCurrentUser(currentUser)
+    });
   }
 
   render() {
