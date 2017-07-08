@@ -12,7 +12,10 @@ nav .logo {
 }
 nav .links {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-right: 30px;
-  width: 15%;
+  width: 30%;
+}
+nav .links > *:not(:last-child) {
+  margin-right: 30px;
 }
