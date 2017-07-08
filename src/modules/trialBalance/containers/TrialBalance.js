@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import pipe from 'lodash/fp/flow';
-import branch from 'recompose/branch';
+import React from 'react';
 
 import TrialBalance from '../components/TrialBalance';
 import * as assetActions from '../actions/Assets';
@@ -16,6 +16,7 @@ const mapStateToProps = state => {
     expenses,
     liabilities,
     goals,
+    auth: { currentUser },
     form: { trialBalance }
   } = state;
 
@@ -25,6 +26,7 @@ const mapStateToProps = state => {
     liabilities,
     goals,
     trialBalance,
+    currentUser,
     initialValues: {
       ...assets,
       ...expenses,
@@ -42,5 +44,4 @@ const redux = connect(
 export default pipe(
   form,
   redux,
-  requiresAuth,
 )(TrialBalance)

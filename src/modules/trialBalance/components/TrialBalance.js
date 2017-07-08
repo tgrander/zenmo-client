@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
+import { Redirect, Route } from 'react-router'
 
 import AmountInput from './AmountInput';
 import AssetsTotal from '../containers/AssetsTotal';
@@ -19,9 +20,12 @@ const TrialBalance = ({
   modifyAssetLabel,
   modifyAssetAmount,
   trialBalance,
+  currentUser,
 }) => {
 
-  console.log('FORM: ', trialBalance);
+  if (!currentUser) {
+    return <Redirect to="/" push />
+  }
 
   return (
     <section className="overview">

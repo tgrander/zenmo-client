@@ -23,7 +23,8 @@ function SignUp({
       <Field
         name="password"
         component={InputField}
-        label="Password" />
+        label="Password"
+        type="password" />
       <button type="submit" disabled={ pristine || submitting }>
         Sign In
       </button>

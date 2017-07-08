@@ -1,12 +1,14 @@
 import branch from 'recompose/branch';
 import renderComponent from 'recompose/renderComponent';
 import { Route } from 'react-router-dom';
-import Landing from '../modules/landing/components/landing';
+import Landing from '../modules/landing/components/Landing';
+import React from 'react';
+import { Redirect } from 'react-router'
 
-const requiresAuth = currentUser =>
+const requiresAuth = noAuth =>
   branch(
-    currentUser,
-    renderComponent(<Route path="/" component={Landing} />)
+    noAuth,
+    renderComponent(<Redirect to="/" push />)
   )
 
 export default requiresAuth;
