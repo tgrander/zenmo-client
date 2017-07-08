@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 import '../styles/navbar.css'
 
 function Navbar({ currentUser }) {
-  console.log('CURRENT USER IN NAVBAR: ', currentUser);
-  console.log('CURRENT USER EXISTS: ', (() => currentUser ? true : false)());
   return (
     <nav>
       <Link className="logo" to="/">
@@ -15,9 +13,7 @@ function Navbar({ currentUser }) {
       {
         currentUser ?
         <div className="links auth">
-          <Link to="/trial-balance">Overview</Link>
-          <Link to="/expenses">Expenses</Link>
-          <Link to="/stats">Stats</Link>
+          <Link to="/overview">Overview</Link>
           <a onClick={e => auth.signOut()}>
             Logout
           </a>

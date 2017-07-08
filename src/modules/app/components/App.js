@@ -7,6 +7,7 @@ import {
 
 import Navbar from '../../layout/containers/Navbar';
 import Landing from '../../landing/components/Landing';
+import TrialBalance from '../../trialBalance/containers/TrialBalance';
 import SignUp from '../../auth/containers/SignUp';
 import SignIn from '../../auth/containers/SignIn';
 
@@ -40,6 +41,7 @@ class App extends Component {
           <Route exact path="/" component={Landing} />
           <Route path="/signup" component={SignUp} />
           <Route path="/signin" component={SignIn} />
+          <Route path="/overview" component={TrialBalance} />
 
         </div>
       </Router>
