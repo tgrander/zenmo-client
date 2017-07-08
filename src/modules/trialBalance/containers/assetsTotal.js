@@ -30,7 +30,7 @@ const handlers = withHandlers({
     //   if (count === number) clearInterval(interval)
     // }, 100);
   },
-  updateTotal: ({ updateAssetsTotal, total }) => () => {
+  updateTotal: ({ updateAssetsTotal }) => total => {
     updateAssetsTotal(total)
   }
 })
