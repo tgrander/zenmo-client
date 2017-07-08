@@ -3,7 +3,17 @@ import { Field } from 'redux-form';
 
 import InputField from '../../shared/form/InputField';
 
-function SignUp({ handleSubmit, signin, submitting, pristine }) {
+function SignUp({
+  handleSubmit,
+  signin,
+  submitting,
+  pristine,
+  currentUser,
+  history
+}) {
+  if (currentUser) {
+    history.push('/overview')
+  }
   return(
     <form onSubmit={handleSubmit(signin)}>
       <Field

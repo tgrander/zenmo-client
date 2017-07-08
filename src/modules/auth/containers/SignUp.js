@@ -2,10 +2,17 @@ import { reduxForm } from 'redux-form';
 import pipe from 'lodash/fp/flow';
 import withHandlers from 'recompose/withHandlers';
 import { auth } from '../../../firebase';
+import { connect } from 'react-redux';
 
 import SignUp from '../components/SignUp';
 
 const form = reduxForm({form: 'signup'});
+
+const redux = connect(
+  state => ({
+    currentUser: state.auth.currentUser
+  })
+)
 
 const handlers = withHandlers({
   signup: props => values => {
@@ -18,5 +25,6 @@ const handlers = withHandlers({
 
 export default pipe(
   form,
+  redux,
   handlers,
 )(SignUp)
