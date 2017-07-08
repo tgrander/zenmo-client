@@ -2,9 +2,9 @@ import React from 'react';
 
 function Total({ total, className, updateTotal, updateAssetsTotal }) {
 
-  if (updateTotal) {
-    updateTotal()
-  }
+  // if (updateTotal) {
+  //   updateTotal()
+  // }
 
   return (
     <div

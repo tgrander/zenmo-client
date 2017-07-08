@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { Redirect, Route } from 'react-router'
+import { Redirect } from 'react-router'
 
 import AmountInput from './AmountInput';
 import AssetsTotal from '../containers/AssetsTotal';
@@ -15,10 +15,12 @@ const TrialBalance = ({
   totalExpenses,
   bottomLine,
   assets,
+
   addAsset,
   removeAsset,
   modifyAssetLabel,
   modifyAssetAmount,
+
   trialBalance,
   currentUser,
 }) => {
@@ -63,20 +65,24 @@ const TrialBalance = ({
         <Field
           name="Checkings"
           component={AmountInput}
-          section="assets" />
+          section="assets"
+          onChangeAction={modifyAssetAmount} />
         <Field
           name="Savings"
           component={AmountInput}
-          section="assets" />
+          section="assets"
+          onChangeAction={modifyAssetAmount} />
         <Field
           name="Monthly Income"
           component={AmountInput}
-          section="assets" />
+          section="assets"
+          onChangeAction={modifyAssetAmount} />
 
         <AssetsTotal className="assets" />
 
         <Field
           name="Rent"
+          label="Checkings"
           component={AmountInput}
           section="expenses" />
         <Field

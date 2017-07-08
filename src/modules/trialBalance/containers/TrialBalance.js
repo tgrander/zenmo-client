@@ -6,8 +6,6 @@ import React from 'react';
 import TrialBalance from '../components/TrialBalance';
 import * as assetActions from '../actions/Assets';
 
-import requiresAuth from '../../../helpers/requiresAuth';
-
 const form = reduxForm({form: 'trialBalance'});
 
 const mapStateToProps = state => {
@@ -38,7 +36,9 @@ const mapStateToProps = state => {
 
 const redux = connect(
   mapStateToProps,
-  assetActions
+  {
+  ...assetActions  
+  }
 )
 
 export default pipe(

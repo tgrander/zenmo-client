@@ -8,11 +8,6 @@ import { pingEpic } from './rxjs/epics/trialBalance';
 
 import * as constants from './modules/trialBalance/constants';
 
-const defaultAssetsState = {
-  'Checkings': 4800,
-  'Savings': 5050,
-  'Monthly Income': 6200
-}
 const defaultExpensesState = {
   'Rent': 2000,
   'Monthly Expenses': 1500,
@@ -65,6 +60,14 @@ const totalsReducer = (state=defaultTotalsState, action) => {
   }
 }
 
+/*
+* ASSETS
+*/
+const defaultAssetsState = {
+  'Checkings': 4800,
+  'Savings': 5050,
+  'Monthly Income': 6200
+}
 const assetsReducer = (state=defaultAssetsState, action) => {
   switch (action.type) {
     case constants.ADD_ASSET:

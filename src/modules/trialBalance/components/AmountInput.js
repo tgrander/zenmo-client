@@ -3,14 +3,25 @@ import React, { PureComponent } from 'react'
 class InputField extends PureComponent {
   render() {
 
-    const { input, className } = this.props;
+    const {
+      input,
+      className,
+      onChangeAction,
+    } = this.props;
+
+    const changeHandler = e => {
+      const amount = parseInt(e.target.value)
+      onChangeAction(this.props.input.name, amount);
+      input.onChange(e);
+    }
 
     return (
       <div className={className || ''}>
         <input {...input}
           type='number'
-          defaultValue={input.value}
-          placeholder="0.00" />
+          placeholder="0.00"
+          onChange={changeHandler}
+          defaultValue={input.value} />
       </div>
     )
   }
