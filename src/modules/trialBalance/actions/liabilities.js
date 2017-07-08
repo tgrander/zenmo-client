@@ -3,6 +3,7 @@ import {
   REMOVE_LIABILITY,
   MODIFY_LIABILITY_LABEL,
   MODIFY_LIABILITY_AMOUNT,
+  RECALCULATE_LIABILITIES_TOTAL,
 } from '../constants';
 
 export const addLiability = label => ({
