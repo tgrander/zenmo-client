@@ -4,19 +4,18 @@ import pipe from 'lodash/fp/flow';
 import React from 'react';
 
 import TrialBalance from '../components/TrialBalance';
-import * as assetActions from '../actions/assets';
-import * as expenseActions from '../actions/expenses';
-import * as liabilitiesActions from '../actions/liabilities';
-import * as goalActions from '../actions/goals';
+import * as trialBalanceActions from '../actions/trialBalanceActions';
 
 const form = reduxForm({form: 'trialBalance'});
 
 const mapStateToProps = state => {
   const {
-    assets,
-    expenses,
-    liabilities,
-    goals,
+    trialBalance: {
+      assets,
+      expenses,
+      liabilities,
+      goals,
+    },
     auth: { currentUser },
     form: { trialBalance }
   } = state;
@@ -40,10 +39,7 @@ const mapStateToProps = state => {
 const redux = connect(
   mapStateToProps,
   {
-    ...assetActions,
-    ...expenseActions,
-    ...liabilitiesActions,
-    ...goalActions,
+    trialBalanceActions
   }
 )
 

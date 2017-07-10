@@ -19,25 +19,10 @@ const TrialBalance = ({
   bottomLine,
   assets,
 
-  addAsset,
-  removeAsset,
-  modifyAssetLabel,
-  modifyAssetAmount,
-
-  addLiability,
-  removeLiability,
-  modifyLiabilityLabel,
-  modifyLiabilityAmount,
-
-  addExpense,
-  removeExpense,
-  modifyExpenseLabel,
-  modifyExpenseAmount,
-
-  addGoal,
-  removeGoal,
-  modifyGoalLabel,
-  modifyGoalAmount,
+  addItem,
+  removeItem,
+  changeItemLabel,
+  changeItemAmount,
 
   trialBalance,
   currentUser,
@@ -84,17 +69,17 @@ const TrialBalance = ({
           name="Checkings"
           component={AmountInput}
           section="assets"
-          onChangeAction={modifyAssetAmount} />
+          onChangeAction={changeItemAmount} />
         <Field
           name="Savings"
           component={AmountInput}
           section="assets"
-          onChangeAction={modifyAssetAmount} />
+          onChangeAction={changeItemAmount} />
         <Field
           name="Monthly Income"
           component={AmountInput}
           section="assets"
-          onChangeAction={modifyAssetAmount} />
+          onChangeAction={changeItemAmount} />
 
         <AssetsTotal className="assets" />
 
@@ -103,12 +88,12 @@ const TrialBalance = ({
           label="Checkings"
           component={AmountInput}
           section="expenses"
-          onChangeAction={modifyExpenseAmount} />
+          onChangeAction={changeItemAmount} />
         <Field
           name="Monthly Expenses"
           component={AmountInput}
           section="expenses"
-          onChangeAction={modifyExpenseAmount} />
+          onChangeAction={changeItemAmount} />
 
         <ExpensesTotal className="expenses" />
 
@@ -116,12 +101,12 @@ const TrialBalance = ({
           name="Student Loans"
           component={AmountInput}
           section="liabilities"
-          onChangeAction={modifyLiabilityAmount} />
+          onChangeAction={changeItemAmount} />
         <Field
           name="Bootcamp Loans"
           component={AmountInput}
           section="liabilities"
-          onChangeAction={modifyLiabilityAmount} />
+          onChangeAction={changeItemAmount} />
 
         <LiabilitiesTotal className="liabilities" />
 
@@ -131,12 +116,12 @@ const TrialBalance = ({
           name="Add to Savings"
           component={AmountInput}
           section="goals"
-          onChangeAction={modifyGoalAmount} />
+          onChangeAction={changeItemAmount} />
         <Field
           name="Invest in Stocks"
           component={AmountInput}
           section="goals"
-          onChangeAction={modifyGoalAmount} />
+          onChangeAction={changeItemAmount} />
 
         <GoalsTotal className="goals" />
 
