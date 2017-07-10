@@ -6,15 +6,8 @@ class InputField extends PureComponent {
     const {
       input,
       className,
-      onChangeAction,
+      changeHandler
     } = this.props;
-
-    const changeHandler = e => {
-      const { section, input: { name } } = this.props;
-      const amount = parseInt(e.target.value)
-      onChangeAction(section, name, amount);
-      input.onChange(e);
-    }
 
     return (
       <div className={className || ''}>

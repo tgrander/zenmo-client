@@ -22,15 +22,18 @@ const redux = connect(
 )
 
 const handlers = withHandlers({
-  // onChange: (props) => (e) => {
-  //   const { section } = props
-  //   const updateAmountFunction = props[section]
-  //   console.log();
-  //   debounce(
-  //     () => updateAmountFunction(e.target.value),
-  //     800
-  //   )
-  // }
+  changeHandler: props => e => {
+    const {
+      onChangeAction,
+      section,
+      input: { name }
+    } = props;
+
+    const amount = parseInt(e.target.value)
+
+    onChangeAction(section, name, amount);
+    input.onChange(e);
+  }
 })
 
 export default pipe(
