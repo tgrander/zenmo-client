@@ -14,17 +14,11 @@ import Leftover from '../containers/Leftover';
 import '../styles/overview.css';
 
 const TrialBalance = ({
-  totalAssets,
-  totalExpenses,
-  bottomLine,
-  assets,
-
   addItem,
   removeItem,
   changeItemLabel,
   changeItemAmount,
 
-  trialBalance,
   currentUser,
 }) => {
 
