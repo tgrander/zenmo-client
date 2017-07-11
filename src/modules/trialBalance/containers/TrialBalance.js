@@ -9,7 +9,15 @@ import * as trialBalanceActions from '../actions/trialBalanceActions';
 const form = reduxForm({form: 'trialBalance'});
 
 const mapStateToProps = state => {
-  const { auth: { currentUser } } = state;
+  const {
+    trialBalance: {
+      assets,
+      expenses,
+      liabilities,
+      goals,
+    },
+    auth: { currentUser },
+  } = state;
 
   return {
     currentUser,
