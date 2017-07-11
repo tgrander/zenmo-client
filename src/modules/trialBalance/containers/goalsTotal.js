@@ -7,7 +7,7 @@ import withState from 'recompose/withState';
 import Total from '../components/Total'
 import calculateTotal from '../../../helpers/calculateTotal'
 // import animateAmountChange from '../../../helpers/animateAmountChange'
-import { updateGoalsTotal } from '../actions/goals';
+import { updateTotal } from '../actions/trialBalanceActions';
 
 const mapStateToProps = state => ({
   total: calculateTotal(state.trialBalance.goals)
@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
 const redux = connect(
   mapStateToProps,
   {
-    updateGoalsTotal,
+    updateTotal,
   }
 )
 
@@ -31,8 +31,8 @@ const handlers = withHandlers({
     //   if (count === number) clearInterval(interval)
     // }, 100);
   },
-  updateTotal: ({ updateGoalsTotal, total }) => () => {
-    updateGoalsTotal(total)
+  updateTotal: ({ updateTotal, total }) => () => {
+    updateTotal('goals', total)
   }
 })
 
