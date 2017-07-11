@@ -1,4 +1,3 @@
-import React from 'react'
 import { connect } from 'react-redux'
 import withHandlers from 'recompose/withHandlers'
 import pipe from 'lodash/fp/flow'
@@ -6,7 +5,7 @@ import pipe from 'lodash/fp/flow'
 import AmountInput from '../components/AmountInput'
 import {
   changeItemAmount
-} from '../actions/trialBalance';
+} from '../actions/trialBalanceActions';
 
 const redux = connect(
   null,
@@ -17,16 +16,16 @@ const redux = connect(
 
 const handlers = withHandlers({
   changeHandler: props => e => {
-    
+
     const {
       changeItemAmount,
       section,
-      input: { name }
+      input
     } = props;
 
     const amount = parseInt(e.target.value)
 
-    changeItemAmount(section, name, amount);
+    changeItemAmount(section, input.name, amount);
     input.onChange(e);
   }
 })

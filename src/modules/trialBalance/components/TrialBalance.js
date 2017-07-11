@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import AmountInput from './AmountInput';
+import AmountInput from '../containers/AmountInput';
 import AssetsTotal from '../containers/AssetsTotal';
 import ExpensesTotal from '../containers/ExpensesTotal';
 import LiabilitiesTotal from '../containers/LiabilitiesTotal';
