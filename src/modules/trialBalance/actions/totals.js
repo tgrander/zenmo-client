@@ -3,14 +3,6 @@ import {
   UPDATE_LEFTOVER,
 } from '../constants';
 
-export const updateTotal = (section, total) => ({
-  type: 'UPDATE_TOTAL',
-  payload: {
-    section, 
-    total
-  }
-})
-
 export const updateNetIncome = netIncome => ({
   type: UPDATE_NET_INCOME,
   netIncome

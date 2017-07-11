@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import compose from 'recompose/compose'
 import withHandlers from 'recompose/withHandlers';
 
-import { updateNetIncome } from '../actions/totals';
+import { updateNetIncome } from '../actions/trialBalanceActions';
 import Total from '../components/Total';
 
 const calculateNetIncome = (assetsTotal, expensesTotal, liabilitiesTotal) => {
@@ -15,13 +15,13 @@ const calculateNetIncome = (assetsTotal, expensesTotal, liabilitiesTotal) => {
 
 const mapStateToProps = state => {
   const {
-    assetsTotal,
-    expensesTotal,
-    liabilitiesTotal,
-  } = state.totals;
+    assets,
+    expenses,
+    liabilities,
+  } = state.trialBalance.totals;
 
   return {
-    total: calculateNetIncome(assetsTotal, expensesTotal, liabilitiesTotal),
+    total: calculateNetIncome(assets, expenses, liabilities),
     className: 'bottome-line'
   }
 }

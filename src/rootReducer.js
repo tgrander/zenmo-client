@@ -88,50 +88,44 @@ const trialBalanceReducer = (state=defaultTrialBalanceState, action) => {
         }
       }
 
-    default:
-      return state;
-  }
-}
-const totalsReducer = (state=defaultTotalsState, action) => {
-  switch (action.type) {
-    case constants.RECALCULATE_ASSETS_TOTAL:
-      return {
-        ...state,
-        assetsTotal: action.assetsTotal
-      }
-    break;
-    case constants.RECALCULATE_EXPENSES_TOTAL:
-      return {
-        ...state,
-        expensesTotal: action.expensesTotal
-      }
-    break;
-    case constants.RECALCULATE_LIABILITIES_TOTAL:
-      return {
-        ...state,
-        liabilitiesTotal: action.liabilitiesTotal
-      }
-    break;
-    case constants.RECALCULATE_GOALS_TOTAL:
-      return {
-        ...state,
-        goalsTotal: action.goalsTotal
-      }
     case constants.UPDATE_NET_INCOME:
       return {
         ...state,
-        netIncome: action.netIncome
+        totals: {
+          ...state.totals,
+          netIncome: action.payload.netIncome
+        }
       }
+
     case constants.UPDATE_LEFTOVER:
       return {
         ...state,
-        leftover: action.leftover
+        totals: {
+          ...state.totals,
+          leftover: action.payload.leftover
+        }
       }
-    break;
     default:
       return state;
   }
 }
+// const totalsReducer = (state=defaultTotalsState, action) => {
+//   switch (action.type) {
+//     case constants.UPDATE_NET_INCOME:
+//       return {
+//         ...state,
+//         netIncome: action.netIncome
+//       }
+//     case constants.UPDATE_LEFTOVER:
+//       return {
+//         ...state,
+//         leftover: action.leftover
+//       }
+//     break;
+//     default:
+//       return state;
+//   }
+// }
 
 export const rootEpic = combineEpics(
   pingEpic,
@@ -141,5 +135,5 @@ export default combineReducers({
   form: formReducer,
   trialBalance: trialBalanceReducer,
   auth: authReducer,
-  totals: totalsReducer,
+  // totals: totalsReducer,
 })

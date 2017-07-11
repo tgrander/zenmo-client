@@ -3,16 +3,16 @@ import compose from 'recompose/compose'
 
 import Total from '../components/Total';
 
-const calculateLeftover = (netIncome, goalsTotal) => netIncome - goalsTotal
+const calculateLeftover = (netIncome, goals) => netIncome - goals
 
 const mapStateToProps = state => {
   const {
-    goalsTotal,
+    goals,
     netIncome,
-  } = state.totals;
+  } = state.trialBalance.totals;
 
   return {
-    total: calculateLeftover(netIncome, goalsTotal),
+    total: calculateLeftover(netIncome, goals),
     className: 'bottome-line'
   }
 }
