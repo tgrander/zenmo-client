@@ -47,18 +47,20 @@ const trialBalanceReducer = (state=defaultTrialBalanceState, action) => {
       return {
         ...state,
         [action.payload.section]: {
+          ...state[action.payload.section],
           [action.payload.label]: 0
         }
       }
     case REMOVE_ITEM:
       let removeItemState = {...state}
-      delete removeItemState[action.payload.label]
+      delete removeItemState[action.payload.section][action.payload.label]
       return removeItemState
 
     case CHANGE_ITEM_LABEL:
       let changeItemLabelState = {
         ...state,
         [action.payload.section]: {
+          ...state[action.payload.section],
           [action.payload.newLabel]: state[action.payload.section][action.payload.oldLabel]
         }
       }
@@ -69,7 +71,8 @@ const trialBalanceReducer = (state=defaultTrialBalanceState, action) => {
       return {
         ...state,
         [action.payload.section]: {
-          [action.payload.label]: action.amount
+          ...state[action.payload.section],
+          [action.payload.label]: action.payload.amount
         }
       }
 

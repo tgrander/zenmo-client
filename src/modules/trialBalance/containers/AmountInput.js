@@ -3,9 +3,7 @@ import withHandlers from 'recompose/withHandlers'
 import pipe from 'lodash/fp/flow'
 
 import AmountInput from '../components/AmountInput'
-import {
-  changeItemAmount
-} from '../actions/trialBalanceActions';
+import { changeItemAmount } from '../actions/trialBalanceActions';
 
 const redux = connect(
   null,
