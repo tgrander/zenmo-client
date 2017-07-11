@@ -7,7 +7,7 @@ import Total from '../components/Total';
 
 const calculateNetIncome = (assetsTotal, expensesTotal, liabilitiesTotal) => {
   const netIncome = assetsTotal - expensesTotal - liabilitiesTotal
-  if (netIncome === NaN) {
+  if (isNaN(netIncome)) {
     return 0;
   }
   return netIncome;

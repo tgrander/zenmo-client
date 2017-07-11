@@ -1,6 +1,5 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { Redirect } from 'react-router'
 
 import AmountInput from './AmountInput';
 import AssetsTotal from '../containers/AssetsTotal';
@@ -62,18 +61,15 @@ const TrialBalance = ({
         <Field
           name="Checkings"
           component={AmountInput}
-          section="assets"
-          onChangeAction={changeItemAmount} />
+          section="assets" />
         <Field
           name="Savings"
           component={AmountInput}
-          section="assets"
-          onChangeAction={changeItemAmount} />
+          section="assets" />
         <Field
           name="Monthly Income"
           component={AmountInput}
-          section="assets"
-          onChangeAction={changeItemAmount} />
+          section="assets" />
 
         <AssetsTotal className="assets" />
 
@@ -81,26 +77,22 @@ const TrialBalance = ({
           name="Rent"
           label="Checkings"
           component={AmountInput}
-          section="expenses"
-          onChangeAction={changeItemAmount} />
+          section="expenses" />
         <Field
           name="Monthly Expenses"
           component={AmountInput}
-          section="expenses"
-          onChangeAction={changeItemAmount} />
+          section="expenses" />
 
         <ExpensesTotal className="expenses" />
 
         <Field
           name="Student Loans"
           component={AmountInput}
-          section="liabilities"
-          onChangeAction={changeItemAmount} />
+          section="liabilities" />
         <Field
           name="Bootcamp Loans"
           component={AmountInput}
-          section="liabilities"
-          onChangeAction={changeItemAmount} />
+          section="liabilities" />
 
         <LiabilitiesTotal className="liabilities" />
 
@@ -109,17 +101,16 @@ const TrialBalance = ({
         <Field
           name="Add to Savings"
           component={AmountInput}
-          section="goals"
-          onChangeAction={changeItemAmount} />
+          section="goals" />
         <Field
           name="Invest in Stocks"
           component={AmountInput}
-          section="goals"
-          onChangeAction={changeItemAmount} />
+          section="goals" />
 
         <GoalsTotal className="goals" />
 
         <Leftover />
+
       </form>
 
     </section>

@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import pipe from 'lodash/fp/flow';
-import React from 'react';
 
 import TrialBalance from '../components/TrialBalance';
 import * as trialBalanceActions from '../actions/trialBalanceActions';
@@ -33,7 +32,7 @@ const mapStateToProps = state => {
 const redux = connect(
   mapStateToProps,
   {
-    trialBalanceActions
+    ...trialBalanceActions
   }
 )
 

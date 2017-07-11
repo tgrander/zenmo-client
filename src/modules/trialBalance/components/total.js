@@ -10,7 +10,7 @@ class Total extends PureComponent {
   }
 
   render() {
-    const { total, className, updateTotal, updateAssetsTotal } = this.props;
+    const { total, className } = this.props;
     return (
       <div
         className={className ? `label total ${className}` : `label total`}>

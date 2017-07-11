@@ -15,7 +15,7 @@ class InputField extends PureComponent {
           type='number'
           placeholder="0.00"
           onChange={changeHandler}
-          defaultValue={input.value} />
+           />
       </div>
     )
   }

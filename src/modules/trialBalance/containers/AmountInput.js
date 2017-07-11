@@ -5,33 +5,28 @@ import pipe from 'lodash/fp/flow'
 
 import AmountInput from '../components/AmountInput'
 import {
-  modifyAssetAmount,
-  modifyExpenseAmount,
-  modifyLiabilityAmount,
-  modifyGoalAmount,
-} from '../actions/assets.js';
+  changeItemAmount
+} from '../actions/trialBalance';
 
 const redux = connect(
   null,
   {
-    assets: modifyAssetAmount,
-    expenses: modifyExpenseAmount,
-    liabilities: modifyLiabilityAmount,
-    goals: modifyGoalAmount,
+    changeItemAmount
   }
 )
 
 const handlers = withHandlers({
   changeHandler: props => e => {
+    
     const {
-      onChangeAction,
+      changeItemAmount,
       section,
       input: { name }
     } = props;
 
     const amount = parseInt(e.target.value)
 
-    onChangeAction(section, name, amount);
+    changeItemAmount(section, name, amount);
     input.onChange(e);
   }
 })
