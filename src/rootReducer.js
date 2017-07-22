@@ -109,23 +109,6 @@ const trialBalanceReducer = (state=defaultTrialBalanceState, action) => {
       return state;
   }
 }
-// const totalsReducer = (state=defaultTotalsState, action) => {
-//   switch (action.type) {
-//     case constants.UPDATE_NET_INCOME:
-//       return {
-//         ...state,
-//         netIncome: action.netIncome
-//       }
-//     case constants.UPDATE_LEFTOVER:
-//       return {
-//         ...state,
-//         leftover: action.leftover
-//       }
-//     break;
-//     default:
-//       return state;
-//   }
-// }
 
 export const rootEpic = combineEpics(
   pingEpic,
@@ -135,5 +118,4 @@ export default combineReducers({
   form: formReducer,
   trialBalance: trialBalanceReducer,
   auth: authReducer,
-  // totals: totalsReducer,
 })
