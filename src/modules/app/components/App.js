@@ -16,87 +16,53 @@ import '../styles/App.css'
 
 class App extends Component {
 
-  constructor(props) {
-    super(props)
-    this.userRef = null
-    this.state = {
-      hasSetCurrentUser: false,
+    constructor(props) {
+        super(props)
+        this.userRef = null
+        this.state = {
+            hasSetCurrentUser: false,
+            currentUser: null
+        }
     }
-  }
 
-  componentDidMount() {
-    auth.onAuthStateChanged(user => {
+    componentDidMount() {
+        auth.onAuthStateChanged(user => {
+            if (!this.state.hasSetCurrentUser) {
+                this.setState({hasSetCurrentUser: true})
+                this.props.setCurrentUser(user)
+            }
 
-        // fetch user's trial balance data
-        const userId = user.uid
-        this.props.fetchTrialBalance(userId)
-    })
+            // fetch user's trial balance data
+            this.props.fetchTrialBalance(user.uid)
+        })
+    }
 
-    //
-    // console.log('user trial balance: ', trialBalanceRef);
-    // auth.onAuthStateChanged(user => {
-    //   if (user) {
-    //     if (!this.state.hasSetCurrentUser) {
-    //       this.props.setCurrentUser(user)
-    //     }
-    //
-    //     this.userRef = database.ref(`/users/${user.uid}`)
-    //
-    //     this.userRef.child('trialBalance').
-    //       once('value').
-    //       then(snapshot => {
-    //         if (snapshot.val()) return
-    //
-    //         this.userRef.child('trialBalance').set({
-    //           assets: {
-    //             'Checkings': 0,
-    //             'Savings': 0,
-    //             'Monthly Income': 0
-    //           },
-    //           expenses: {
-    //             'Rent': 0,
-    //             'Monthly Expenses': 0,
-    //           },
-    //           liabilities: {
-    //             'Student Loans': 0,
-    //             'Bootcamp Loans': 0,
-    //           },
-    //           goals: {
-    //             'Add to Savings': 0,
-    //             'Invest in Stocks': 0,
-    //           },
-    //           totals: {
-    //             assets: 0,
-    //             expenses: 0,
-    //             liabilities: 0,
-    //             goals: 0,
-    //             netIncome: 0,
-    //             bottomLine: 0,
-    //           }
-    //         })
-    //       })
-    //
-    //   }
-    // })
-  }
+    render() {
 
-  render() {
+        const RenderTrialBalance = () => (
+          <div>
+            {this.props.isFetchingTrialBalance ?
+                <div>Loading...</div> :
+                <TrialBalance />
+            }
+          </div>
+        )
 
-    return (
-      <Router>
-        <div className="App">
+        return (
+            <Router>
+                <div className="App">
 
-          <Navbar currentUser={this.props.currentUser} />
+                    <Navbar currentUser={this.props.currentUser} />
 
-          <Route exact path="/" component={Landing} />
-          <Route path="/signup" component={SignUp} />
-          <Route path="/signin" component={SignIn} />
-          <Route path="/overview" component={TrialBalance} />
+                    <Route exact path="/" component={Landing} />
+                    <Route path="/signup" component={SignUp} />
+                    <Route path="/signin" component={SignIn} />
+                    <Route path="/overview" component={RenderTrialBalance} />
 
-        </div>
-      </Router>
-    )
-  }
+                </div>
+            </Router>
+        )
+    }
 }
 
 export default App

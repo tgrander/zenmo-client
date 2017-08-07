@@ -9,31 +9,12 @@ import { pingEpic, trialBalanceEpic } from './rxjs/epics/trialBalance';
 import * as constants from './modules/trialBalance/constants';
 
 const defaultTrialBalanceState = {
-  // assets: {
-  //   'Checkings': 0,
-  //   'Savings': 0,
-  //   'Monthly Income': 0
-  // },
-  // expenses: {
-  //   'Rent': 0,
-  //   'Monthly Expenses': 0,
-  // },
-  // liabilities: {
-  //   'Student Loans': 0,
-  //   'Bootcamp Loans': 0,
-  // },
-  // goals: {
-  //   'Add to Savings': 0,
-  //   'Invest in Stocks': 0,
-  // },
-  // totals: {
-  //   assets: 0,
-  //   expenses: 0,
-  //   liabilities: 0,
-  //   goals: 0,
-  //   netIncome: 0,
-  //   bottomLine: 0,
-  // }
+    assets: {},
+    expenses: {},
+    liabilities: {},
+    goals: {},
+    totals: {},
+    isFetching: false,
 }
 
 const defaultTotalsState = {
@@ -46,10 +27,16 @@ const defaultTotalsState = {
 }
 const trialBalanceReducer = (state = defaultTrialBalanceState, action) => {
   switch (action.type) {
+    case constants.IS_FETCHING_TRIAL_BALANCE:
+      return {
+        ...state,
+        isFetching: true
+      }
     case constants.TRIAL_BALANCE_FETCH_SUCCESS:
       return {
         ...state,
-        ...action.trialBalance
+        ...action.trialBalance,
+        isFetching: false
       }
     case constants.ADD_ITEM:
       return {

@@ -7,6 +7,7 @@ import {
   trialBalanceFetchFailure
 } from '../../modules/trialBalance/actions/trialBalanceActions'
 
+
 export const pingEpic = action$ =>
   action$.ofType('CHANGE_ITEM_AMOUNT')
     .debounceTime(500)
@@ -22,31 +23,16 @@ export const pingEpic = action$ =>
     })
     .mapTo({type: 'PONG'})
 
+
 export const trialBalanceEpic = action$ =>
-    action$.ofType('FETCH_TRIAL_BALANCE')
-        .mergeMap(({ userId }) => {
+    action$.ofType('FETCH_TRIAL_BALANCE').
+        mergeMap(({ userId }) => {
 
-            const userTrialBalance = database.ref(`/users/${userId}/trialBalance`)
-                .once('value')
-                .then(snapshot => snapshot.val())
+            const userTrialBalance = database.ref(`/users/${userId}/trialBalance`).
+                once('value').
+                then(snapshot => snapshot.val())
 
-            return Observable.fromPromise(userTrialBalance)
-                .map(trialBalance => trialBalanceFetchSuccess(trialBalance))
-                .startWith(isFetchingTrialBalance())
+            return Observable.fromPromise(userTrialBalance).
+                map(trialBalance => trialBalanceFetchSuccess(trialBalance)).
+                startWith(isFetchingTrialBalance())
         })
-
-// export const authEpic = action$ =>
-//   action$.ofType('ATTEMPT_USER_SIGN_IN').
-//     mergeMap(action =>
-//       auth.signInWithEmailAndPassword(
-//         action.user.email,
-//         action.user.password
-//       ).map(res => )
-//     )
-
-
-/*
-1.
-2.
-3.
-*/
