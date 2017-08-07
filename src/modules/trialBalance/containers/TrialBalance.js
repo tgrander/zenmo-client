@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import pipe from 'lodash/fp/flow';
 
+import { database } from '../../../firebase';
+
 import TrialBalance from '../components/TrialBalance';
 import * as trialBalanceActions from '../actions/trialBalanceActions';
 

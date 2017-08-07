@@ -7,12 +7,12 @@ const config = {
     projectId: 'zenmo-7c62a',
     storageBucket: '',
     messagingSenderId: '991854308142'
-};
+}
 
-firebase.initializeApp(config);
+firebase.initializeApp(config)
 
-export default firebase;
+// export firebase
 
-export const database = firebase.database();
-export const auth = firebase.auth();
-export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+export const database = firebase.database()
+export const auth = firebase.auth()
+// export const googleAuthProvider = new firebase.auth.GoogleAuthProvider()

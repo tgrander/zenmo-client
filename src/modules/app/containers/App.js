@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import pipe from 'lodash/fp/flow';
-import { setCurrentUser } from '../../auth/actions/auth';
+import {
+  fetchTrialBalance
+} from '../../trialBalance/actions/trialBalanceActions'
 
 import App from '../components/App';
 
@@ -9,7 +11,7 @@ const redux = connect(
     currentUser: state.auth.currentUser
   }),
   {
-    setCurrentUser
+    fetchTrialBalance
   }
 )
 

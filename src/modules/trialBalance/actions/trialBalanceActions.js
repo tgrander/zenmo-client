@@ -6,7 +6,28 @@ import {
   UPDATE_TOTAL,
   UPDATE_NET_INCOME,
   UPDATE_LEFTOVER,
+
+  FETCH_TRIAL_BALANCE,
+  IS_FETCHING_TRIAL_BALANCE,
+  TRIAL_BALANCE_FETCH_SUCCESS,
+  TRIAL_BALANCE_FETCH_FAILURE,
 } from '../constants';
+
+
+export const fetchTrialBalance = userId => ({
+  type: FETCH_TRIAL_BALANCE,
+  userId
+})
+export const isFetchingTrialBalance = () => ({
+  type: IS_FETCHING_TRIAL_BALANCE
+})
+export const trialBalanceFetchSuccess = trialBalance => ({
+  type: TRIAL_BALANCE_FETCH_SUCCESS,
+  trialBalance
+})
+export const trialBalanceFetchFailure = () => ({
+  type: TRIAL_BALANCE_FETCH_FAILURE
+})
 
 export const addItem = (section, label) => ({
   type: ADD_ITEM,
@@ -30,12 +51,13 @@ export const changeItemLabel = (section, oldLabel, newLabel) => ({
     newLabel
   }
 })
-export const changeItemAmount = (section, label, amount) => ({
+export const changeItemAmount = (section, label, amount, uid) => ({
   type: CHANGE_ITEM_AMOUNT,
   payload: {
     section,
     label,
-    amount
+    amount,
+    uid
   }
 })
 export const updateTotal = (section, total) => ({

@@ -18,12 +18,13 @@ const handlers = withHandlers({
     const {
       changeItemAmount,
       section,
-      input
+      input,
+      uid
     } = props;
 
     const amount = parseInt(e.target.value)
 
-    changeItemAmount(section, input.name, amount);
+    changeItemAmount(section, input.name, amount, uid);
     input.onChange(e);
   }
 })

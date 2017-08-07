@@ -4,36 +4,36 @@ import { combineEpics } from 'redux-observable';
 
 import authReducer from './modules/auth/reducers/auth';
 
-import { pingEpic } from './rxjs/epics/trialBalance';
+import { pingEpic, trialBalanceEpic } from './rxjs/epics/trialBalance';
 
 import * as constants from './modules/trialBalance/constants';
 
 const defaultTrialBalanceState = {
-  assets: {
-    'Checkings': 0,
-    'Savings': 0,
-    'Monthly Income': 0
-  },
-  expenses: {
-    'Rent': 0,
-    'Monthly Expenses': 0,
-  },
-  liabilities: {
-    'Student Loans': 0,
-    'Bootcamp Loans': 0,
-  },
-  goals: {
-    'Add to Savings': 0,
-    'Invest in Stocks': 0,
-  },
-  totals: {
-    assets: 0,
-    expenses: 0,
-    liabilities: 0,
-    goals: 0,
-    netIncome: 0,
-    bottomLine: 0,
-  }
+  // assets: {
+  //   'Checkings': 0,
+  //   'Savings': 0,
+  //   'Monthly Income': 0
+  // },
+  // expenses: {
+  //   'Rent': 0,
+  //   'Monthly Expenses': 0,
+  // },
+  // liabilities: {
+  //   'Student Loans': 0,
+  //   'Bootcamp Loans': 0,
+  // },
+  // goals: {
+  //   'Add to Savings': 0,
+  //   'Invest in Stocks': 0,
+  // },
+  // totals: {
+  //   assets: 0,
+  //   expenses: 0,
+  //   liabilities: 0,
+  //   goals: 0,
+  //   netIncome: 0,
+  //   bottomLine: 0,
+  // }
 }
 
 const defaultTotalsState = {
@@ -44,8 +44,13 @@ const defaultTotalsState = {
   netIncome: 0,
   bottomLine: 0,
 }
-const trialBalanceReducer = (state=defaultTrialBalanceState, action) => {
+const trialBalanceReducer = (state = defaultTrialBalanceState, action) => {
   switch (action.type) {
+    case constants.TRIAL_BALANCE_FETCH_SUCCESS:
+      return {
+        ...state,
+        ...action.trialBalance
+      }
     case constants.ADD_ITEM:
       return {
         ...state,
@@ -112,6 +117,7 @@ const trialBalanceReducer = (state=defaultTrialBalanceState, action) => {
 
 export const rootEpic = combineEpics(
   pingEpic,
+  trialBalanceEpic,
 )
 
 export default combineReducers({

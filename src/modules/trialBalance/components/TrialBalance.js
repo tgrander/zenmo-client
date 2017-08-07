@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
+import PropTypes from 'prop-types';
 
 import AmountInput from '../containers/AmountInput';
 import AssetsTotal from '../containers/AssetsTotal';
@@ -12,6 +13,10 @@ import Leftover from '../containers/Leftover';
 
 import '../styles/overview.css';
 
+const propTypes = {
+
+}
+
 const TrialBalance = ({
   addItem,
   removeItem,
@@ -21,9 +26,9 @@ const TrialBalance = ({
   currentUser,
 }) => {
 
-  // if (!currentUser) {
-  //   return <Redirect to="/" push />
-  // }
+  if (!currentUser) {
+    return <div></div>
+  }
 
   return (
     <section className="overview">
@@ -61,15 +66,18 @@ const TrialBalance = ({
         <Field
           name="Checkings"
           component={AmountInput}
-          section="assets" />
+          section="assets"
+          uid={currentUser.uid} />
         <Field
           name="Savings"
           component={AmountInput}
-          section="assets" />
+          section="assets"
+          uid={currentUser.uid} />
         <Field
           name="Monthly Income"
           component={AmountInput}
-          section="assets" />
+          section="assets"
+          uid={currentUser.uid} />
 
         <AssetsTotal className="assets" />
 
@@ -77,22 +85,26 @@ const TrialBalance = ({
           name="Rent"
           label="Checkings"
           component={AmountInput}
-          section="expenses" />
+          section="expenses"
+          uid={currentUser.uid} />
         <Field
           name="Monthly Expenses"
           component={AmountInput}
-          section="expenses" />
+          section="expenses"
+          uid={currentUser.uid} />
 
         <ExpensesTotal className="expenses" />
 
         <Field
           name="Student Loans"
           component={AmountInput}
-          section="liabilities" />
+          section="liabilities"
+          uid={currentUser.uid} />
         <Field
           name="Bootcamp Loans"
           component={AmountInput}
-          section="liabilities" />
+          section="liabilities"
+          uid={currentUser.uid} />
 
         <LiabilitiesTotal className="liabilities" />
 
@@ -101,11 +113,13 @@ const TrialBalance = ({
         <Field
           name="Add to Savings"
           component={AmountInput}
-          section="goals" />
+          section="goals"
+          uid={currentUser.uid} />
         <Field
           name="Invest in Stocks"
           component={AmountInput}
-          section="goals" />
+          section="goals"
+          uid={currentUser.uid} />
 
         <GoalsTotal className="goals" />
 
