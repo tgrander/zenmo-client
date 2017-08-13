@@ -1,9 +1,9 @@
-import { connect } from 'react-redux';
-import compose from 'recompose/compose'
-import withHandlers from 'recompose/withHandlers';
+import { connect } from 'react-redux'
+import pipe from 'lodash/fp/flow';
+import withHandlers from 'recompose/withHandlers'
+import { updateTotal } from '../actions/trialBalanceActions';
+import Total from '../components/Total'
 
-import { updateNetIncome } from '../actions/trialBalanceActions';
-import Total from '../components/Total';
 
 const calculateNetIncome = (
 
@@ -15,19 +15,19 @@ const calculateNetIncome = (
 
     const netIncome = assetsTotal - expensesTotal - liabilitiesTotal
 
-    return netIncome || 0;
+    return netIncome || 0
 }
 
 const mapStateToProps = state => {
 
     const {
-        assets,
-        expenses,
-        liabilities,
-    } = state.trialBalance.totals;
+        assetsTotal,
+        expensesTotal,
+        liabilitiesTotal,
+    } = state.trialBalance.totals
 
     return {
-        total: calculateNetIncome(assets, expenses, liabilities),
+        total: calculateNetIncome(assetsTotal, expensesTotal, liabilitiesTotal),
         className: 'bottome-line'
     }
 }
@@ -35,17 +35,20 @@ const mapStateToProps = state => {
 const redux = connect(
   mapStateToProps,
   {
-    updateNetIncome
+    updateTotal
   }
 )
 
 const handlers = withHandlers({
-  updateTotal: ({ updateNetIncome }) => total => {
-    updateNetIncome(total)
+
+  updateTotalHandler: ({ updateTotal, total }) => () => {
+
+      updateTotal('netIncome', total)
   }
 })
 
-export default compose(
-  redux,
-  handlers,
+export default pipe(
+    handlers,
+    redux,
+    // amountState,
 )(Total)

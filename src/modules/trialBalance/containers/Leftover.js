@@ -3,13 +3,7 @@ import compose from 'recompose/compose'
 import Total from '../components/Total'
 
 
-const calculateLeftover = (netIncome, goalsTotal) => {
-
-    console.log('NET INCOME: ', netIncome)
-    console.log('GOALS: ', goalsTotal)
-
-    return (netIncome - goalsTotal)
-}
+const calculateLeftover = (netIncome, goalsTotal) => (netIncome - goalsTotal)
 
 const mapStateToProps = state => {
 

@@ -12,14 +12,14 @@ const redux = connect(
   }
 )
 
-const changeHandler = props => e => {
+const changeHandler = ({
 
-  const {
     changeItemAmount,
     section,
     input,
     uid
-  } = props;
+
+}) => e => {
 
   const amount = parseInt(e.target.value) || 0
 
@@ -31,6 +31,6 @@ const changeHandler = props => e => {
 const handlers = withHandlers({ changeHandler })
 
 export default pipe(
-  handlers,
-  redux,
+    handlers,
+    redux,
 )(AmountInput)

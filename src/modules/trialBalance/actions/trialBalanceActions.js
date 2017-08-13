@@ -67,15 +67,3 @@ export const updateTotal = (section, total) => ({
     total
   }
 })
-export const updateNetIncome = netIncome => ({
-  type: UPDATE_NET_INCOME,
-  payload: {
-    netIncome
-  }
-})
-export const updateLeftover = leftover => ({
-  type: UPDATE_LEFTOVER,
-  payload: {
-    leftover
-  }
-})

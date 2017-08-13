@@ -1,19 +1,12 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from 'react'
 
 class Total extends PureComponent {
 
-    componentWillReceiveProps(nextProps) {
-
-        const { updateTotal, total } = this.props;
-
-        if (total !== nextProps.total && updateTotal) {
-            updateTotal(nextProps.total);
-        }
-    }
-
     render() {
 
-        const { total, className } = this.props;
+        const { total, className, updateTotalHandler } = this.props
+
+        updateTotalHandler && updateTotalHandler()
 
         return (
             <div
@@ -24,4 +17,4 @@ class Total extends PureComponent {
     }
 }
 
-export default Total;
+export default Total

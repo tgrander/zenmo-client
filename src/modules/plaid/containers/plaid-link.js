@@ -1,25 +1,30 @@
-import React from 'react'
 import axios from 'axios'
+import withHandlers from 'recompose/withHandlers'
 
-import Button from '../../styled_components/elements/button'
+const PUBLIC_TOKEN = 'b41ccce2d4bf2d77e8b21c4ff67fef'
 
-function PlaidLinkConnection() {
+const handleOnSuccess = (public_token, metadata) => {
 
-  const PUBLIC_TOKEN = 'b41ccce2d4bf2d77e8b21c4ff67fef'
-
-  const handleOnSuccess = (public_token, metadata) => {
     console.log('METADATA: ', metadata)
     console.log('PUBLIC TOKEN: ', public_token)
 
     axios.post('/plaid/accessToken', {public_token})
-      .then(res => console.log(res))
-      .catch(err => console.error(err))
-  }
+        .then(res => console.log(res))
+        .catch(err => console.error(err))
+}
 
-  const getTransactions = () => {
+const getTransactions = () => {
+
     axios.post('/plaid/transactions')
-      .then(res => console.log(res))
-  }
+        .then(res => console.log(res))
+}
+
+const linkToPlaid = component => {
+
+
+}
+
+function PlaidLinkConnection(component) {
 
   const linkHandler = window.Plaid.create({
     apiVersion: 'v2',
@@ -42,5 +47,3 @@ function PlaidLinkConnection() {
     </div>
   )
 }
-
-export default PlaidLinkConnection
