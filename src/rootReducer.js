@@ -13,8 +13,16 @@ const defaultTrialBalanceState = {
     expenses: {},
     liabilities: {},
     goals: {},
-    totals: {},
+    totals: {
+      assetsTotal: 0,
+      expensesTotal: 0,
+      liabilitiesTotal: 0,
+      goalsTotal: 0,
+      netIncome: 0,
+      bottomLine: 0,
+    },
     isFetching: false,
+    error: null
 }
 
 const defaultTotalsState = {
@@ -25,6 +33,7 @@ const defaultTotalsState = {
   netIncome: 0,
   bottomLine: 0,
 }
+
 const trialBalanceReducer = (state = defaultTrialBalanceState, action) => {
   switch (action.type) {
     case constants.IS_FETCHING_TRIAL_BALANCE:
@@ -37,6 +46,12 @@ const trialBalanceReducer = (state = defaultTrialBalanceState, action) => {
         ...state,
         ...action.trialBalance,
         isFetching: false
+      }
+    case constants.TRIAL_BALANCE_FETCH_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.error
       }
     case constants.ADD_ITEM:
       return {

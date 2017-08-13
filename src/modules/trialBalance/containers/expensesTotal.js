@@ -10,7 +10,7 @@ import calculateTotal from '../../../helpers/calculateTotal'
 import { updateTotal } from '../actions/trialBalanceActions';
 
 const mapStateToProps = state => ({
-  total: calculateTotal(state.trialBalance.xpenses)
+  total: calculateTotal(state.trialBalance.expenses)
 })
 
 const redux = connect(
