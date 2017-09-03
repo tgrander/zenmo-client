@@ -9,6 +9,7 @@ import Landing from '../../landing/components/Landing'
 import TrialBalance from '../../trialBalance/containers/TrialBalance'
 import SignUp from '../../auth/containers/SignUp'
 import SignIn from '../../auth/containers/SignIn'
+import Transactions from '../../transactions/components/Transactions'
 
 import { auth, database } from '../../../firebase'
 
@@ -39,6 +40,8 @@ class App extends Component {
 
     render() {
 
+        console.log('auth: ', auth)
+
         const RenderTrialBalance = () => (
           <div>
             {this.props.isFetchingTrialBalance ?
@@ -58,6 +61,7 @@ class App extends Component {
                     <Route path="/signup" component={SignUp} />
                     <Route path="/signin" component={SignIn} />
                     <Route path="/overview" component={RenderTrialBalance} />
+                    <Route path="/transactions" component={Transactions} />
 
                 </div>
             </Router>

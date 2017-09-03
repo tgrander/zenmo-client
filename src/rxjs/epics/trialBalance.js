@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Observable';
-import { auth, database } from '../../firebase';
+import { database } from '../../firebase';
 import { FETCH_TRIAL_BALANCE } from '../../modules/trialBalance/constants'
 import {
   isFetchingTrialBalance,
@@ -9,6 +9,7 @@ import {
 
 
 export const pingEpic = action$ =>
+
   action$.ofType('CHANGE_ITEM_AMOUNT')
     .debounceTime(500)
     .distinctUntilChanged()
