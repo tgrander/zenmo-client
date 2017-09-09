@@ -1,12 +1,11 @@
-import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
-import { combineEpics } from 'redux-observable';
+import { combineReducers } from 'redux'
+import { reducer as formReducer } from 'redux-form'
+import { combineEpics } from 'redux-observable'
+import authReducer from './modules/auth/reducers/auth'
+import transactionsReducer from './modules/transactions/reducers/transactions'
+import { pingEpic, trialBalanceEpic } from './rxjs/epics/trialBalance'
+import * as constants from './modules/trialBalance/constants'
 
-import authReducer from './modules/auth/reducers/auth';
-
-import { pingEpic, trialBalanceEpic } from './rxjs/epics/trialBalance';
-
-import * as constants from './modules/trialBalance/constants';
 
 const defaultTrialBalanceState = {
     assets: {},
@@ -113,7 +112,7 @@ const trialBalanceReducer = (state = defaultTrialBalanceState, action) => {
         }
       }
     default:
-      return state;
+      return state
   }
 }
 
@@ -123,7 +122,8 @@ export const rootEpic = combineEpics(
 )
 
 export default combineReducers({
-  form: formReducer,
-  trialBalance: trialBalanceReducer,
-  auth: authReducer,
+    auth: authReducer,
+    form: formReducer,
+    transactions: transactionsReducer,
+    trialBalance: trialBalanceReducer
 })

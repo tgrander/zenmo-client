@@ -1,0 +1,17 @@
+.transaction {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+
+    border: 1px solid black;
+    height: 50px;
+    width: 600px;
+}
+
+.transaction-value {
+    max-width: 175px;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}

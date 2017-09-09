@@ -2,14 +2,16 @@ import axios from 'axios'
 
 
 const api = 'https://zenmo-api.herokuapp.com/'
+const localApi = 'http://localhost:8000/'
 
 const endpoints = {
-    transactions: api + 'transactions'
+    transactions: localApi + 'plaid/transactions'
 }
 
 export default {
+
     getTransactions() {
-        axios.get(endpoints.transactions)
-            .then(res => console.log(res))
+
+        return axios.get('/plaid/transactions')
     }
 }
