@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import { database } from '../../firebase';
 import { FETCH_TRIAL_BALANCE } from '../../modules/trialBalance/constants'
+import { CATEGORIZE_TRANSACTIONS } from '../../modules/categories/constants/categories-actions-types'
 import {
   isFetchingTrialBalance,
   trialBalanceFetchSuccess,
@@ -32,8 +33,8 @@ export const pingEpic = action$ =>
 
 
 export const trialBalanceEpic = action$ =>
-    action$.ofType('FETCH_TRIAL_BALANCE').
-        mergeMap(({ userId }) => {
+    action$.ofType('FETCH_TRIAL_BALANCE')
+        .mergeMap(({ userId }) => {
 
             const userTrialBalance = database.ref(
                   `/users/${userId}/trialBalance`

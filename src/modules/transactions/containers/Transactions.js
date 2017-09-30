@@ -2,26 +2,33 @@ import { connect } from 'react-redux'
 import withHandlers from 'recompose/withHandlers'
 import pipe from 'lodash/fp/flow'
 import Transactions from '../components/Transactions'
-import { hydrateStore } from '../actions/transactions'
+import { fetchTransactions } from '../actions/transactions-actions'
 
 
 const mapStateToProps = state => {
 
+    const { transactions } = state
+
     return {
-        transactions: state.transactions.transactions
+        isLoading: transactions.isLoading,
+        transactions: transactions.transactions
     }
+}
+
+const reduxActions = {
+    fetchTransactions
 }
 
 const redux = connect(
     mapStateToProps,
     {
-        hydrateStore
+        fetchTransactions
     }
 )
 
 const handlers = withHandlers({ })
 
 export default pipe(
-    handlers,
-    redux,
+    // handlers,
+    redux
 )(Transactions)

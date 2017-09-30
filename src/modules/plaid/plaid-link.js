@@ -2,64 +2,47 @@ import React from 'react'
 import axios from 'axios'
 import { auth } from '../../firebase'
 
-import Button from '../../styled_components/elements/button'
+const plaidLink = (() => {
 
-function PlaidLinkConnection() {
+    const userId = auth.currentUser ? auth.currentUser.uid : null
 
-  const PUBLIC_TOKEN = 'b41ccce2d4bf2d77e8b21c4ff67fef'
+    const PUBLIC_TOKEN = 'b41ccce2d4bf2d77e8b21c4ff67fef'
 
-  const userId = auth.currentUser ? auth.currentUser.uid : null
+    const handleOnSuccess = (public_token, metadata) => (
 
-  console.log('userId', userId);
+        axios.post('/plaid/create-item', { public_token, userId })
+          .then(res => console.log(res))
+          .catch(err => console.error(err))
+    )
 
-  const handleOnSuccess = (public_token, metadata) => {
+    const getTransactions = () => (
 
-    axios.post('/plaid/create-item', { public_token, userId })
-      .then(res => console.log(res))
-      .catch(err => console.error(err))
-  }
+        axios.get('/plaid/transactions')
+          .then(res => console.log(res))
+    )
 
-  const getTransactions = () => {
-    axios.get('/plaid/transactions')
-      .then(res => console.log(res))
-  }
+    const linkHandler = window.Plaid.create({
+        apiVersion: 'v2',
+        env: 'development',
+        clientName: 'Zenmo',
+        key: PUBLIC_TOKEN,
+        product: ['transactions', 'connect'],
+        selectAccount: true,
+        onSuccess: handleOnSuccess
+    })
 
-  const addItem = () => {
+    const openLinkHandler = () => linkHandler.open()
+
+    const saveItem = () => {
 
       axios.post('/plaid/add-item', { userId })
           .then(res => console.log(res))
-  }
+    }
 
+    return {
+        openLinkHandler,
+        saveItem
+    }
+})()
 
-  const linkHandler = window.Plaid.create({
-    apiVersion: 'v2',
-    env: 'development',
-    clientName: 'Zenmo',
-    key: PUBLIC_TOKEN,
-    product: ['transactions', 'connect'],
-    selectAccount: true,
-    onSuccess: handleOnSuccess
-  })
-
-  const openLink = () => linkHandler.open()
-
-    return (
-        <div style={{display: 'flex', flexDirection: 'column'}}>
-
-            <Button onClick={openLink}>
-                Create A New Item
-            </Button>
-
-            <Button onClick={getTransactions}>
-                Get Transactions
-            </Button>
-
-            <Button onClick={() => addItem()}>
-                Add Item to Database
-            </Button>
-
-        </div>
-    )
-}
-
-export default PlaidLinkConnection
+export default plaidLink

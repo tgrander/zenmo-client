@@ -1,0 +1,19 @@
+.totals,
+.grand-total {
+
+    display: flex;
+}
+
+
+.totals {
+
+    flex-direction: column;
+}
+
+.total-row {
+
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    width: 100%;
+}

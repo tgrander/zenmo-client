@@ -2,8 +2,13 @@ import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
 import { combineEpics } from 'redux-observable'
 import authReducer from './modules/auth/reducers/auth'
+import dashboardReducer from './modules/dashboard/reducers/dashboard-reducer'
 import transactionsReducer from './modules/transactions/reducers/transactions'
+import categoriesReducer from './modules/categories/reducers/categories-reducer'
 import { pingEpic, trialBalanceEpic } from './rxjs/epics/trialBalance'
+import dashboardEpic from './modules/dashboard/epics/dashboard-epic'
+import transactionsEpic from './modules/transactions/epics/transactions-epic'
+import { categoriesEpic } from './modules/categories/epics/categories-epic'
 import * as constants from './modules/trialBalance/constants'
 
 
@@ -117,12 +122,17 @@ const trialBalanceReducer = (state = defaultTrialBalanceState, action) => {
 }
 
 export const rootEpic = combineEpics(
-  pingEpic,
-  trialBalanceEpic,
+    categoriesEpic,
+    dashboardEpic,
+    pingEpic,
+    transactionsEpic,
+    trialBalanceEpic,
 )
 
 export default combineReducers({
     auth: authReducer,
+    categories: categoriesReducer,
+    dashboard: dashboardReducer,
     form: formReducer,
     transactions: transactionsReducer,
     trialBalance: trialBalanceReducer

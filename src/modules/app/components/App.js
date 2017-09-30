@@ -3,17 +3,24 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
-
-import Navbar from '../../layout/containers/Navbar'
+import Dashboard from '../../dashboard/components/dashboard'
 import Landing from '../../landing/components/Landing'
-import TrialBalance from '../../trialBalance/containers/TrialBalance'
+import Navbar from '../../layout/containers/Navbar'
 import SignUp from '../../auth/containers/SignUp'
 import SignIn from '../../auth/containers/SignIn'
 import Transactions from '../../transactions/containers/Transactions'
+import TrialBalance from '../../trialBalance/containers/TrialBalance'
+
+import { Layout } from 'antd'
 
 import { auth, database } from '../../../firebase'
 
 import '../styles/App.css'
+
+
+const { Header, Footer, Sider, Content } = Layout
+
+const heightStyle = { height: '100%' }
 
 class App extends Component {
 
@@ -40,30 +47,29 @@ class App extends Component {
 
     render() {
 
-        console.log('auth: ', auth)
-
-        const RenderTrialBalance = () => (
-          <div>
-            {this.props.isFetchingTrialBalance ?
-                <div>Loading...</div> :
-                <TrialBalance />
-            }
-          </div>
-        )
-
         return (
             <Router>
-                <div className="App">
+                <Layout style={heightStyle}>
 
-                    <Navbar currentUser={this.props.currentUser} />
+                    <Header>Header</Header>
 
-                    <Route exact path="/" component={Landing} />
-                    <Route path="/signup" component={SignUp} />
-                    <Route path="/signin" component={SignIn} />
-                    <Route path="/overview" component={RenderTrialBalance} />
-                    <Route path="/transactions" component={Transactions} />
+                    <Layout style={heightStyle}>
 
-                </div>
+                        <Sider style={heightStyle}>Sider</Sider>
+
+                        <Content style={heightStyle}>
+
+                            <Route exact path="/" component={Dashboard} />
+                            <Route path="/signup" component={SignUp} />
+                            <Route path="/signin" component={SignIn} />
+                            <Route path="/dashboard" component={Dashboard} />
+
+                        </Content>
+                    </Layout>
+
+                    <Footer>Footer</Footer>
+
+                </Layout>
             </Router>
         )
     }

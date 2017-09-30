@@ -20,7 +20,9 @@ class Transaction extends React.PureComponent {
                 <div className="transaction-value">{props.transaction.name}</div>
                 <div className="transaction-value">{props.transaction.location.adress}</div>
                 <div className="transaction-value">{props.transaction.amount}</div>
-                <div className="transaction-value">{props.transaction.category[0]}</div>
+                <div className="transaction-value">
+                    {props.transaction.category && props.transaction.category[0]}
+                </div>
             </div>
         )
     }
