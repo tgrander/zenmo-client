@@ -1,0 +1,5 @@
+export default {
+
+    ATTEMPT_USER_SIGN_IN: 'ATTEMPT_USER_SIGN_IN',
+    SET_CURRENT_USER: 'SET_CURRENT_USER'
+}
