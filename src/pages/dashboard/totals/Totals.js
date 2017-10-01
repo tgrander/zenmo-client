@@ -1,7 +1,7 @@
-import { Card } from 'antd'
 import map from 'lodash/map'
 import propTypes from 'prop-types'
 import React from 'react'
+import Card from '../../../shared/components/Card'
 import AccountTotal from './AccountTotal'
 
 import './Totals.css'
@@ -14,31 +14,28 @@ class Totals extends React.PureComponent {
         const { props } = this
 
         return (
-            <Card {...{
-                    loading: true,
-                    noHovering: true,
-                    style: { width: '100%' },
-                    title: "Totals"
-                }}>
+            <div className="totals-wrapper">
+                <Card title={'Totals'}>
 
-                <div className="total-row">
-                    <div className="total-label">
+                    <div className="total-row">
+                        <div className="total-label">
 
+                        </div>
+                        <div className="total">
+                            {props.totals.total}
+                        </div>
                     </div>
-                    <div className="total">
-                        {props.totals.total}
-                    </div>
-                </div>
 
-                {
-                    map(props.totals, accountTotal =>
-                        <AccountTotal {...{
-                            ...accountTotal,
-                            key: accountTotal.account
-                        }} />
-                    )
-                }
-            </Card>
+                    {
+                        map(props.totals, accountTotal =>
+                            <AccountTotal {...{
+                                ...accountTotal,
+                                key: accountTotal.account
+                            }} />
+                        )
+                    }
+                </Card>
+            </div>
         )
     }
 }

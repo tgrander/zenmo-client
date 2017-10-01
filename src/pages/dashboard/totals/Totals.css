@@ -5,8 +5,9 @@
 }
 
 
-.totals {
+.totals-wrapper {
 
+    flex: 0 0 auto;
     flex-direction: column;
 }
 

@@ -5,8 +5,8 @@
     justify-content: space-around;
 
     border: 1px solid black;
-    height: 50px;
-    width: 600px;
+    height: 45px;
+    width: 100%;
 }
 
 .transaction-value {

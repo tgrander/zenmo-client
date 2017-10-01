@@ -1,9 +1,30 @@
-import map from 'lodash/map'
+import { Table } from 'antd';
 import React from 'react'
 import propTypes from 'prop-types'
 
+import './Transactions.css'
 
-import Transaction from './Transaction'
+
+const columns = [{
+    title: 'Date',
+    dataIndex: 'date',
+    // width: 150,
+}, {
+    title: 'Description',
+    dataIndex: 'description',
+    width: 150,
+}, {
+    title: 'Amount',
+    dataIndex: 'amount',
+    width: 150,
+}, {
+    title: 'Category',
+    dataIndex: 'category',
+    width: 150,
+}]
+
+const data = [];
+
 
 class Transactions extends React.PureComponent {
 
@@ -20,28 +41,21 @@ class Transactions extends React.PureComponent {
 
         const { props } = this
 
-        if (props.isLoading) {
-            return (
-                <div>'~ L O A D I N G ~'</div>
-            )
-        }
-
         return (
-            <div>
-                {
-                    // <div className="filters"></div>
-                    //
-                    // <div className="transactions">
-                    //     {
-                    //         map(props.transactions, transaction =>
-                    //             <Transaction {...{
-                    //                     key: transaction.transaction_id,
-                    //                     transaction
-                    //                 }} />
-                    //         )
-                    //     }
-                    // </div>
-                }
+
+            <div className="transactions-wrapper">
+
+                <div className="transaction-filters"></div>
+
+                <Table {...{
+                    columns: columns,
+                    dataSource: props.transactions,
+                    loading: false,
+                    pagination: false,
+                    scroll: { y: 500 },
+                    // title: 'Transactions'
+                }}/>
+
             </div>
         )
     }

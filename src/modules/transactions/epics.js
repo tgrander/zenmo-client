@@ -1,4 +1,5 @@
 import axios from 'axios'
+import flatten from 'lodash/flatten'
 import { Observable } from 'rxjs/Observable'
 import types from './types'
 import {
@@ -14,7 +15,7 @@ const transactionsEpic = (action$, store) => {
     return action$.ofType(types.FETCH_TRANSACTIONS)
         .mergeMap(() =>
             Observable.fromPromise(fetchTransactions())
-            .map(res => res.data.transactions)
+            .map(res => flatten(res.data.transactions))
             .flatMap(transactions =>
                 Observable.of(
                     fetchTransactionsSuccess(transactions)

@@ -4,10 +4,10 @@ import pipe from 'lodash/fp/flow'
 import Categories from './categories/Categories'
 
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ categories }) => {
 
     return {
-        transactions: state.transactions.transactions
+        categories: categories.categories
     }
 }
 
