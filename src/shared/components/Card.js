@@ -6,6 +6,7 @@ import React from 'react'
 class CardWithProps extends React.PureComponent {
 
     static propTypes = {
+        isLoading: propTypes.bool,
         title: propTypes.string.isRequired
     }
 
@@ -15,7 +16,7 @@ class CardWithProps extends React.PureComponent {
 
         return (
             <Card {...{
-                loading: true,
+                loading: props.isLoading,
                 noHovering: true,
                 style: { width: '100%' },
                 title: props.title

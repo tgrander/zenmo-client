@@ -8,6 +8,7 @@ import Totals from './totals/Totals'
 const mapStateToProps = ({ totals }) => {
 
     return {
+        isLoading: totals.isLoading,
         totals: reduce(totals.totals, (accountTotals, total, account) => {
 
             if (account !== 'total') {

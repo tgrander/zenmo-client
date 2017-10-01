@@ -15,7 +15,10 @@ class Totals extends React.PureComponent {
 
         return (
             <div className="totals-wrapper">
-                <Card title={'Totals'}>
+                <Card {...{
+                    isLoading: props.isLoading,
+                    title:'Totals'
+                }}>
 
                     <div className="total-row">
                         <div className="total-label">

@@ -10,14 +10,20 @@ const Panel = Collapse.Panel
 class Categories extends React.PureComponent {
 
     static propTypes = {
-        
+        isLoading: propTypes.bool
     }
 
     render() {
 
+        const { props } = this
+
         return (
             <div className="categories-wrapper">
-                <Card title="Categories">
+
+                <Card {...{
+                    isLoading: props.isLoading,
+                    title: 'Categories'
+                }}>
 
                     <Collapse>
 

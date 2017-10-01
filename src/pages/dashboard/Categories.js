@@ -7,7 +7,8 @@ import Categories from './categories/Categories'
 const mapStateToProps = ({ categories }) => {
 
     return {
-        categories: categories.categories
+        categories: categories.categories,
+        isLoading: categories.isLoading
     }
 }
 
