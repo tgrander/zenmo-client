@@ -1,3 +1,4 @@
+import axios from 'axios'
 import propTypes from 'prop-types'
 import React from 'react'
 import Categories from './dashboard/Categories'
@@ -8,6 +9,14 @@ import './Dashboard.css'
 
 
 class Dashboard extends React.PureComponent {
+
+    componentWillMount() {
+
+        console.log('DASHBOARD MOUNTING...');
+
+        axios.post('/plaid/accounts')
+            .then(res => console.log('ACCOUNTS RES: ', res))
+    }
 
     render() {
 

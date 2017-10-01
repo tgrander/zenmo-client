@@ -8,14 +8,21 @@ import {
     loadingTransactions
 } from './actions'
 
-const fetchTransactions = async () => await axios.get('/plaid/transactions')
+const fetchTransactions = async (dateRange) => {
+
+    return await axios.post('/plaid/transactions', { dateRange })
+}
 
 const transactionsEpic = (action$, store) => {
 
-    return action$.ofType(types.FETCH_TRANSACTIONS)
+    return action$.ofType(types.SET_DEFAULT_TRANSACTIONS_DATE_RANGE)
         .mergeMap(() =>
-            Observable.fromPromise(fetchTransactions())
-            .map(res => flatten(res.data.transactions))
+            Observable.fromPromise(fetchTransactions(store.getState().transactions.dateRange))
+            .map(res => {
+
+                console.log('RESPONSE: ', res);
+                return flatten(res.data.transactions)}
+            )
             .flatMap(transactions =>
                 Observable.of(
                     fetchTransactionsSuccess(transactions)

@@ -2,12 +2,18 @@ import { connect } from 'react-redux'
 import withHandlers from 'recompose/withHandlers'
 import pipe from 'lodash/fp/flow'
 import Transactions from './transactions/Transactions'
-import { fetchTransactions } from '../../modules/transactions/actions'
+import {
+    changeDateRange,
+    fetchTransactions,
+    getDateRangeDefaultValue
+} from '../../modules/transactions/actions'
 
 
 const mapStateToProps = ({ transactions }) => {
 
     return {
+        dateRange: transactions.dateRange,
+        defaultDateRange: transactions.defaultDateRange,
         isLoading: transactions.isLoading,
         transactions: transactions.transactions.map(transaction => {
 
@@ -29,6 +35,8 @@ const reduxActions = {
 const redux = connect(
     mapStateToProps,
     {
+        changeDateRange,
+        getDateRangeDefaultValue,
         fetchTransactions
     }
 )

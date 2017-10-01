@@ -1,4 +1,4 @@
-import { Table } from 'antd';
+import { Table, DatePicker } from 'antd';
 import React from 'react'
 import propTypes from 'prop-types'
 
@@ -8,7 +8,7 @@ import './Transactions.css'
 const columns = [{
     title: 'Date',
     dataIndex: 'date',
-    // width: 150,
+    width: 150,
 }, {
     title: 'Description',
     dataIndex: 'description',
@@ -29,12 +29,13 @@ const data = [];
 class Transactions extends React.PureComponent {
 
     static propTypes = {
+        getDateRangeDefaultValue: propTypes.func.isRequired,
         fetchTransactions: propTypes.func.isRequired
     }
 
     componentWillMount() {
 
-        this.props.fetchTransactions()
+        this.props.getDateRangeDefaultValue()
     }
 
     render() {
@@ -45,6 +46,13 @@ class Transactions extends React.PureComponent {
 
             <div className="transactions-wrapper">
 
+                <DatePicker.RangePicker {...{
+                    defaultValue: props.defaultDateRange,
+                    format: 'MM-DD-YYYY',
+                    value: props.dateRange,
+                    onChange: props.changeDateRange
+                }} />
+
                 <div className="transaction-filters"></div>
 
                 <Table {...{
@@ -52,8 +60,7 @@ class Transactions extends React.PureComponent {
                     dataSource: props.transactions,
                     loading: false,
                     pagination: false,
-                    scroll: { y: 500 },
-                    // title: 'Transactions'
+                    scroll: { y: 500 }
                 }}/>
 
             </div>

@@ -1,8 +1,12 @@
 import axios from 'axios'
 import types from './types'
+import moment from 'moment'
 
 
-export const fetchTransactions = () => ({ type: types.FETCH_TRANSACTIONS })
+export const fetchTransactions = () => ({
+
+    type: types.FETCH_TRANSACTIONS
+})
 
 export const fetchTransactionsError = error => ({
 
@@ -19,3 +23,25 @@ export const fetchTransactionsSuccess = transactions => ({
 })
 
 export const loadingTransactions = () => ({ type: types.LOADING_TRANSACTIONS })
+
+export const getDateRangeDefaultValue = () => {
+
+    const date = new Date()
+    const y = date.getFullYear()
+    const m = date.getMonth();
+    const firstDay = new Date(y, m, 1);
+    const lastDay = new Date(y, m + 1, 0);
+    const startDate = moment(firstDay)
+    const endDate = moment(lastDay)
+
+    return {
+        type: types.SET_DEFAULT_TRANSACTIONS_DATE_RANGE,
+        payload: [startDate, endDate]
+    }
+}
+
+export const changeDateRange = range => ({
+
+    type: types.CHANGE_DATE_RANGE,
+    payload: range
+})
