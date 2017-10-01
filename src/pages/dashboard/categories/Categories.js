@@ -1,6 +1,6 @@
 import propTypes from 'prop-types'
 import React from 'react'
-import Card from '../../../shared/components/Card'
+import Card from 'shared/components/Card'
 import { Collapse } from 'antd'
 
 import './Categories.css'
