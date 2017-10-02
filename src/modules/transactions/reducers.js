@@ -1,13 +1,14 @@
 import isEmpty from 'lodash/isEmpty'
 import types from './types'
+import uniq from 'lodash/uniq'
 
 
 const initialState = {
     accounts: [],
     dateRange: [],
     defaultDateRange: [],
-    filter: '',
-    loading: false,
+    filters: [],
+    isLoading: false,
     transactions: [],
 }
 
@@ -19,20 +20,20 @@ const transactionsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 accounts: action.accounts,
-                loading: false,
+                isLoading: false,
                 transactions: action.transactions
             }
 
         case types.LOADING_TRANSACTIONS:
             return {
                 ...state,
-                loading: true
+                isLoading: true
             }
 
         case types.TRANSACTIONS_FETCH_FAILURE:
             return {
                 ...state,
-                loading: false
+                isLoading: false
             }
 
         case types.SET_DEFAULT_TRANSACTIONS_DATE_RANGE:
@@ -51,7 +52,7 @@ const transactionsReducer = (state = initialState, action) => {
         case types.CHANGE_FILTER:
             return {
                 ...state,
-                filter: action.payload 
+                filters: uniq([...state.filters, action.payload])
             }
 
         default:

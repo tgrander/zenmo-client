@@ -10,33 +10,42 @@ class Transactions extends React.PureComponent {
     static propTypes = {
         accountFilters: propTypes.array.isRequired,
         accounts: propTypes.object.isRequired,
+        changeDateRange: propTypes.func.isRequired,
+        changeTransactionsFilter: propTypes.func.isRequired,
         dateRange: propTypes.array.isRequired,
         defaultDateRange: propTypes.array.isRequired,
         getDateRangeDefaultValue: propTypes.func.isRequired,
         fetchTransactions: propTypes.func.isRequired,
+        isLoading: propTypes.bool.isRequired,
         transactions: propTypes.array.isRequired
     }
 
     getColumns = () => ([{
-            title: 'Date',
             dataIndex: 'date',
+            key: 'date',
+            title: 'Date',
             width: 100,
         }, {
-            title: 'Description',
             dataIndex: 'description',
+            key: 'description',
+            title: 'Description',
             width: 230,
         }, {
-            filters: this.props.accountFilters,
-            title: 'Account',
             dataIndex: 'account',
+            filters: this.props.accountFilters,
+            key: 'account',
+            title: 'Account',
             width: 150,
+            onFilter: this.props.changeTransactionsFilter
         }, {
-            title: 'Amount',
             dataIndex: 'amount',
+            key: 'amount',
+            title: 'Amount',
             width: 100,
         }, {
-            title: 'Category',
             dataIndex: 'category',
+            key: 'category',
+            title: 'Category',
             width: 120,
     }])
 
@@ -63,7 +72,7 @@ class Transactions extends React.PureComponent {
                 <Table {...{
                     columns: getColumns(),
                     dataSource: props.transactions,
-                    loading: false,
+                    loading: props.isLoading,
                     pagination: false,
                     scroll: { y: 500 }
                 }}/>

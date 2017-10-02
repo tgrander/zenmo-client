@@ -6,6 +6,7 @@ import moment from 'moment'
 import Transactions from './transactions/Transactions'
 import {
     changeDateRange,
+    changeTransactionsFilter,
     fetchTransactions,
     getDateRangeDefaultValue
 } from '../../modules/transactions/actions'
@@ -15,7 +16,8 @@ const mapAccountsToFilters = accounts => (
 
     map(accounts, account => ({
         text: account.name,
-        value: account
+        value: account.name,
+        account
     }))
 )
 
@@ -52,6 +54,7 @@ const redux = connect(
     mapStateToProps,
     {
         changeDateRange,
+        changeTransactionsFilter,
         getDateRangeDefaultValue,
         fetchTransactions
     }
