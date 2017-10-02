@@ -19,6 +19,19 @@ const mapAccountsToFilters = accounts => (
     }))
 )
 
+const mapTransactionsToTableDataSource = transactionsData => (
+
+    map(transactionsData.transactions, transaction => ({
+
+        account: transactionsData.accounts[transaction.account_id].name,
+        amount: transaction.amount,
+        category: transaction.category && transaction.category[0],
+        date: moment(transaction.date).format('MMM Do, YYYY'),
+        description: transaction.name,
+        key: transaction.transaction_id,
+    }))
+)
+
 const mapStateToProps = ({ transactions }) => {
 
     return {
@@ -27,19 +40,7 @@ const mapStateToProps = ({ transactions }) => {
         dateRange: transactions.dateRange,
         defaultDateRange: transactions.defaultDateRange,
         isLoading: transactions.isLoading,
-        transactions: transactions.transactions.map(transaction => {
-
-            const m = moment
-
-            return {
-                account: transactions.accounts[transaction.account_id].name,
-                amount: transaction.amount,
-                category: transaction.category && transaction.category[0],
-                date: moment(transaction.date).format('MMM Do, YYYY'),
-                description: transaction.name,
-                key: transaction.transaction_id,
-            }
-        })
+        transactions: mapTransactionsToTableDataSource(transactions)
     }
 }
 
