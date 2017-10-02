@@ -11,6 +11,8 @@ class Totals extends React.PureComponent {
 
     static propTypes = {
         accounts: propTypes.object.isRequired,
+        accountTotals: propTypes.array.isRequired,
+        totalOfAllAccounts: propTypes.number.isRequired
     }
 
     render() {
@@ -27,18 +29,18 @@ class Totals extends React.PureComponent {
 
                     <div className="total-row">
                         <div className="total-label">
-
+                            Total
                         </div>
                         <div className="total">
-                            {props.totals.total}
+                            {props.totalOfAllAccounts}
                         </div>
                     </div>
 
-                    {map(props.totals, ({ account, total }) => (
+                    {map(props.accountTotals, ({ account, total }) => (
 
                             <AccountTotal {...{
                                 account: props.accounts[account].name,
-                                total: total.toFixed(2),
+                                total: total,
                                 key: account
                             }} />
                         ))

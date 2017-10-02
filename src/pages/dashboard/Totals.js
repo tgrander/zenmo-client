@@ -10,18 +10,19 @@ const mapStateToProps = ({ totals, transactions }) => {
     return {
         accounts: transactions.accounts,
         isLoading: totals.isLoading,
-        totals: reduce(totals.totals, (accountTotals, total, account) => {
+        accountTotals: reduce(totals.totals, (accountTotals, total, account) => {
 
             if (account !== 'total') {
                 accountTotals.push({
                     account,
-                    total
+                    total: total.toFixed(2)
                 })
             }
 
             return accountTotals
 
-        }, [])
+        }, []),
+        totalOfAllAccounts: totals.totals.total.toFixed(2)
     }
 }
 

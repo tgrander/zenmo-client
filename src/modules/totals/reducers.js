@@ -3,7 +3,9 @@ import transactionTypes from '../transactions/types'
 
 
 const initialState = {
-    totals: {},
+    totals: {
+        total: 0
+    },
     isLoading: false
 }
 

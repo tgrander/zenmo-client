@@ -26,6 +26,11 @@
     width: 40%;
 }
 
+.left-column > :not(:last-child) {
+
+    margin-bottom: 12px;
+}
+
 .right-column {
 
     flex: 1 1 auto;
