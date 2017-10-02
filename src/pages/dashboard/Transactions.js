@@ -12,6 +12,7 @@ import {
 const mapStateToProps = ({ transactions }) => {
 
     return {
+        accounts: transactions.accounts,
         dateRange: transactions.dateRange,
         defaultDateRange: transactions.defaultDateRange,
         isLoading: transactions.isLoading,

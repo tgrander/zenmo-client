@@ -1,6 +1,7 @@
 import axios from 'axios'
-import types from './types'
+import reduce from 'lodash/reduce'
 import moment from 'moment'
+import types from './types'
 
 
 export const fetchTransactions = () => ({
@@ -14,10 +15,11 @@ export const fetchTransactionsError = error => ({
     error
 })
 
-export const fetchTransactionsSuccess = transactions => ({
+export const fetchTransactionsSuccess = transactionsData => ({
 
     type: types.TRANSACTIONS_FETCH_SUCCESS,
-    transactions: transactions.sort(
+    accounts: normalizeAccounts(transactionsData.accounts),
+    transactions: transactionsData.transactions.sort(
         (a,b) => new Date(b.date) - new Date(a.date)
     )
 })
@@ -45,3 +47,11 @@ export const changeDateRange = range => ({
     type: types.CHANGE_DATE_RANGE,
     payload: range
 })
+
+const normalizeAccounts = accountsArray => reduce(accountsArray, (acc, curr) => {
+
+    acc[curr.account_id] = curr
+
+    return acc
+
+}, {})

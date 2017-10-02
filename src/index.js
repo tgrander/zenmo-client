@@ -40,8 +40,6 @@ function Root() {
                     </Content>
                 </Layout>
 
-                <Footer>Footer</Footer>
-
             </Layout>
         </Router>
     </Provider>

@@ -5,9 +5,10 @@ import withHandlers from 'recompose/withHandlers'
 import Totals from './totals/Totals'
 
 
-const mapStateToProps = ({ totals }) => {
+const mapStateToProps = ({ totals, transactions }) => {
 
     return {
+        accounts: transactions.accounts,
         isLoading: totals.isLoading,
         totals: reduce(totals.totals, (accountTotals, total, account) => {
 

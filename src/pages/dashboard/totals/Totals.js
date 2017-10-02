@@ -9,12 +9,17 @@ import './Totals.css'
 
 class Totals extends React.PureComponent {
 
+    static propTypes = {
+        accounts: propTypes.object.isRequired,
+    }
+
     render() {
 
         const { props } = this
 
         return (
             <div className="totals-wrapper">
+
                 <Card {...{
                     isLoading: props.isLoading,
                     title:'Totals'
@@ -29,13 +34,14 @@ class Totals extends React.PureComponent {
                         </div>
                     </div>
 
-                    {
-                        map(props.totals, accountTotal =>
+                    {map(props.totals, ({ account, total }) => (
+
                             <AccountTotal {...{
-                                ...accountTotal,
-                                key: accountTotal.account
+                                account: props.accounts[account].name,
+                                total: total.toFixed(2),
+                                key: account
                             }} />
-                        )
+                        ))
                     }
                 </Card>
             </div>

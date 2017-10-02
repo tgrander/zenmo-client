@@ -8,19 +8,19 @@ import './Transactions.css'
 const columns = [{
     title: 'Date',
     dataIndex: 'date',
-    width: 150,
+    width: 100,
 }, {
     title: 'Description',
     dataIndex: 'description',
-    width: 150,
+    width: 230,
 }, {
     title: 'Amount',
     dataIndex: 'amount',
-    width: 150,
+    width: 100,
 }, {
     title: 'Category',
     dataIndex: 'category',
-    width: 150,
+    width: 120,
 }]
 
 const data = [];
@@ -29,6 +29,8 @@ const data = [];
 class Transactions extends React.PureComponent {
 
     static propTypes = {
+        dateRange: propTypes.array.isRequired,
+        defaultDateRange: propTypes.array.isRequired,
         getDateRangeDefaultValue: propTypes.func.isRequired,
         fetchTransactions: propTypes.func.isRequired
     }

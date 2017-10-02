@@ -3,6 +3,7 @@ import types from './types'
 
 
 const initialState = {
+    accounts: [],
     loading: false,
     transactions: [],
     dateRange: [],
@@ -16,6 +17,7 @@ const transactionsReducer = (state = initialState, action) => {
         case types.TRANSACTIONS_FETCH_SUCCESS:
             return {
                 ...state,
+                accounts: action.accounts,
                 loading: false,
                 transactions: action.transactions
             }

@@ -1,14 +1,17 @@
 .totals,
-.grand-total {
+.grand-total,
+.total-row,
+.account-total {
 
     display: flex;
 }
-
 
 .totals-wrapper {
 
     flex: 0 0 auto;
     flex-direction: column;
+
+    width: 100%;
 }
 
 .total-row {
@@ -17,4 +20,16 @@
     justify-content: space-between;
 
     width: 100%;
+}
+
+.account-label {
+
+    width: 40%;
+}
+
+.account-total {
+
+    flex: 1 1 auto;
+
+    justify-content: flex-end;
 }
