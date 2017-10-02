@@ -1,9 +1,9 @@
 import axios from 'axios'
 import propTypes from 'prop-types'
 import React from 'react'
-import Categories from './dashboard/Categories'
-import Transactions from './dashboard/Transactions'
-import Totals from './dashboard/Totals'
+import Categories from './dashboard/CategoriesContainer'
+import Transactions from './dashboard/TransactionsContainer'
+import Totals from './dashboard/TotalsContainer'
 
 import './Dashboard.css'
 
@@ -11,8 +11,6 @@ import './Dashboard.css'
 class Dashboard extends React.PureComponent {
 
     componentWillMount() {
-
-        console.log('DASHBOARD MOUNTING...');
 
         axios.post('/plaid/accounts')
             .then(res => console.log('ACCOUNTS RES: ', res))
