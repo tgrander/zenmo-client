@@ -1,4 +1,5 @@
-import { Layout } from 'antd'
+import enUS from 'antd/lib/locale-provider/en_US'
+import { Layout, LocaleProvider } from 'antd'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -21,27 +22,30 @@ function Root() {
 
   return (
     <Provider store={store}>
-        <Router>
-            <Layout style={heightStyle}>
-
-                <Header>Header</Header>
-
+        <LocaleProvider locale={enUS}>
+            <Router>
+                
                 <Layout style={heightStyle}>
 
-                    <Sider style={heightStyle}>Sider</Sider>
+                    <Header>Header</Header>
 
-                    <Content style={heightStyle}>
+                    <Layout style={heightStyle}>
 
-                        <Route exact path="/" component={Dashboard} />
-                        <Route path="/signup" component={SignUp} />
-                        <Route path="/signin" component={Login} />
-                        <Route path="/dashboard" component={Dashboard} />
+                        <Sider style={heightStyle}>Sider</Sider>
 
-                    </Content>
+                        <Content style={heightStyle}>
+
+                            <Route exact path="/" component={Dashboard} />
+                            <Route path="/signup" component={SignUp} />
+                            <Route path="/signin" component={Login} />
+                            <Route path="/dashboard" component={Dashboard} />
+
+                        </Content>
+                    </Layout>
+
                 </Layout>
-
-            </Layout>
-        </Router>
+            </Router>
+        </LocaleProvider>
     </Provider>
   )
 }

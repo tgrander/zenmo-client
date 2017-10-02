@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import withHandlers from 'recompose/withHandlers'
 import pipe from 'lodash/fp/flow'
+import moment from 'moment'
 import Transactions from './transactions/Transactions'
 import {
     changeDateRange,
@@ -18,12 +19,15 @@ const mapStateToProps = ({ transactions }) => {
         isLoading: transactions.isLoading,
         transactions: transactions.transactions.map(transaction => {
 
+            const m = moment
+
             return {
-                key: transaction.transaction_id,
+                account: transactions.accounts[transaction.account_id].name,
                 amount: transaction.amount,
                 category: transaction.category && transaction.category[0],
-                date: transaction.date,
-                description: transaction.name
+                date: moment(transaction.date).format('MMM Do, YYYY'),
+                description: transaction.name,
+                key: transaction.transaction_id,
             }
         })
     }

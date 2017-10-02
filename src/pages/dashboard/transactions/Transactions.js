@@ -14,6 +14,10 @@ const columns = [{
     dataIndex: 'description',
     width: 230,
 }, {
+    title: 'Account',
+    dataIndex: 'account',
+    width: 150,
+}, {
     title: 'Amount',
     dataIndex: 'amount',
     width: 100,
@@ -32,7 +36,8 @@ class Transactions extends React.PureComponent {
         dateRange: propTypes.array.isRequired,
         defaultDateRange: propTypes.array.isRequired,
         getDateRangeDefaultValue: propTypes.func.isRequired,
-        fetchTransactions: propTypes.func.isRequired
+        fetchTransactions: propTypes.func.isRequired,
+        transactions: propTypes.array.isRequired
     }
 
     componentWillMount() {
