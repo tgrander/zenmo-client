@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import withHandlers from 'recompose/withHandlers'
 import pipe from 'lodash/fp/flow'
+import map from 'lodash/map'
 import moment from 'moment'
 import Transactions from './transactions/Transactions'
 import {
@@ -10,9 +11,18 @@ import {
 } from '../../modules/transactions/actions'
 
 
+const mapAccountsToFilters = accounts => (
+
+    map(accounts, account => ({
+        text: account.name,
+        value: account
+    }))
+)
+
 const mapStateToProps = ({ transactions }) => {
 
     return {
+        accountFilters: mapAccountsToFilters(transactions.accounts),
         accounts: transactions.accounts,
         dateRange: transactions.dateRange,
         defaultDateRange: transactions.defaultDateRange,

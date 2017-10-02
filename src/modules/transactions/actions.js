@@ -48,6 +48,12 @@ export const changeDateRange = range => ({
     payload: range
 })
 
+export const changeTransactionsFilter = filter => ({
+
+    type: types.CHANGE_FILTER,
+    payload: filter
+})
+
 const normalizeAccounts = accountsArray => reduce(accountsArray, (acc, curr) => {
 
     acc[curr.account_id] = curr

@@ -4,10 +4,11 @@ import types from './types'
 
 const initialState = {
     accounts: [],
+    dateRange: [],
+    defaultDateRange: [],
+    filter: '',
     loading: false,
     transactions: [],
-    dateRange: [],
-    defaultDateRange: []
 }
 
 const transactionsReducer = (state = initialState, action) => {
@@ -45,6 +46,12 @@ const transactionsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 dateRange: action.payload
+            }
+
+        case types.CHANGE_FILTER:
+            return {
+                ...state,
+                filter: action.payload 
             }
 
         default:
