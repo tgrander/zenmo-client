@@ -1,16 +1,21 @@
+import { Collapse } from 'antd'
+import map from 'lodash/map'
 import propTypes from 'prop-types'
 import React from 'react'
 import Card from 'shared/components/Card'
-import { Collapse } from 'antd'
+import Category from './Category'
+
 
 import './Categories.css'
 
-const Panel = Collapse.Panel
+
+const { Panel } = Collapse
 
 class Categories extends React.PureComponent {
 
     static propTypes = {
-        isLoading: propTypes.bool
+        changeTransactionsFilter: propTypes.func.isRequired,
+        isLoading: propTypes.bool.isRequired
     }
 
     render() {
@@ -25,9 +30,22 @@ class Categories extends React.PureComponent {
                     title: 'Categories'
                 }}>
 
-                    <Collapse>
+                    <Collapse {...{
+                            bordered: false,
+                            onChange: e => console.log(e)
+                        }}>
 
-
+                        {map(props.categories, (value, key) => (
+                            <Panel {...{
+                                    header: <Category {...{
+                                        amount: value.toFixed(2),
+                                        name: key
+                                    }}/>,
+                                    key
+                                }}>
+                                <p>{'category info'}</p>
+                            </Panel>
+                        ))}
 
                     </Collapse>
 

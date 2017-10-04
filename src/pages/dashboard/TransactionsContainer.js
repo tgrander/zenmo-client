@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import withHandlers from 'recompose/withHandlers'
 import pipe from 'lodash/fp/flow'
+import chain from 'lodash/chain'
 import map from 'lodash/map'
 import moment from 'moment'
 import Transactions from './transactions/Transactions'
@@ -21,7 +22,12 @@ const mapAccountsToFilters = accounts => (
     }))
 )
 
+const mapTransactionToRowData = transaction => ({
+
+})
+
 const mapTransactionsToTableDataSource = transactionsData => (
+
 
     map(transactionsData.transactions, transaction => ({
 

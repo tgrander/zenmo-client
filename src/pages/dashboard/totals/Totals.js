@@ -10,9 +10,9 @@ import './Totals.css'
 class Totals extends React.PureComponent {
 
     static propTypes = {
-        accounts: propTypes.object.isRequired,
+        accounts: propTypes.array.isRequired,
         accountTotals: propTypes.array.isRequired,
-        totalOfAllAccounts: propTypes.number.isRequired
+        totalOfAllAccounts: propTypes.string.isRequired
     }
 
     render() {

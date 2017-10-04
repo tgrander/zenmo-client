@@ -2,6 +2,9 @@ import { connect } from 'react-redux'
 import withHandlers from 'recompose/withHandlers'
 import pipe from 'lodash/fp/flow'
 import Categories from './categories/Categories'
+import {
+    changeTransactionsFilter
+} from 'modules/transactions/actions'
 
 
 const mapStateToProps = ({ categories }) => {
@@ -15,7 +18,7 @@ const mapStateToProps = ({ categories }) => {
 const redux = connect(
     mapStateToProps,
     {
-
+        changeTransactionsFilter
     }
 )
 

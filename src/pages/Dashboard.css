@@ -16,7 +16,8 @@
 }
 
 .dashboard > :not(:last-child) {
-    margin-right: 24px;
+
+    margin-right: 12px;
 }
 
 .left-column {

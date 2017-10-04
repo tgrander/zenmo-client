@@ -4,12 +4,13 @@ import moment from 'moment'
 import { Observable } from 'rxjs/Observable'
 import types from './types'
 import {
+    fetchTransactions,
     fetchTransactionsError,
     fetchTransactionsSuccess,
     loadingTransactions
 } from './actions'
 
-const fetchTransactions = async (dateRange) => {
+const fetchTransactionsRequest = async (dateRange) => {
 
     return await axios.post('/plaid/transactions', { dateRange })
 }
@@ -21,7 +22,7 @@ const transactionsEpic = (action$, store) => {
 
             const dateRange = store.getState().transactions.dateRange
 
-            return Observable.fromPromise(fetchTransactions(dateRange))
+            return Observable.fromPromise(fetchTransactionsRequest(dateRange))
                 .map(res => res.data.transactions)
                 .flatMap(transactionsData => {
 
@@ -30,7 +31,7 @@ const transactionsEpic = (action$, store) => {
                     )
                 })
                 .catch(error => Observable.of(fetchTransactionsError(error)))
-                .startWith(loadingTransactions())
+                .startWith(fetchTransactions())
         })
 }
 

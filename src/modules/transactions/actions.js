@@ -4,10 +4,7 @@ import moment from 'moment'
 import types from './types'
 
 
-export const fetchTransactions = () => ({
-
-    type: types.FETCH_TRANSACTIONS
-})
+export const fetchTransactions = () => ({ type: types.FETCH_TRANSACTIONS })
 
 export const fetchTransactionsError = error => ({
 

@@ -16,18 +16,18 @@ const transactionsReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
+        case types.FETCH_TRANSACTIONS:
+            return {
+                ...state,
+                isLoading: true
+            }
+
         case types.TRANSACTIONS_FETCH_SUCCESS:
             return {
                 ...state,
                 accounts: action.accounts,
                 isLoading: false,
                 transactions: action.transactions
-            }
-
-        case types.LOADING_TRANSACTIONS:
-            return {
-                ...state,
-                isLoading: true
             }
 
         case types.TRANSACTIONS_FETCH_FAILURE:
@@ -52,7 +52,7 @@ const transactionsReducer = (state = initialState, action) => {
         case types.CHANGE_FILTER:
             return {
                 ...state,
-                filters: uniq([...state.filters, action.payload])
+                filters: action.payload
             }
 
         default:

@@ -15,6 +15,7 @@ export default (state = initialState, action) => {
 
         case transactionTypes.FETCH_TRANSACTIONS:
             return {
+                ...state,
                 isLoading: true
             }
 
