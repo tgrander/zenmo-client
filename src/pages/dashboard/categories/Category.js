@@ -1,5 +1,6 @@
 import propTypes from 'prop-types'
 import React from 'react'
+import CategoryFilters from 'constants/transactions/category-filters'
 
 import './Category.css'
 
@@ -14,6 +15,10 @@ class Category extends React.PureComponent {
         onResetQuickDisplayFilter: propTypes.func.isRequired
     }
 
+    state = {
+        selected: false
+    }
+
     onChangeQuickDisplayFilter = () => {
 
         this.props.onChangeQuickDisplayFilter(this.props.category)
@@ -21,7 +26,14 @@ class Category extends React.PureComponent {
 
     onChangeTransactionsFilter = () => {
 
-        this.props.onChangeTransactionsFilter(this.props.category)
+        if (this.state.selected) {
+            this.props.onChangeTransactionsFilter(CategoryFilters.ALL)
+
+        } else {
+            this.props.onChangeTransactionsFilter(this.props.category)
+        }
+
+        return this.setState({selected: !this.state.selected})
     }
 
     render() {
@@ -29,11 +41,12 @@ class Category extends React.PureComponent {
         const {
             props,
             onChangeQuickDisplayFilter,
-            onChangeTransactionsFilter
+            onChangeTransactionsFilter,
+            state
         } = this
 
         return (
-            <div {...{
+            <div style={{backgroundColor: state.selected && '#1DE9B6'}} {...{
                 className: "category",
                 onClick: onChangeTransactionsFilter,
                 onMouseEnter: onChangeQuickDisplayFilter,
