@@ -1,5 +1,6 @@
 import reduce from 'lodash/reduce'
 import types from './types'
+import CategoryTypes from 'constants/categories/category-types'
 
 
 const reduceTransactionsToCategories = transactions => {
@@ -8,7 +9,7 @@ const reduceTransactionsToCategories = transactions => {
 
         const category = transaction.category
             ? transaction.category[0]
-            : 'undefined'
+            : CategoryTypes.UNDEFINED
 
         const amount = transaction.amount || 0
 

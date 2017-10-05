@@ -8,6 +8,7 @@ import filter from 'lodash/filter'
 import moment from 'moment'
 import Transactions from './transactions/Transactions'
 import CategoryFilters from 'constants/transactions/category-filters'
+import CategoryTypes from 'constants/categories/category-types'
 import {
     changeDateRange,
     changeTransactionsFilter,
@@ -25,6 +26,13 @@ const mapAccountsToFilters = accounts => (
     }))
 )
 
+const getTransactionCategory = transaction => (
+
+    transaction.category
+        ? head(transaction.category)
+        : CategoryTypes.UNDEFINED
+)
+
 const filterTransactionsByCategory = (transactions, categoryFilter) => {
 
     if (categoryFilter === CategoryFilters.ALL) {
@@ -33,7 +41,7 @@ const filterTransactionsByCategory = (transactions, categoryFilter) => {
 
     return filter(transactions, transaction => {
 
-        return transaction.category && head(transaction.category) === categoryFilter
+        return categoryFilter === getTransactionCategory(transaction)
     })
 }
 
