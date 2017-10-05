@@ -1,13 +1,14 @@
 import isEmpty from 'lodash/isEmpty'
 import types from './types'
 import uniq from 'lodash/uniq'
+import CategoryFilters from 'constants/transactions/category-filters'
 
 
 const initialState = {
     accounts: [],
     dateRange: [],
     defaultDateRange: [],
-    filters: [],
+    filter: CategoryFilters.ALL,
     isLoading: false,
     transactions: [],
 }
@@ -52,7 +53,7 @@ const transactionsReducer = (state = initialState, action) => {
         case types.CHANGE_FILTER:
             return {
                 ...state,
-                filters: action.payload
+                filter: action.payload
             }
 
         default:

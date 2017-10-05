@@ -36,13 +36,17 @@ class Categories extends React.PureComponent {
                         }}>
 
                         {map(props.categories, (value, key) => (
+
                             <Panel {...{
-                                    header: <Category {...{
+                                header: (
+                                    <Category {...{
                                         amount: value.toFixed(2),
-                                        name: key
-                                    }}/>,
-                                    key
-                                }}>
+                                        category: key,
+                                        onChangeTransactionsFilter: props.changeTransactionsFilter
+                                    }}/>
+                                ),
+                                key
+                            }}>
                                 <p>{'category info'}</p>
                             </Panel>
                         ))}

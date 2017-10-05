@@ -58,6 +58,8 @@ class Transactions extends React.PureComponent {
 
         const { getColumns, props } = this
 
+        console.log('TRANSACTIONS: ', props.transactions)
+
         return (
 
             <div className="transactions-wrapper">
