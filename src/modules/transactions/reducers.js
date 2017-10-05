@@ -9,6 +9,7 @@ const initialState = {
     dateRange: [],
     defaultDateRange: [],
     filter: CategoryFilters.ALL,
+    quickDisplayFilter: CategoryFilters.ALL,
     isLoading: false,
     transactions: [],
 }
@@ -54,6 +55,18 @@ const transactionsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 filter: action.payload
+            }
+
+        case types.CHANGE_QUICK_DISPLAY_FILTER:
+            return {
+                ...state,
+                quickDisplayFilter: action.payload
+            }
+
+        case types.RESET_QUICK_DISPLAY_FILTER:
+            return {
+                ...state,
+                quickDisplayFilter: CategoryFilters.ALL
             }
 
         default:

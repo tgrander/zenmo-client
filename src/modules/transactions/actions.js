@@ -51,6 +51,17 @@ export const changeTransactionsFilter = filter => ({
     payload: filter
 })
 
+export const changeQuickDisplayFilter = filter => ({
+
+    type: types.CHANGE_QUICK_DISPLAY_FILTER,
+    payload: filter
+})
+
+export const resetQuickDisplayFilter = filter => ({
+
+    type: types.RESET_QUICK_DISPLAY_FILTER
+})
+
 const normalizeAccounts = accountsArray => reduce(accountsArray, (acc, curr) => {
 
     acc[curr.account_id] = curr

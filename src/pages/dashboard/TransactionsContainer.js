@@ -39,9 +39,13 @@ const filterTransactionsByCategory = (transactions, categoryFilter) => {
 
 const mapTransactionsToTableDataSource = transactionsData => {
 
+    const categoryFilter = transactionsData.quickDisplayFilter === CategoryFilters.ALL
+        ? transactionsData.filter
+        : transactionsData.quickDisplayFilter
+
     const transactions = filterTransactionsByCategory(
         transactionsData.transactions,
-        transactionsData.filter
+        categoryFilter
     )
 
     return map(transactions, transaction => ({

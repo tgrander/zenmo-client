@@ -3,7 +3,9 @@ import withHandlers from 'recompose/withHandlers'
 import pipe from 'lodash/fp/flow'
 import Categories from './categories/Categories'
 import {
-    changeTransactionsFilter
+    changeTransactionsFilter,
+    changeQuickDisplayFilter,
+    resetQuickDisplayFilter
 } from 'modules/transactions/actions'
 
 
@@ -18,7 +20,9 @@ const mapStateToProps = ({ categories }) => {
 const redux = connect(
     mapStateToProps,
     {
-        changeTransactionsFilter
+        changeTransactionsFilter,
+        changeQuickDisplayFilter,
+        resetQuickDisplayFilter
     }
 )
 

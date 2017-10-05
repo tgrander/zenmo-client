@@ -15,6 +15,8 @@ class Categories extends React.PureComponent {
 
     static propTypes = {
         changeTransactionsFilter: propTypes.func.isRequired,
+        changeQuickDisplayFilter: propTypes.func.isRequired,
+        resetQuickDisplayFilter: propTypes.func.isRequired,
         isLoading: propTypes.bool.isRequired
     }
 
@@ -42,6 +44,8 @@ class Categories extends React.PureComponent {
                                     <Category {...{
                                         amount: value.toFixed(2),
                                         category: key,
+                                        onChangeQuickDisplayFilter: props.changeQuickDisplayFilter,
+                                        onResetQuickDisplayFilter: props.resetQuickDisplayFilter,
                                         onChangeTransactionsFilter: props.changeTransactionsFilter
                                     }}/>
                                 ),
