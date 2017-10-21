@@ -2,6 +2,7 @@ import axios from 'axios'
 import reduce from 'lodash/reduce'
 import moment from 'moment'
 import types from './types'
+import getCurrentMonth from 'utils/getCurrentMonth'
 
 
 export const fetchTransactions = () => ({ type: types.FETCH_TRANSACTIONS })
@@ -24,17 +25,11 @@ export const loadingTransactions = () => ({ type: types.LOADING_TRANSACTIONS })
 
 export const getDateRangeDefaultValue = () => {
 
-    const date = new Date()
-    const y = date.getFullYear()
-    const m = date.getMonth();
-    const firstDay = new Date(y, m, 1);
-    const lastDay = new Date(y, m + 1, 0);
-    const startDate = moment(firstDay)
-    const endDate = moment(lastDay)
+    const dateRange = getCurrentMonth()
 
     return {
         type: types.SET_DEFAULT_TRANSACTIONS_DATE_RANGE,
-        payload: [startDate, endDate]
+        payload: [dateRange.startDate, dateRange.endDate]
     }
 }
 
