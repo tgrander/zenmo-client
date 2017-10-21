@@ -2,3 +2,7 @@
 .transaction-filters {
     width: 100%;
 }
+
+.transactions-wrapper > :not(:last-child) {
+    margin-bottom: 12px;
+}

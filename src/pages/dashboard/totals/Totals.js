@@ -1,3 +1,4 @@
+import isEmpty from 'lodash/isEmpty'
 import map from 'lodash/map'
 import propTypes from 'prop-types'
 import React from 'react'
@@ -39,7 +40,7 @@ class Totals extends React.PureComponent {
                     {map(props.accountTotals, ({ account, total }) => (
 
                             <AccountTotal {...{
-                                account: props.accounts[account].name,
+                                account: !isEmpty(props.accounts) && props.accounts[account].name,
                                 total: total,
                                 key: account
                             }} />

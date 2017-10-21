@@ -1,15 +1,16 @@
+import axios from 'axios'
 import enUS from 'antd/lib/locale-provider/en_US'
-import { Layout, LocaleProvider } from 'antd'
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import { Layout, LocaleProvider, Menu } from 'antd'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import 'rxjs'
 import Dashboard from './pages/Dashboard'
 import SignUp from './pages/Signup'
 import Login from './pages/Login'
-import registerServiceWorker from './registerServiceWorker';
-import store from './store';
+import registerServiceWorker from './registerServiceWorker'
+import store from './store'
 
 import './index.css'
 
@@ -24,10 +25,23 @@ function Root() {
     <Provider store={store}>
         <LocaleProvider locale={enUS}>
             <Router>
-                
+
                 <Layout style={heightStyle}>
 
-                    <Header>Header</Header>
+                    <Header>
+                        <Menu {...{
+                            theme: "dark",
+                            mode: "horizontal",
+                            defaultSelectedKeys: [],
+                            style: { lineHeight: '64px' }
+                        }}>
+                            <Menu.Item key={1}>
+                                <div onClick={e => axios.post('/plaid/historical-transactions')}>
+                                    Historical Transactions
+                                </div>
+                            </Menu.Item>
+                        </Menu>
+                    </Header>
 
                     <Layout style={heightStyle}>
 
@@ -50,6 +64,6 @@ function Root() {
   )
 }
 
-ReactDOM.render(<Root/>, document.getElementById('root'));
+ReactDOM.render(<Root/>, document.getElementById('root'))
 
-registerServiceWorker();
+registerServiceWorker()

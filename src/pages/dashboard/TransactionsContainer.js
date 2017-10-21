@@ -58,7 +58,9 @@ const mapTransactionsToTableDataSource = transactionsData => {
 
     return map(transactions, transaction => ({
 
-        account: transactionsData.accounts[transaction.account_id].name,
+        account: transactionsData.accounts
+            ? transactionsData.accounts[transaction.account_id].name
+            : null,
         amount: transaction.amount,
         category: getTransactionCategory(transaction),
         date: moment(transaction.date).format('MMM Do, YYYY'),

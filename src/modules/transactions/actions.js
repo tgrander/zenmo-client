@@ -12,12 +12,11 @@ export const fetchTransactionsError = error => ({
     error
 })
 
-export const fetchTransactionsSuccess = transactionsData => ({
+export const fetchTransactionsSuccess = transactions => ({
 
     type: types.TRANSACTIONS_FETCH_SUCCESS,
-    accounts: normalizeAccounts(transactionsData.accounts),
-    transactions: transactionsData.transactions.sort(
-        (a,b) => new Date(b.date) - new Date(a.date)
+    transactions: transactions.sort(
+        (a,b) => b.date - a.date
     )
 })
 

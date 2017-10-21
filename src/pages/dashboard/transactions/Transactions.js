@@ -1,6 +1,7 @@
 import { Table, DatePicker } from 'antd';
 import React from 'react'
 import propTypes from 'prop-types'
+import tableColumns from 'models/transactions/table-columns'
 
 import './Transactions.css'
 
@@ -20,35 +21,6 @@ class Transactions extends React.PureComponent {
         transactions: propTypes.array.isRequired
     }
 
-    getColumns = () => ([{
-            dataIndex: 'date',
-            key: 'date',
-            title: 'Date',
-            width: 100,
-        }, {
-            dataIndex: 'description',
-            key: 'description',
-            title: 'Description',
-            width: 230,
-        }, {
-            dataIndex: 'account',
-            filters: this.props.accountFilters,
-            key: 'account',
-            title: 'Account',
-            width: 150,
-            onFilter: this.props.changeTransactionsFilter
-        }, {
-            dataIndex: 'amount',
-            key: 'amount',
-            title: 'Amount',
-            width: 100,
-        }, {
-            dataIndex: 'category',
-            key: 'category',
-            title: 'Category',
-            width: 120,
-    }])
-
     componentWillMount() {
 
         this.props.getDateRangeDefaultValue()
@@ -56,9 +28,7 @@ class Transactions extends React.PureComponent {
 
     render() {
 
-        const { getColumns, props } = this
-
-        console.log('TRANSACTIONS: ', props.transactions)
+        const { props } = this
 
         return (
 
@@ -72,7 +42,10 @@ class Transactions extends React.PureComponent {
                 }} />
 
                 <Table {...{
-                    columns: getColumns(),
+                    columns: tableColumns({
+                        accountFilters: props.accountFilters,
+                        changeTransactionsFilter: props.changeTransactionsFilter
+                    }),
                     dataSource: props.transactions,
                     loading: props.isLoading,
                     pagination: false,

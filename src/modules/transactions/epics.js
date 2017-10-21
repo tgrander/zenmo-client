@@ -10,10 +10,13 @@ import {
     loadingTransactions
 } from './actions'
 
-const fetchTransactionsRequest = async (dateRange) => {
 
-    return await axios.post('/plaid/transactions', { dateRange })
+const fetchTransactionsRequest = async (dateRange = {}) => {
+
+    return await axios.post('/transactions/get', { dateRange })
+        .then(res => res.data)
 }
+
 
 const transactionsEpic = (action$, store) => {
 
@@ -22,8 +25,7 @@ const transactionsEpic = (action$, store) => {
 
             const dateRange = store.getState().transactions.dateRange
 
-            return Observable.fromPromise(fetchTransactionsRequest(dateRange))
-                .map(res => res.data.transactions)
+            return Observable.fromPromise(fetchTransactionsRequest())
                 .flatMap(transactionsData => {
 
                     return Observable.of(
