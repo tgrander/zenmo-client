@@ -17,7 +17,7 @@ export const fetchTransactionsSuccess = transactions => ({
 
     type: types.TRANSACTIONS_FETCH_SUCCESS,
     transactions: transactions.sort(
-        (a,b) => b.date - a.date
+        (a,b) => new Date(b.date) - new Date(a.date)
     )
 })
 
