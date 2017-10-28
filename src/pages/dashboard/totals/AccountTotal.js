@@ -9,6 +9,7 @@ const AccountTotal = ({ account, total }) => (
     <div className="total-row">
         <div className="account-label">{account}</div>
         <div className="account-total">{total}</div>
+        <div></div>
     </div>
 )
 

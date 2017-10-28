@@ -21,7 +21,6 @@ class Dashboard extends React.PureComponent {
         return (
             <div className="dashboard">
                 <div className="left-column">
-                    <Totals />
                     <Categories />
                 </div>
                 <div className="right-column">

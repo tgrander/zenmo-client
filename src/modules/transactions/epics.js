@@ -11,10 +11,12 @@ import {
 } from './actions'
 
 
-const fetchTransactionsRequest = async (dateRange = {}) => {
+const fetchTransactionsRequest = async (dateRange = {}) => {  
 
     return await axios.post('/transactions/get', { dateRange })
-        .then(res => res.data)
+        .then(res => {
+            return res.data
+        })
 }
 
 

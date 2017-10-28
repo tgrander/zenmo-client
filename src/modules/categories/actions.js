@@ -24,7 +24,57 @@ const reduceTransactionsToCategories = transactions => {
     }, {})
 }
 
+const primaryCategories = {
+    'Venmo': true,
+    'Payment': true,
+    'Restaurants': true,
+    'Supermarkets and Groceries': true,
+    'Taxi': true,
+    'Wine and Spirits': true,
 
+}
+
+export const  displayAllCategories = (transactions) => {
+
+    const allCategories = transactions.reduce((acc, curr) => {
+
+        Object.keys(curr.category).forEach(category => {
+
+            if (!acc[category]) {
+                acc[category] = true
+            }
+        })
+
+        return acc
+
+    }, {})
+
+    const categoryPairs = transactions.reduce((acc, curr) => {
+
+        const category = `${Object.keys(curr.category)}`
+
+        if (!acc[category]) {
+            acc[category] = [curr]
+        } else {
+            acc[category].push(curr)
+        }
+
+        return acc
+
+    }, {})
+
+    console.log('ALL CATEGORIES: ', allCategories)
+    console.log('CATEGORY PAIRS: ', categoryPairs)
+}
+
+const categorize = transactions => {
+
+    return reduce(transactions, (acc, curr) => {
+
+
+
+    }, {})
+}
 
 export const categorizeTransactions = transactions => ({
 
