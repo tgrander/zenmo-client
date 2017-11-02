@@ -6,18 +6,10 @@ import types from './types'
 import {
     fetchTransactions,
     fetchTransactionsError,
+    fetchTransactionsRequest,
     fetchTransactionsSuccess,
     loadingTransactions
 } from './actions'
-
-
-const fetchTransactionsRequest = async (dateRange = {}) => {  
-
-    return await axios.post('/transactions/get', { dateRange })
-        .then(res => {
-            return res.data
-        })
-}
 
 
 const transactionsEpic = (action$, store) => {
@@ -25,14 +17,10 @@ const transactionsEpic = (action$, store) => {
     return action$.ofType(types.SET_DEFAULT_TRANSACTIONS_DATE_RANGE)
         .mergeMap(() => {
 
-            const dateRange = store.getState().transactions.dateRange
-
             return Observable.fromPromise(fetchTransactionsRequest())
-                .flatMap(transactionsData => {
+                .flatMap(transactions => {
 
-                    return Observable.of(
-                        fetchTransactionsSuccess(transactionsData)
-                    )
+                    return Observable.of(fetchTransactionsSuccess(transactions))
                 })
                 .catch(error => Observable.of(fetchTransactionsError(error)))
                 .startWith(fetchTransactions())

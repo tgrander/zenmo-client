@@ -3,7 +3,14 @@ import reduce from 'lodash/reduce'
 import moment from 'moment'
 import types from './types'
 import getCurrentMonth from 'utils/getCurrentMonth'
+import endpoints from './endpoints'
 
+export const fetchTransactionsRequest = async (dateRange={}) => {
+
+    const transactions = await endpoints.get()
+
+    return transactions
+}
 
 export const fetchTransactions = () => ({ type: types.FETCH_TRANSACTIONS })
 

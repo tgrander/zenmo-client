@@ -11,9 +11,7 @@ import './Dashboard.css'
 class Dashboard extends React.PureComponent {
 
     componentWillMount() {
-
-        axios.post('/plaid/accounts')
-            .then(res => console.log('ACCOUNTS RES: ', res))
+        
     }
 
     render() {
