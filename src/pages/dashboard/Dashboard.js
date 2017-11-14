@@ -5,17 +5,14 @@ import React from 'react'
 import Categories from './CategoriesContainer'
 import Transactions from './TransactionsContainer'
 import Totals from './TotalsContainer'
-import moment from 'moment'
 
 import './Dashboard.css'
 
 
-const dateFormat = 'MM/DD/YYYY'
-
 class Dashboard extends React.PureComponent {
 
     componentWillMount() {
-
+        this.props.getDateRangeDefaultValue()
     }
 
     render() {
@@ -25,13 +22,12 @@ class Dashboard extends React.PureComponent {
         return (
             <div className="dashboard">
                 <div className="dashboard-filter">
-                    <DatePicker.RangePicker
-                      defaultValue={[
-                          moment(props.defaultDateRange[0], dateFormat),
-                          moment(props.defaultDateRange[1], dateFormat)
-                      ]}
-                      format={dateFormat}
-                    />
+                    <DatePicker.RangePicker {...{
+                        defaultValue: props.defaultDateRange,
+                        format: 'MM-DD-YYYY',
+                        value: props.dateRange,
+                        onChange: props.changeDateRange
+                    }} />
                 </div>
                 <div className="dashboard-content">
                     <div className="left-column">

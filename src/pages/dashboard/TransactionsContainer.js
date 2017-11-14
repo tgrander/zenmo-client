@@ -10,10 +10,8 @@ import Transactions from './transactions/Transactions'
 import CategoryFilters from 'constants/transactions/category-filters'
 import CategoryTypes from 'constants/categories/category-types'
 import {
-    changeDateRange,
     changeTransactionsFilter,
     fetchTransactions,
-    getDateRangeDefaultValue
 } from '../../modules/transactions/actions'
 
 
@@ -88,9 +86,7 @@ const reduxActions = {
 const redux = connect(
     mapStateToProps,
     {
-        changeDateRange,
         changeTransactionsFilter,
-        getDateRangeDefaultValue,
         fetchTransactions
     }
 )

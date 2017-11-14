@@ -21,11 +21,6 @@ class Transactions extends React.PureComponent {
         transactions: propTypes.array.isRequired
     }
 
-    componentWillMount() {
-
-        this.props.getDateRangeDefaultValue()
-    }
-
     render() {
 
         const { props } = this
