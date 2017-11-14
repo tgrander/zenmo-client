@@ -41,10 +41,7 @@ const transactionsEpic = (action$, store) => {
             const [ startDate, endDate ] = store.getState().transactions.dateRange
 
             return Observable.fromPromise(fetchTransactions(db, startDate, endDate))
-                .flatMap(transactions => {
-
-                    return Observable.of(fetchTransactionsSuccess(transactions))
-                })
+                .flatMap(transactions => Observable.of(fetchTransactionsSuccess(transactions)))
                 .catch(error => Observable.of(fetchTransactionsError(error)))
         })
 }

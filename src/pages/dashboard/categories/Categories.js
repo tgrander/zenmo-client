@@ -42,7 +42,7 @@ class Categories extends React.PureComponent {
                             <Panel {...{
                                 header: (
                                     <Category {...{
-                                        amount: value.toFixed(2),
+                                        // amount: value.toFixed(2),
                                         category: key,
                                         onChangeQuickDisplayFilter: props.changeQuickDisplayFilter,
                                         onResetQuickDisplayFilter: props.resetQuickDisplayFilter,

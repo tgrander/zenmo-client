@@ -1,6 +1,7 @@
 import reduce from 'lodash/reduce'
 import types from './types'
 import CategoryTypes from 'constants/categories/category-types'
+import { db } from '../../firebase'
 
 
 const reduceTransactionsToCategories = transactions => {
@@ -22,16 +23,6 @@ const reduceTransactionsToCategories = transactions => {
         return categories
 
     }, {})
-}
-
-const primaryCategories = {
-    'Venmo': true,
-    'Payment': true,
-    'Restaurants': true,
-    'Supermarkets and Groceries': true,
-    'Taxi': true,
-    'Wine and Spirits': true,
-
 }
 
 export const  displayAllCategories = (transactions) => {
@@ -67,17 +58,23 @@ export const  displayAllCategories = (transactions) => {
     console.log('CATEGORY PAIRS: ', categoryPairs)
 }
 
-const categorize = transactions => {
-
-    return reduce(transactions, (acc, curr) => {
-
-
-
-    }, {})
-}
-
 export const categorizeTransactions = transactions => ({
 
     type: types.CATEGORIZE_TRANSACTIONS,
     categories: reduceTransactionsToCategories(transactions)
+})
+
+export const fetchCategories = () => db.collection('categories').get()
+
+export const fetchCategoriesSuccess = categoriesSnapshot => {
+
+    return {
+        type: types.FETCH_CATEGORIES_SUCCESS,
+        categories: categoriesSnapshot.docs.map(doc => doc.data())
+    }
+}
+
+export const fetchCategoriesFailure = error => ({
+    type: types.FETCH_CATEGORIES_FAILURE,
+    error
 })

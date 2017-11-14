@@ -4,13 +4,11 @@ import transactionTypes from '../transactions/types'
 
 const initialState = {
     isLoading: false,
-    categories: {}
+    categories: []
 }
 
 const categoriesReducer = (state = initialState, action) => {
-
     switch (action.type) {
-
         case transactionTypes.FETCH_TRANSACTIONS:
             return {
                 isLoading: true
@@ -21,6 +19,13 @@ const categoriesReducer = (state = initialState, action) => {
                 ...state,
                 categories: action.categories,
                 isLoading: false
+            }
+
+        case types.FETCH_CATEGORIES_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                categories: action.categories
             }
 
         default:
