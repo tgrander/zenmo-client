@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import 'rxjs'
-import Dashboard from './pages/Dashboard'
+import DashboardContainer from './pages/DashboardContainer'
 import SignUp from './pages/Signup'
 import Login from './pages/Login'
 import registerServiceWorker from './registerServiceWorker'
@@ -49,10 +49,10 @@ function Root() {
 
                         <Content style={heightStyle}>
 
-                            <Route exact path="/" component={Dashboard} />
+                            <Route exact path="/" component={DashboardContainer} />
                             <Route path="/signup" component={SignUp} />
                             <Route path="/signin" component={Login} />
-                            <Route path="/dashboard" component={Dashboard} />
+                            <Route path="/dashboard" component={DashboardContainer} />
 
                         </Content>
                     </Layout>

@@ -1,4 +1,4 @@
-import { Table, DatePicker } from 'antd';
+import { Table } from 'antd';
 import React from 'react'
 import propTypes from 'prop-types'
 import tableColumns from 'models/transactions/table-columns'
@@ -33,13 +33,6 @@ class Transactions extends React.PureComponent {
         return (
 
             <div className="transactions-wrapper">
-
-                <DatePicker.RangePicker {...{
-                    defaultValue: props.defaultDateRange,
-                    format: 'MM-DD-YYYY',
-                    value: props.dateRange,
-                    onChange: props.changeDateRange
-                }} />
 
                 <Table {...{
                     columns: tableColumns({

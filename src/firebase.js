@@ -2,8 +2,6 @@ import firebase from 'firebase'
 import firestore from 'firebase/firestore'
 
 
-// initialize firebase with config
-
 const config = {
     apiKey: 'AIzaSyCFPewesJRgBv_Q6cYykthNipoOfCWcHb4',
     authDomain: 'zenmo-7c62a.firebaseapp.com',
@@ -15,13 +13,6 @@ const config = {
 
 firebase.initializeApp(config)
 
-
-// firebase services
-
 export const db = firebase.firestore()
 
-export const database = firebase.database()
-
 export const auth = firebase.auth()
-
-export const googleAuthProvider = new firebase.auth.GoogleAuthProvider()

@@ -1,7 +1,7 @@
 import { combineEpics } from 'redux-observable'
-import {totalsEpic} from './totals/epics'
+import { totalsEpic } from './totals/epics'
 import transactionsEpic from './transactions/epics'
-import {categoriesEpic} from './categories/epics'
+import { categoriesEpic } from './categories/epics'
 
 
 export default combineEpics(

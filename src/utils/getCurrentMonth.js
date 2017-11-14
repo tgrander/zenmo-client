@@ -10,8 +10,8 @@ const getCurrentMonth = () => {
     const lastDay = new Date(y, m + 1, 0);
 
     return {
-        startDate: moment(firstDay),
-        endDate: moment(lastDay)
+        startDate: firstDay,
+        endDate: lastDay
     }
 }
 
