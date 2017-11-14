@@ -26,7 +26,7 @@ class Dashboard extends React.PureComponent {
                         defaultValue: props.defaultDateRange,
                         format: 'MM-DD-YYYY',
                         value: props.dateRange,
-                        onChange: props.changeDateRange
+                        onChange: props.onChangeDate
                     }} />
                 </div>
                 <div className="dashboard-content">
