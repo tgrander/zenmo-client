@@ -35,7 +35,7 @@ const fetchTransactions = (db, startDate, endDate) => new Promise((resolve, reje
 
 const transactionsEpic = (action$, store) => {
 
-    return action$.ofType(types.SET_DEFAULT_TRANSACTIONS_DATE_RANGE)
+    return action$.ofType(types.SET_DEFAULT_TRANSACTIONS_DATE_RANGE, types.CHANGE_DATE_RANGE)
         .mergeMap(() => {
 
             const [ startDate, endDate ] = store.getState().transactions.dateRange
