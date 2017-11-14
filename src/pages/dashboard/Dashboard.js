@@ -10,7 +10,7 @@ import moment from 'moment'
 import './Dashboard.css'
 
 
-const dateFormat = 'MMM Do, YYYY'
+const dateFormat = 'MM/DD/YYYY'
 
 class Dashboard extends React.PureComponent {
 
