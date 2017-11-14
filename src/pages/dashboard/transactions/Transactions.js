@@ -26,13 +26,15 @@ class Transactions extends React.PureComponent {
         const { props } = this
 
         return (
-
+            /*
+            transactions are mapped to the table using the
+            mapTransactionsToTableDataSource function in TransactionsContainer
+            */
             <div className="transactions-wrapper">
 
                 <Table {...{
                     columns: tableColumns({
-                        accountFilters: props.accountFilters,
-                        changeTransactionsFilter: props.changeTransactionsFilter
+                        categories: props.categories
                     }),
                     dataSource: props.transactions,
                     loading: props.isLoading,

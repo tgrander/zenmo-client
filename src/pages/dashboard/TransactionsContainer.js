@@ -1,7 +1,5 @@
 import { connect } from 'react-redux'
-import withHandlers from 'recompose/withHandlers'
 import pipe from 'lodash/fp/flow'
-import chain from 'lodash/chain'
 import map from 'lodash/map'
 import head from 'lodash/head'
 import filter from 'lodash/filter'
@@ -13,6 +11,7 @@ import {
     changeTransactionsFilter,
     fetchTransactions,
 } from '../../modules/transactions/actions'
+import CategoriesMenu from './transactions/CategoriesMenu'
 
 
 const mapAccountsToFilters = accounts => (
@@ -43,7 +42,7 @@ const filterTransactionsByCategory = (transactions, categoryFilter) => {
     })
 }
 
-const mapTransactionsToTableDataSource = transactionsData => {
+const mapTransactionsToTableDataSource = (transactionsData, categories) => {
 
     const categoryFilter = transactionsData.quickDisplayFilter === CategoryFilters.ALL
         ? transactionsData.filter
@@ -60,22 +59,27 @@ const mapTransactionsToTableDataSource = transactionsData => {
             ? transactionsData.accounts[transaction.account_id].name
             : null,
         amount: transaction.amount,
-        category: getTransactionCategory(transaction),
+        category: {
+            primaryCategory: transaction.primaryCategory || 'Undefined',
+            subCategory: transaction.subCategory || 'Undefined',
+            menu: CategoriesMenu(categories)()
+        },
         date: moment(transaction.date).format('MMM Do, YYYY'),
         description: transaction.name,
         key: transaction.transaction_id,
     }))
 }
 
-const mapStateToProps = ({ transactions }) => {
+const mapStateToProps = ({ categories, transactions }) => {
 
     return {
         accountFilters: mapAccountsToFilters(transactions.accounts),
         accounts: transactions.accounts,
+        categories: categories.categories,
         dateRange: transactions.dateRange,
         defaultDateRange: transactions.defaultDateRange,
         isLoading: transactions.isLoading,
-        transactions: mapTransactionsToTableDataSource(transactions)
+        transactions: mapTransactionsToTableDataSource(transactions, categories.categories)
     }
 }
 
@@ -91,9 +95,6 @@ const redux = connect(
     }
 )
 
-const handlers = withHandlers({ })
-
 export default pipe(
-    // handlers,
     redux
 )(Transactions)

@@ -1,7 +1,8 @@
 import React from 'react'
+import Category from 'pages/dashboard/transactions/Category'
 
 
-export default ({ accountFilters, changeTransactionsFilter }) => ([{
+export default ({ categories }) => ([{
         dataIndex: 'date',
         key: 'date',
         title: 'Date',
@@ -13,11 +14,9 @@ export default ({ accountFilters, changeTransactionsFilter }) => ([{
         width: 230,
     }, {
         dataIndex: 'account',
-        filters: accountFilters,
         key: 'account',
         title: 'Account',
         width: 150,
-        onFilter: changeTransactionsFilter
     }, {
         dataIndex: 'amount',
         key: 'amount',
@@ -26,7 +25,7 @@ export default ({ accountFilters, changeTransactionsFilter }) => ([{
     }, {
         dataIndex: 'category',
         key: 'category',
-        render: text => <a href="#">{text}</a>,
+        render: ({ menu }) => <Category menu={menu}/>,
         title: 'Category',
         width: 120,
 }])
