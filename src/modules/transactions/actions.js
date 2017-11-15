@@ -70,3 +70,7 @@ const normalizeAccounts = accountsArray => reduce(accountsArray, (acc, curr) => 
     return acc
 
 }, {})
+
+export const updateCategoryOfSingleTransaction = ({ transaction, newPrimaryCategory, newSubCategory }) => ({
+    type: types.UPDATE_TRANSACTION_CATEGORY
+})

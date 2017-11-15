@@ -1,27 +1,30 @@
 import axios from 'axios'
-import { db } from 'firebase.js'
 
-
-const getTransactions = async (endpoint, userId) => {
-
-    const transactions = await axios.post(endpoint)
-
-    return transactions.data
-}
 
 const endpoint = '/transactions'
 
-const paths = {
+const post = async (endpoint, params={}) => {
+    const response = await axios.post(endpoint, params)
+    return response.data
+}
 
-    get: '/get'
+const paths = {
+    get: '/get',
+    updateSingleTransactionCategory: '/update-single-category',
+    updateAllTransactionCategories: '/update-all-categories'
 }
 
 const endpoints = {
-
-    get: endpoint + paths.get
+    get: endpoint + paths.get,
+    updateSingleTransactionCategory: endpoint + paths.updateSingleTransactionCategory,
+    updateAllTransactionCategories: endpoint + paths.updateAllTransactionCategories
 }
 
 export default {
 
-    get: () => getTransactions(endpoints.get)
+    get: () => post(endpoints.get),
+    updateSingleTransactionCategory: params =>
+        post(endpoints.updateSingleTransactionCategory, params),
+    updateAllTransactionCategories: params =>
+        post(endpoints.updateAllTransactionCategories, params)
 }

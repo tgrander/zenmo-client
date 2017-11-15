@@ -1,6 +1,7 @@
 import { Icon, Menu } from 'antd';
 import map from 'lodash/map'
 import isEmpty from 'lodash/isEmpty'
+import last from 'lodash/last'
 import propTypes from 'prop-types'
 import React from 'react'
 
@@ -15,8 +16,10 @@ class CategoriesMenu extends React.PureComponent {
         categories: propTypes.array.isRequired
     }
 
-    onClick = () => {
-        console.log(this.props.transaction);
+    onClick = ({ key, keyPath }) => {
+        const primaryCategory = last(keyPath)
+        const subCategory = key
+        const { name, category } = this.props.transaction
     }
 
     render(){
