@@ -41,8 +41,8 @@ class CategoriesMenu extends React.PureComponent {
                         key={category.name}
                         title={<span><Icon type="mail" /><span>{category.name}</span></span>}
                         onTitleClick={e => console.log(e)}>
-                        {map(category.subCategories, (value, categoryName) => (
-                                <Item key={categoryName}>{categoryName}</Item>
+                        {map(category.subCategories, (category) => (
+                                <Item key={category}>{category}</Item>
                             ))
                         }
                     </SubMenu>
