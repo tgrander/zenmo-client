@@ -64,7 +64,10 @@ export const categorizeTransactions = transactions => ({
     categories: reduceTransactionsToCategories(transactions)
 })
 
-export const fetchCategories = () => db.collection('categories').get()
+export const fetchCategories = () =>
+    db.collection('categories')
+        .orderBy('name')
+        .get()
 
 export const fetchCategoriesSuccess = categoriesSnapshot => {
 

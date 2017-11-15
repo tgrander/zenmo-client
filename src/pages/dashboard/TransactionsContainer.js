@@ -53,6 +53,8 @@ const mapTransactionsToTableDataSource = (transactionsData, categories) => {
         categoryFilter
     )
 
+    const categoriesMenu = CategoriesMenu(categories)
+
     return map(transactions, transaction => ({
 
         account: transactionsData.accounts
@@ -62,11 +64,12 @@ const mapTransactionsToTableDataSource = (transactionsData, categories) => {
         category: {
             primaryCategory: transaction.primaryCategory || 'Undefined',
             subCategory: transaction.subCategory || 'Undefined',
-            menu: CategoriesMenu(categories)()
+            menu: categoriesMenu(transaction)
         },
         date: moment(transaction.date).format('MMM Do, YYYY'),
         description: transaction.name,
         key: transaction.transaction_id,
+        transactionId: transaction.transaction_id,
     }))
 }
 

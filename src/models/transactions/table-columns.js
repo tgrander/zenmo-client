@@ -13,6 +13,12 @@ export default ({ categories }) => ([{
         title: 'Description',
         width: 230,
     }, {
+        dataIndex: 'category',
+        key: 'category',
+        render: ({ menu }) => <Category menu={menu}/>,
+        title: 'Category',
+        width: 120,
+    }, {
         dataIndex: 'account',
         key: 'account',
         title: 'Account',
@@ -22,10 +28,4 @@ export default ({ categories }) => ([{
         key: 'amount',
         title: 'Amount',
         width: 100,
-    }, {
-        dataIndex: 'category',
-        key: 'category',
-        render: ({ menu }) => <Category menu={menu}/>,
-        title: 'Category',
-        width: 120,
-}])
+    }])
