@@ -3,10 +3,7 @@ import axios from 'axios'
 
 const endpoint = '/transactions'
 
-const post = async (endpoint, params={}) => {
-    const response = await axios.post(endpoint, params)
-    return response.data
-}
+const post = (endpoint, params={}) => axios.post(endpoint, params)
 
 const paths = {
     get: '/get',
@@ -21,10 +18,7 @@ const endpoints = {
 }
 
 export default {
-
     get: () => post(endpoints.get),
-    updateSingleTransactionCategory: params =>
-        post(endpoints.updateSingleTransactionCategory, params),
-    updateAllTransactionCategories: params =>
-        post(endpoints.updateAllTransactionCategories, params)
+    updateSingleTransactionCategory: params => post(endpoints.updateSingleTransactionCategory, params),
+    updateAllTransactionCategories: params => post(endpoints.updateAllTransactionCategories, params)
 }

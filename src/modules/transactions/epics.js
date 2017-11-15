@@ -9,7 +9,9 @@ import {
     fetchTransactionsError,
     fetchTransactionsRequest,
     fetchTransactionsSuccess,
-    loadingTransactions
+    loadingTransactions,
+    updateSingleTransactionCategory,
+    updateAllTransactionCategories
 } from './actions'
 
 
@@ -33,7 +35,7 @@ const fetchTransactions = (db, startDate, endDate) => new Promise((resolve, reje
 })
 
 
-const transactionsEpic = (action$, store) => {
+export const fetchTransactionsEpic = (action$, store) => {
 
     return action$.ofType(types.SET_DEFAULT_TRANSACTIONS_DATE_RANGE, types.CHANGE_DATE_RANGE)
         .mergeMap(() => {
@@ -46,4 +48,16 @@ const transactionsEpic = (action$, store) => {
         })
 }
 
-export default transactionsEpic
+export const updateTransactionCategoryEpic = action$ =>
+    action$.ofType(types.UPDATE_TRANSACTION_CATEGORY)
+        .mergeMap(({ params }) => {
+            updateAllTransactionCategories(params)
+            .then(res => {
+                console.log(res);
+            })
+            return Observable.fromPromise(updateSingleTransactionCategory(params))
+            .mergeMap(res => {
+                return Observable.of(res)
+            })
+            .catch(error => Observable.of({ error }))
+        })

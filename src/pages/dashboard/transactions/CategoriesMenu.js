@@ -19,7 +19,11 @@ class CategoriesMenu extends React.PureComponent {
     onClick = ({ key, keyPath }) => {
         const primaryCategory = last(keyPath)
         const subCategory = key
-        const { name, category } = this.props.transaction
+        this.props.updateTransactionCategory({
+            transaction: this.props.transaction,
+            primaryCategory,
+            subCategory
+        })
     }
 
     render(){
@@ -48,6 +52,4 @@ class CategoriesMenu extends React.PureComponent {
     }
 }
 
-export default categories =>
-    transaction =>
-        <CategoriesMenu categories={categories} transaction={transaction} />
+export default CategoriesMenu

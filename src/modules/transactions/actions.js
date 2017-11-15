@@ -9,7 +9,7 @@ export const fetchTransactionsRequest = async (dateRange={}) => {
 
     const transactions = await endpoints.get()
 
-    return transactions
+    return transactions.data
 }
 
 export const fetchTransactions = () => ({ type: types.FETCH_TRANSACTIONS })
@@ -71,6 +71,14 @@ const normalizeAccounts = accountsArray => reduce(accountsArray, (acc, curr) => 
 
 }, {})
 
-export const updateCategoryOfSingleTransaction = ({ transaction, newPrimaryCategory, newSubCategory }) => ({
-    type: types.UPDATE_TRANSACTION_CATEGORY
-})
+export const updateTransactionCategory = params => {
+    return { type: types.UPDATE_TRANSACTION_CATEGORY, params }
+}
+
+export const updateSingleTransactionCategory = params => {
+    return endpoints.updateSingleTransactionCategory(params)
+}
+
+export const updateAllTransactionCategories = params => {
+    return endpoints.updateAllTransactionCategories(params)
+}

@@ -1,3 +1,4 @@
+import React from 'react'
 import { connect } from 'react-redux'
 import pipe from 'lodash/fp/flow'
 import map from 'lodash/map'
@@ -10,8 +11,9 @@ import CategoryTypes from 'constants/categories/category-types'
 import {
     changeTransactionsFilter,
     fetchTransactions,
+    updateTransactionCategory
 } from '../../modules/transactions/actions'
-import CategoriesMenu from './transactions/CategoriesMenu'
+import CategoriesMenuContainer from './transactions/CategoriesMenuContainer'
 
 
 const mapAccountsToFilters = accounts => (
@@ -53,7 +55,7 @@ const mapTransactionsToTableDataSource = (transactionsData, categories) => {
         categoryFilter
     )
 
-    const categoriesMenu = CategoriesMenu(categories)
+    // const categoriesMenu = CategoriesMenuContainer(categories, updateTransactionCategory)
 
     return map(transactions, transaction => ({
 
@@ -64,7 +66,7 @@ const mapTransactionsToTableDataSource = (transactionsData, categories) => {
         category: {
             primaryCategory: transaction.primaryCategory || 'Undefined',
             subCategory: transaction.subCategory || 'Undefined',
-            menu: categoriesMenu(transaction)
+            menu: <CategoriesMenuContainer transaction={transaction}/>
         },
         date: moment(transaction.date).format('MMM Do, YYYY'),
         description: transaction.name,
