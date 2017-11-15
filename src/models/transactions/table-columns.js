@@ -15,7 +15,8 @@ export default ({ categories }) => ([{
     }, {
         dataIndex: 'category',
         key: 'category',
-        render: ({ menu }) => <Category menu={menu}/>,
+        render: props =>
+            <Category {...props}/>,
         title: 'Category',
         width: 120,
     }, {

@@ -17,7 +17,6 @@ import CategoriesMenuContainer from './transactions/CategoriesMenuContainer'
 
 
 const mapAccountsToFilters = accounts => (
-
     map(accounts, account => ({
         text: account.name,
         value: account.name,
@@ -26,14 +25,12 @@ const mapAccountsToFilters = accounts => (
 )
 
 const getTransactionCategory = transaction => (
-
     transaction.category
         ? head(transaction.category)
         : CategoryTypes.UNDEFINED
 )
 
 const filterTransactionsByCategory = (transactions, categoryFilter) => {
-
     if (categoryFilter === CategoryFilters.ALL) {
         return transactions
     }
@@ -45,7 +42,6 @@ const filterTransactionsByCategory = (transactions, categoryFilter) => {
 }
 
 const mapTransactionsToTableDataSource = (transactionsData, categories) => {
-
     const categoryFilter = transactionsData.quickDisplayFilter === CategoryFilters.ALL
         ? transactionsData.filter
         : transactionsData.quickDisplayFilter
@@ -58,7 +54,6 @@ const mapTransactionsToTableDataSource = (transactionsData, categories) => {
     // const categoriesMenu = CategoriesMenuContainer(categories, updateTransactionCategory)
 
     return map(transactions, transaction => ({
-
         account: transactionsData.accounts
             ? transactionsData.accounts[transaction.account_id].name
             : null,
@@ -76,7 +71,6 @@ const mapTransactionsToTableDataSource = (transactionsData, categories) => {
 }
 
 const mapStateToProps = ({ categories, transactions }) => {
-
     return {
         accountFilters: mapAccountsToFilters(transactions.accounts),
         accounts: transactions.accounts,

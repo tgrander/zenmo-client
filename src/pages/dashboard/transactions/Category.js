@@ -10,7 +10,7 @@ class Category extends React.PureComponent {
         return(
             <Dropdown overlay={this.props.menu}>
               <Button style={{ marginLeft: 8 }}>
-                { props.category || 'Undefined' } <Icon type="down" />
+                { props.subCategory || props.primaryCategory || 'Undefined' } <Icon type="down" />
               </Button>
             </Dropdown>
         )
