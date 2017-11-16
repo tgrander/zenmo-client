@@ -1,0 +1,13 @@
+.dashboard-filter {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+
+    width: 100%;
+
+    margin-bottom: 12px;
+}
+
+.dashboard-filter > :not(:last-child) {
+  margin-right: 8px;
+}

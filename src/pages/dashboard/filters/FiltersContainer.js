@@ -8,9 +8,12 @@ import { changeDateRange, getDateRangeDefaultValue } from 'modules/transactions/
 
 // REDUX
 
-const mapStateToProps = ({ transactions }) => ({
+const mapStateToProps = ({ filters, transactions }) => ({
+  accountsFilter: filters.accountsFilter,
+  categoryFilter: filters.categoryFilter,
   defaultDateRange: transactions.defaultDateRange.map(date => moment(date)),
   dateRange: transactions.dateRange.map(date => moment(date)),
+  transactionsTypeFilter: filters.transactionsTypeFilter,
 });
 
 const actions = {
