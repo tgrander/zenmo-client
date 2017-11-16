@@ -1,34 +1,31 @@
-import { connect } from 'react-redux'
-import withHandlers from 'recompose/withHandlers'
-import pipe from 'lodash/fp/flow'
-import Categories from './categories/Categories'
+import { connect } from 'react-redux';
+import withHandlers from 'recompose/withHandlers';
+import pipe from 'lodash/fp/flow';
 import {
-    changeTransactionsFilter,
-    changeQuickDisplayFilter,
-    resetQuickDisplayFilter
-} from 'modules/transactions/actions'
+  changeTransactionsFilter,
+  changeQuickDisplayFilter,
+  resetQuickDisplayFilter,
+} from 'modules/transactions/actions';
+import Categories from './categories/Categories';
 
 
-const mapStateToProps = ({ categories }) => {
-
-    return {
-        categories: categories.transactionCategories,
-        isLoading: categories.isLoading
-    }
-}
+const mapStateToProps = ({ categories }) => ({
+  categories: categories.transactionCategories,
+  isLoading: categories.isLoading,
+});
 
 const redux = connect(
-    mapStateToProps,
-    {
-        changeTransactionsFilter,
-        changeQuickDisplayFilter,
-        resetQuickDisplayFilter
-    }
-)
+  mapStateToProps,
+  {
+    changeTransactionsFilter,
+    changeQuickDisplayFilter,
+    resetQuickDisplayFilter,
+  },
+);
 
-const handlers = withHandlers({ })
+const handlers = withHandlers({ });
 
 export default pipe(
-    handlers,
-    redux,
-)(Categories)
+  handlers,
+  redux,
+)(Categories);

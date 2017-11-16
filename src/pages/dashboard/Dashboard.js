@@ -1,45 +1,46 @@
 import { DatePicker } from 'antd';
-import axios from 'axios'
-import propTypes from 'prop-types'
-import React from 'react'
-import CategoriesContainer from './CategoriesContainer'
-import TransactionsContainer from './TransactionsContainer'
-import Totals from './TotalsContainer'
+import propTypes from 'prop-types';
+import React from 'react';
+import CategoriesContainer from './CategoriesContainer';
+import TransactionsContainer from './TransactionsContainer';
 
-import './Dashboard.css'
+import './Dashboard.css';
 
 
 class Dashboard extends React.PureComponent {
+    static propTypes = {
+      getDateRangeDefaultValue: propTypes.fund.isRequired,
+    }
 
     componentWillMount() {
-        this.props.getDateRangeDefaultValue()
+      this.props.getDateRangeDefaultValue();
     }
 
     render() {
+      const { props } = this;
 
-        const { props } = this
-
-        return (
-            <div className="dashboard">
-                <div className="dashboard-filter">
-                    <DatePicker.RangePicker {...{
-                        defaultValue: props.defaultDateRange,
-                        format: 'MM-DD-YYYY',
-                        value: props.dateRange,
-                        onChange: props.onChangeDate
-                    }} />
-                </div>
-                <div className="dashboard-content">
-                    <div className="left-column">
-                        <CategoriesContainer />
-                    </div>
-                    <div className="right-column">
-                        <TransactionsContainer />
-                    </div>
-                </div>
+      return (
+        <div className="dashboard">
+          <div className="dashboard-filter">
+            <DatePicker.RangePicker {...{
+                defaultValue: props.defaultDateRange,
+                format: 'MM-DD-YYYY',
+                value: props.dateRange,
+                onChange: props.onChangeDate,
+              }}
+            />
+          </div>
+          <div className="dashboard-content">
+            <div className="left-column">
+              <CategoriesContainer />
             </div>
-        )
+            <div className="right-column">
+              <TransactionsContainer />
+            </div>
+          </div>
+        </div>
+      );
     }
 }
 
-export default Dashboard
+export default Dashboard;
