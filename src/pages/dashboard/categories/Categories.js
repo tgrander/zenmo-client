@@ -5,7 +5,6 @@ import React from 'react';
 import Card from 'shared/components/Card';
 import Category from './Category';
 
-
 import './Categories.css';
 
 
@@ -31,6 +30,7 @@ class Categories extends React.PureComponent {
           >
 
             <Collapse {...{
+                accordion: true,
                 bordered: false,
                 onChange: e => console.log(e),
               }}
@@ -39,7 +39,7 @@ class Categories extends React.PureComponent {
                 <Panel {...{
                   header: (
                     <Category {...{
-                          amount: value.amount.toFixed(2),
+                          amount: value.amount ? value.amount.toFixed(2) : null,
                           category: key,
                           onChangeQuickDisplayFilter: props.changeQuickDisplayFilter,
                           onResetQuickDisplayFilter: props.resetQuickDisplayFilter,
@@ -50,7 +50,7 @@ class Categories extends React.PureComponent {
                   key,
                   }}
                 >
-                  <p>category info</p>
+                  <Collapse />
                 </Panel>
               ))}
             </Collapse>

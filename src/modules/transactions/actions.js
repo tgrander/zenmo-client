@@ -38,12 +38,12 @@ export const changeDateRange = range => ({
 
 export const changeTransactionsFilter = filter => ({
   type: types.CHANGE_FILTER,
-  payload: filter,
+  filter,
 });
 
 export const changeQuickDisplayFilter = filter => ({
   type: types.CHANGE_QUICK_DISPLAY_FILTER,
-  payload: filter,
+  filter,
 });
 
 export const resetQuickDisplayFilter = () => ({

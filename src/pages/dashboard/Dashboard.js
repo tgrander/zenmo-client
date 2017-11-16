@@ -1,7 +1,7 @@
-import { DatePicker } from 'antd';
 import propTypes from 'prop-types';
 import React from 'react';
 import CategoriesContainer from './CategoriesContainer';
+import FiltersContainer from './filters/FiltersContainer';
 import TransactionsContainer from './TransactionsContainer';
 
 import './Dashboard.css';
@@ -9,7 +9,7 @@ import './Dashboard.css';
 
 class Dashboard extends React.PureComponent {
     static propTypes = {
-      getDateRangeDefaultValue: propTypes.fund.isRequired,
+      getDateRangeDefaultValue: propTypes.func.isRequired,
     }
 
     componentWillMount() {
@@ -21,15 +21,7 @@ class Dashboard extends React.PureComponent {
 
       return (
         <div className="dashboard">
-          <div className="dashboard-filter">
-            <DatePicker.RangePicker {...{
-                defaultValue: props.defaultDateRange,
-                format: 'MM-DD-YYYY',
-                value: props.dateRange,
-                onChange: props.onChangeDate,
-              }}
-            />
-          </div>
+          <FiltersContainer />
           <div className="dashboard-content">
             <div className="left-column">
               <CategoriesContainer />
