@@ -15,8 +15,6 @@ const reduceTransactionsToCategories = transactions => {
             return accum
         }
 
-
-
         if (primaryCategory in accum) {
             const category = accum[primaryCategory]
             category.amount += amount
