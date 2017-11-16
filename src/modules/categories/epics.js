@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import {
     categorizeTransactions,
-    displayAllCategories,
     fetchCategories,
     fetchCategoriesSuccess,
     fetchCategoriesFailure
@@ -13,9 +12,7 @@ import transactionTypes from '../transactions/types'
 export const categorizeTransactionsEpic = (action$, store) =>
     action$.ofType(transactionTypes.TRANSACTIONS_FETCH_SUCCESS)
         .map(() => store.getState().transactions.transactions)
-        .flatMap(transactions => {
-
-            displayAllCategories(transactions)
+        .mergeMap(transactions => {
             return Observable.of(categorizeTransactions(transactions))
         })
 

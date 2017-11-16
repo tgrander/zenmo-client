@@ -2,8 +2,8 @@ import { DatePicker } from 'antd';
 import axios from 'axios'
 import propTypes from 'prop-types'
 import React from 'react'
-import Categories from './CategoriesContainer'
-import Transactions from './TransactionsContainer'
+import CategoriesContainer from './CategoriesContainer'
+import TransactionsContainer from './TransactionsContainer'
 import Totals from './TotalsContainer'
 
 import './Dashboard.css'
@@ -31,10 +31,10 @@ class Dashboard extends React.PureComponent {
                 </div>
                 <div className="dashboard-content">
                     <div className="left-column">
-                        <Categories />
+                        <CategoriesContainer />
                     </div>
                     <div className="right-column">
-                        <Transactions />
+                        <TransactionsContainer />
                     </div>
                 </div>
             </div>

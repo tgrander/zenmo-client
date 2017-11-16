@@ -12,7 +12,7 @@ import {
 const mapStateToProps = ({ categories }) => {
 
     return {
-        categories: categories.categories,
+        categories: categories.transactionCategories,
         isLoading: categories.isLoading
     }
 }

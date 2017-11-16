@@ -12,6 +12,7 @@ import {
 
 
 export default combineEpics(
+    categorizeTransactionsEpic,
     fetchCategoriesEpic,
     fetchTransactionsEpic,
     totalsEpic,

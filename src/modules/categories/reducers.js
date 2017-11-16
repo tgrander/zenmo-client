@@ -4,7 +4,8 @@ import transactionTypes from '../transactions/types'
 
 const initialState = {
     isLoading: false,
-    categories: []
+    categories: [],
+    transactionCategories: {}
 }
 
 const categoriesReducer = (state = initialState, action) => {
@@ -17,7 +18,7 @@ const categoriesReducer = (state = initialState, action) => {
         case types.CATEGORIZE_TRANSACTIONS:
             return {
                 ...state,
-                categories: action.categories,
+                transactionCategories: action.transactionCategories,
                 isLoading: false
             }
 

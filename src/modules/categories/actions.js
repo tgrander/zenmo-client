@@ -5,63 +5,38 @@ import { db } from '../../firebase'
 
 
 const reduceTransactionsToCategories = transactions => {
+    return reduce(transactions, (accum, curr) => {
+        const { primaryCategory, subCategory, amount } = curr
 
-    return reduce(transactions, (categories, transaction) => {
-
-        const category = transaction.category
-            ? transaction.category[0]
-            : CategoryTypes.UNDEFINED
-
-        const amount = transaction.amount || 0
-
-        if (categories[category]) {
-            categories[category] = categories[category] += amount
-            return categories
+        if (!primaryCategory) {
+            accum['Undefined']
+                ? accum['Undefined'] += amount
+                : accum['Undefined'] = amount
+            return accum
         }
 
-        categories[category] = amount
-        return categories
 
-    }, {})
-}
 
-export const  displayAllCategories = (transactions) => {
+        if (primaryCategory in accum) {
+            const category = accum[primaryCategory]
+            category.amount += amount
+            category.subCategories[subCategory]
+                ? category.subCategories[subCategory] += amount
+                : category.subCategories[subCategory] = amount
 
-    const allCategories = transactions.reduce((acc, curr) => {
-
-        Object.keys(curr.category).forEach(category => {
-
-            if (!acc[category]) {
-                acc[category] = true
-            }
-        })
-
-        return acc
-
-    }, {})
-
-    const categoryPairs = transactions.reduce((acc, curr) => {
-
-        const category = `${Object.keys(curr.category)}`
-
-        if (!acc[category]) {
-            acc[category] = [curr]
         } else {
-            acc[category].push(curr)
+            accum[primaryCategory] = { amount }
+            accum[primaryCategory].subCategories = { [subCategory]: amount }
         }
 
-        return acc
-
+        return accum
     }, {})
-
-    console.log('ALL CATEGORIES: ', allCategories)
-    console.log('CATEGORY PAIRS: ', categoryPairs)
 }
+
 
 export const categorizeTransactions = transactions => ({
-
     type: types.CATEGORIZE_TRANSACTIONS,
-    categories: reduceTransactionsToCategories(transactions)
+    transactionCategories: reduceTransactionsToCategories(transactions)
 })
 
 export const fetchCategories = () =>
@@ -70,7 +45,6 @@ export const fetchCategories = () =>
         .get()
 
 export const fetchCategoriesSuccess = categoriesSnapshot => {
-
     return {
         type: types.FETCH_CATEGORIES_SUCCESS,
         categories: categoriesSnapshot.docs.map(doc => doc.data())
