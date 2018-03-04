@@ -2,11 +2,12 @@ import { Button, DatePicker, Dropdown, Icon, Menu } from 'antd';
 import propTypes from 'prop-types';
 import React from 'react';
 import filterTypes from 'constants/filters/filter-types';
+import CategoriesMenuContainer from '../transactions/CategoriesMenuContainer';
 
 import './Filters.css';
 
 
-const menu = (
+const transactionsFiltersMenu = (
   <Menu onClick={e => console.log(e)}>
     <Menu.Item key={filterTypes.transactions.ALL}>{filterTypes.transactions.ALL}</Menu.Item>
     <Menu.Item key={filterTypes.transactions.SPENDING}>{filterTypes.transactions.SPENDING}</Menu.Item>
@@ -29,7 +30,7 @@ class Filters extends React.PureComponent {
       <div className="dashboard-filter">
         <span>Showing</span>
 
-        <Dropdown overlay={menu}>
+        <Dropdown overlay={transactionsFiltersMenu}>
           <Button>
             {props.transactionsTypeFilter} <Icon type="down" />
           </Button>
@@ -47,7 +48,7 @@ class Filters extends React.PureComponent {
 
         <span>for</span>
 
-        <Dropdown overlay={menu}>
+        <Dropdown overlay={<CategoriesMenuContainer />}>
           <Button>
             {props.categoryFilter} <Icon type="down" />
           </Button>
@@ -55,7 +56,7 @@ class Filters extends React.PureComponent {
 
         <span>from</span>
 
-        <Dropdown overlay={menu}>
+        <Dropdown overlay={transactionsFiltersMenu}>
           <Button>
             {props.accountsFilter} <Icon type="down" />
           </Button>

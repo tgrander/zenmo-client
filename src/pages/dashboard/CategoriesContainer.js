@@ -9,10 +9,11 @@ import {
 import Categories from './categories/Categories';
 
 
-const mapStateToProps = ({ categories }) => ({
-  categories: categories.transactionCategories,
-  isLoading: categories.isLoading,
-});
+const mapStateToProps = ({ categories }) => {
+  const {
+    allCategories, allCategoryTypes, categoriesById, categoryTypesById,
+  } = categories;
+};
 
 const redux = connect(
   mapStateToProps,

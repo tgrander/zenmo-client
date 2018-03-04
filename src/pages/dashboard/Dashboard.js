@@ -23,12 +23,7 @@ class Dashboard extends React.PureComponent {
         <div className="dashboard">
           <FiltersContainer />
           <div className="dashboard-content">
-            <div className="left-column">
-              <CategoriesContainer />
-            </div>
-            <div className="right-column">
-              <TransactionsContainer />
-            </div>
+            <TransactionsContainer />
           </div>
         </div>
       );

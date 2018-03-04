@@ -1,10 +1,16 @@
-import { connect } from 'react-redux'
-import { updateTransactionCategory } from 'modules/transactions/actions'
-import CategoriesMenu from './CategoriesMenu'
+import { connect } from 'react-redux';
+import { updateTransactionCategory } from 'modules/transactions/actions';
+import CategoriesMenu from './CategoriesMenu';
 
 
-const mapStateToProps = ({ categories }) => ({
-    categories: categories.categories
-})
+const mapStateToProps = ({ categories }) => {
+  const { allTypes, typesById } = categories;
 
-export default connect(mapStateToProps, { updateTransactionCategory })(CategoriesMenu)
+  const types = allTypes.map(typeId => typesById[typeId]);
+
+  return {
+    types,
+  };
+};
+
+export default connect(mapStateToProps, { updateTransactionCategory })(CategoriesMenu);

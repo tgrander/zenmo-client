@@ -7,7 +7,6 @@ import Category from './Category';
 
 import './Categories.css';
 
-
 const { Panel } = Collapse;
 
 class Categories extends React.PureComponent {
@@ -30,7 +29,6 @@ class Categories extends React.PureComponent {
           >
 
             <Collapse {...{
-                accordion: true,
                 bordered: false,
                 onChange: e => console.log(e),
               }}
