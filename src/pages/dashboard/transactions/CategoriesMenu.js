@@ -1,31 +1,28 @@
 import { Icon, Menu } from 'antd';
-import map from 'lodash/map';
-import isEmpty from 'lodash/isEmpty';
 import last from 'lodash/last';
 import propTypes from 'prop-types';
 import React from 'react';
 
-
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
-const Item = Menu.Item;
+const { Item, SubMenu } = Menu;
 
 class CategoriesMenu extends React.PureComponent {
     static propTypes = {
+      transaction: propTypes.object,
       types: propTypes.arrayOf(propTypes.shape({
         allCategories: propTypes.arrayOf(propTypes.string.isRequired),
         id: propTypes.string.isRequired,
         type: propTypes.string.isRequired,
       })).isRequired,
+      categorizeTransaction: propTypes.func.isRequired,
     }
 
-    onClick = ({ key, keyPath }) => {
-      const primaryCategory = last(keyPath);
-      const subCategory = key;
-      this.props.updateTransactionCategory({
+    categorizeTransactionHandler = ({ key, keyPath }) => {
+      const type = last(keyPath);
+      const category = key;
+      this.props.categorizeTransaction({
         transaction: this.props.transaction,
-        primaryCategory,
-        subCategory,
+        category,
+        type,
       });
     }
 
@@ -37,7 +34,7 @@ class CategoriesMenu extends React.PureComponent {
           style={{ width: 200 }}
           mode="vertical"
           theme="dark"
-          onClick={this.onClick}
+          onClick={this.categorizeTransactionHandler}
         >
           {
                 types.map(({ allCategories, id, type }) => (

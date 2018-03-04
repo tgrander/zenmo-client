@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { updateTransactionCategory } from 'modules/transactions/actions';
+import { categorizeTransaction } from 'modules/transactions/actions';
 import CategoriesMenu from './CategoriesMenu';
 
 
@@ -13,4 +13,4 @@ const mapStateToProps = ({ categories }) => {
   };
 };
 
-export default connect(mapStateToProps, { updateTransactionCategory })(CategoriesMenu);
+export default connect(mapStateToProps, { categorizeTransaction })(CategoriesMenu);
