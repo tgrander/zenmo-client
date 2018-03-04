@@ -7,18 +7,18 @@ const post = (endpoint, params = {}) => axios.post(endpoint, params);
 
 const paths = {
   get: '/get',
-  updateSingleTransactionCategory: '/update-single-category',
+  categorizeTransaction: '/categorize',
   updateAllTransactionCategories: '/update-all-categories',
 };
 
 const endpoints = {
   get: endpoint + paths.get,
-  updateSingleTransactionCategory: endpoint + paths.updateSingleTransactionCategory,
+  categorizeTransaction: endpoint + paths.categorizeTransaction,
   updateAllTransactionCategories: endpoint + paths.updateAllTransactionCategories,
 };
 
 export default {
   get: () => post(endpoints.get),
-  updateSingleTransactionCategory: params => post(endpoints.updateSingleTransactionCategory, params),
+  categorizeTransaction: params => post(endpoints.categorizeTransaction, params),
   updateAllTransactionCategories: params => post(endpoints.updateAllTransactionCategories, params),
 };
