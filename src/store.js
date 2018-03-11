@@ -1,18 +1,24 @@
-import { createStore, applyMiddleware } from 'redux'
-import logger from 'redux-logger'
-import { createEpicMiddleware } from 'redux-observable'
-import rootEpic from './modules/rootEpic'
-import rootReducer from './modules/rootReducer'
+import { compose, createStore, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
+import { createEpicMiddleware } from 'redux-observable';
+import rootEpic from './modules/rootEpic';
+import rootReducer from './modules/rootReducer';
 
 
-const epicMiddleware = createEpicMiddleware(rootEpic)
+const epicMiddleware = createEpicMiddleware(rootEpic);
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   rootReducer,
-  applyMiddleware(
-    logger,
-    epicMiddleware
-  )
-)
+  composeEnhancers(applyMiddleware(logger, epicMiddleware)),
+);
 
-export default store
+// const store = createStore(
+//   rootReducer,
+//   applyMiddleware(
+//     logger,
+//     epicMiddleware,
+//   ),
+// );
+
+export default store;

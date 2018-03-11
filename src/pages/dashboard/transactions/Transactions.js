@@ -5,43 +5,52 @@ import tableColumns from 'models/transactions/table-columns';
 
 import './Transactions.css';
 
-
 class Transactions extends React.PureComponent {
-    static propTypes = {
-      accountFilters: propTypes.array.isRequired,
-      accounts: propTypes.object.isRequired,
-      changeDateRange: propTypes.func.isRequired,
-      changeTransactionsFilter: propTypes.func.isRequired,
-      dateRange: propTypes.array.isRequired,
-      defaultDateRange: propTypes.array.isRequired,
-      getDateRangeDefaultValue: propTypes.func.isRequired,
-      fetchTransactions: propTypes.func.isRequired,
-      isLoading: propTypes.bool.isRequired,
-      transactions: propTypes.array.isRequired,
-    }
+	static propTypes = {
+		accountFilters: propTypes.array.isRequired,
+		accounts: propTypes.object.isRequired,
+		changeDateRange: propTypes.func.isRequired,
+		changeTransactionsFilter: propTypes.func.isRequired,
+		dateRange: propTypes.array.isRequired,
+		defaultDateRange: propTypes.array.isRequired,
+		getDateRangeDefaultValue: propTypes.func.isRequired,
+		fetchTransactions: propTypes.func.isRequired,
+		isLoading: propTypes.bool.isRequired,
+		transactions: propTypes.array.isRequired,
+	};
 
-    render() {
-      const { props } = this;
+	render() {
+		const { props } = this;
 
-      return (
-      /*
-            transactions are mapped to the table using the
-            mapTransactionsToTableDataSource function in TransactionsContainer
-            */
-        <div className="transactions-wrapper">
+		const rowSelection = {
+			onChange: (selectedRowKeys, selectedRows) => {
+				console.log(
+					`selectedRowKeys: ${selectedRowKeys}`,
+					'selectedRows: ',
+					selectedRows,
+				);
+			},
+			getCheckboxProps: record => ({
+				disabled: record.name === 'Disabled User',
+				name: record.name,
+			}),
+		};
 
-          <Table {...{
-                    columns: tableColumns(props.categories),
-                    dataSource: props.transactions,
-                    loading: props.isLoading,
-                    pagination: false,
-                    scroll: { y: 1000 },
-                }}
-          />
-
-        </div>
-      );
-    }
+		return (
+			<div className="transactions-wrapper">
+				<Table
+					{...{
+						columns: tableColumns(props.categories),
+						dataSource: props.transactions,
+						loading: props.isLoading,
+						pagination: false,
+						rowSelection,
+						scroll: { y: '100%' },
+					}}
+				/>
+			</div>
+		);
+	}
 }
 
 export default Transactions;

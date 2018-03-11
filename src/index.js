@@ -1,69 +1,60 @@
-import axios from 'axios'
-import enUS from 'antd/lib/locale-provider/en_US'
-import { Layout, LocaleProvider, Menu } from 'antd'
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import 'rxjs'
-import DashboardContainer from './pages/DashboardContainer'
-import SignUp from './pages/Signup'
-import Login from './pages/Login'
-import registerServiceWorker from './registerServiceWorker'
-import store from './store'
+import axios from 'axios';
+import enUS from 'antd/lib/locale-provider/en_US';
+import { Layout, LocaleProvider, Menu } from 'antd';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import 'rxjs';
+import DashboardContainer from './pages/DashboardContainer';
+import registerServiceWorker from './registerServiceWorker';
+import store from './store';
 
-import './index.css'
+import './index.css';
 
+const { Header, Sider, Content, Footer } = Layout;
 
-const { Header, Sider, Content, Footer } = Layout
-
-const heightStyle = { height: '100%' }
+const heightStyle = { height: '100%' };
 
 function Root() {
+	return (
+		<Provider store={store}>
+			<LocaleProvider locale={enUS}>
+				<Router>
+					<Layout style={heightStyle}>
+						<Header>
+							<Menu
+								{...{
+									theme: 'dark',
+									mode: 'horizontal',
+									defaultSelectedKeys: [],
+									style: { lineHeight: '64px' },
+								}}
+							/>
+						</Header>
 
-  return (
-    <Provider store={store}>
-        <LocaleProvider locale={enUS}>
-            <Router>
+						<Layout style={heightStyle}>
+							<Sider style={heightStyle} />
 
-                <Layout style={heightStyle}>
-
-                    <Header>
-                        <Menu {...{
-                            theme: "dark",
-                            mode: "horizontal",
-                            defaultSelectedKeys: [],
-                            style: { lineHeight: '64px' }
-                        }}>
-                            <Menu.Item key={1}>
-                                <div onClick={e => axios.post('/plaid/historical-transactions')}>
-                                    Historical Transactions
-                                </div>
-                            </Menu.Item>
-                        </Menu>
-                    </Header>
-
-                    <Layout style={heightStyle}>
-
-                        <Sider style={heightStyle}>Sider</Sider>
-
-                        <Content style={heightStyle}>
-
-                            <Route exact path="/" component={DashboardContainer} />
-                            <Route path="/signup" component={SignUp} />
-                            <Route path="/signin" component={Login} />
-                            <Route path="/dashboard" component={DashboardContainer} />
-
-                        </Content>
-                    </Layout>
-
-                </Layout>
-            </Router>
-        </LocaleProvider>
-    </Provider>
-  )
+							<Content style={heightStyle}>
+								<Route
+									exact
+									path="/"
+									component={DashboardContainer}
+								/>
+								<Route
+									path="/dashboard"
+									component={DashboardContainer}
+								/>
+							</Content>
+						</Layout>
+					</Layout>
+				</Router>
+			</LocaleProvider>
+		</Provider>
+	);
 }
 
-ReactDOM.render(<Root/>, document.getElementById('root'))
+ReactDOM.render(<Root />, document.getElementById('root'));
 
-registerServiceWorker()
+registerServiceWorker();

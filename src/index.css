@@ -1,48 +1,48 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Raleway');
+@import '~antd/dist/antd.css';
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Raleway', sans-serif;
+	margin: 0;
+	padding: 0;
+	font-family: 'Raleway', sans-serif;
 }
 
 #root {
-
-    height: 100%;
+	height: 100%;
 }
 
 .App {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
 }
 
 .App > *:not(:last-child) {
-  margin-bottom: 2rem;
+	margin-bottom: 2rem;
 }
 
 a {
-  text-decoration: none;
-  color: black;
-  cursor: pointer;
+	text-decoration: none;
+	color: black;
+	cursor: pointer;
 }
 
-input[type="number"] {
-  border: 0px;
-  background-color: transparent;
-  padding: 0;
-  font-size: 18px;
-  outline: 0;
-  outline-offset: 0;
+input[type='number'] {
+	border: 0px;
+	background-color: transparent;
+	padding: 0;
+	font-size: 18px;
+	outline: 0;
+	outline-offset: 0;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0;
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	margin: 0;
 }

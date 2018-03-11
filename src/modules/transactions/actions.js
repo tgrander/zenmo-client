@@ -54,7 +54,7 @@ export const categorizeTransaction = params =>
   ({ type: types.UPDATE_TRANSACTION_CATEGORY, params });
 
 export const updateSingleTransactionCategory = params =>
-  endpoints.updateSingleTransactionCategory(params);
+  endpoints.categorizeTransaction(params);
 
 export const updateCategoryForAllTransactionsWithSameName = params =>
   endpoints.updateAllTransactionCategories(params);

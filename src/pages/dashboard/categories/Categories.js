@@ -1,61 +1,40 @@
-import { Collapse } from 'antd';
-import map from 'lodash/map';
+import { Collapse, List } from 'antd';
 import propTypes from 'prop-types';
 import React from 'react';
 import Card from 'shared/components/Card';
-import Category from './Category';
 
 import './Categories.css';
 
 const { Panel } = Collapse;
 
 class Categories extends React.PureComponent {
-    static propTypes = {
-      changeTransactionsFilter: propTypes.func.isRequired,
-      changeQuickDisplayFilter: propTypes.func.isRequired,
-      resetQuickDisplayFilter: propTypes.func.isRequired,
-      isLoading: propTypes.bool.isRequired,
-    }
+	static propTypes = {};
 
-    render() {
-      const { props } = this;
+	render() {
+		const { isLoading, types } = this.props;
 
-      return (
-        <div className="categories-wrapper">
-          <Card {...{
-              isLoading: props.isLoading,
-              title: 'Categories',
-            }}
-          >
-
-            <Collapse {...{
-                bordered: false,
-                onChange: e => console.log(e),
-              }}
-            >
-              {map(props.categories, (value, key) => (
-                <Panel {...{
-                  header: (
-                    <Category {...{
-                          amount: value.amount ? value.amount.toFixed(2) : null,
-                          category: key,
-                          onChangeQuickDisplayFilter: props.changeQuickDisplayFilter,
-                          onResetQuickDisplayFilter: props.resetQuickDisplayFilter,
-                          onChangeTransactionsFilter: props.changeTransactionsFilter,
-                      }}
-                    />
-                  ),
-                  key,
-                  }}
-                >
-                  <Collapse />
-                </Panel>
-              ))}
-            </Collapse>
-          </Card>
-        </div>
-      );
-    }
+		return (
+			<div className="categories-wrapper">
+				<Card isLoading={isLoading} title="Categories">
+					<Collapse bordered onChange={e => console.log(e)}>
+						{types.map(({ allCategories, id, type }) => (
+							<Panel header={type} key={id}>
+								<List
+									itemLayout="horizontal"
+									dataSource={allCategories}
+									renderItem={category => (
+										<List.Item>
+											<List.Item.Meta title={category} />
+										</List.Item>
+									)}
+								/>
+							</Panel>
+						))}
+					</Collapse>
+				</Card>
+			</div>
+		);
+	}
 }
 
 export default Categories;

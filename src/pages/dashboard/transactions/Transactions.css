@@ -1,8 +1,8 @@
 .transactions-wrapper,
 .transaction-filters {
-    width: 100%;
+	width: 75%;
 }
 
 .transactions-wrapper > :not(:last-child) {
-    margin-bottom: 12px;
+	margin-bottom: 12px;
 }
