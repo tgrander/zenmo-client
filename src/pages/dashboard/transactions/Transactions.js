@@ -1,7 +1,7 @@
 import { Table } from 'antd';
 import React from 'react';
 import propTypes from 'prop-types';
-import tableColumns from 'models/transactions/table-columns';
+import tableColumns from '../../../models/transactions/table-columns';
 
 import './Transactions.css';
 
@@ -20,7 +20,7 @@ class Transactions extends React.PureComponent {
 	};
 
 	render() {
-		const { props } = this;
+		const { isLoading, transactions } = this.props;
 
 		const rowSelection = {
 			onChange: (selectedRowKeys, selectedRows) => {
@@ -30,7 +30,7 @@ class Transactions extends React.PureComponent {
 					selectedRows,
 				);
 			},
-			getCheckboxProps: record => ({
+			getCheckboxProps: (record) => ({
 				disabled: record.name === 'Disabled User',
 				name: record.name,
 			}),
@@ -40,9 +40,9 @@ class Transactions extends React.PureComponent {
 			<div className="transactions-wrapper">
 				<Table
 					{...{
-						columns: tableColumns(props.categories),
-						dataSource: props.transactions,
-						loading: props.isLoading,
+						columns: tableColumns(),
+						dataSource: transactions,
+						loading: isLoading,
 						pagination: false,
 						rowSelection,
 						scroll: { y: '100%' },

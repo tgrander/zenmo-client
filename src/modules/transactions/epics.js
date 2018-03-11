@@ -52,39 +52,39 @@ export const fetchTransactionsEpic = (action$, store) =>
 			return Observable.fromPromise(
 				fetchTransactions(db, startDate, endDate),
 			)
-				.flatMap(transactions =>
+				.flatMap((transactions) =>
 					Observable.of(fetchTransactionsSuccess(transactions)),
 				)
-				.catch(error => Observable.of(fetchTransactionsError(error)));
+				.catch((error) => Observable.of(fetchTransactionsError(error)));
 		});
 
-export const updateTransactionCategoryEpic = action$ =>
+export const updateTransactionCategoryEpic = (action$) =>
 	action$.ofType(types.UPDATE_TRANSACTION_CATEGORY).mergeMap(({ params }) =>
 		Observable.fromPromise(updateSingleTransactionCategory(params))
-			.mergeMap(res =>
+			.mergeMap((res) =>
 				Observable.of({
 					type: types.UPDATE_TRANSACTION_CATEGORY_SUCCESS,
 				}),
 			)
-			.catch(error =>
+			.catch((error) =>
 				Observable.of({
 					type: types.UPDATE_TRANSACTION_CATEGORY_FAILURE,
 				}),
 			),
 	);
 
-export const updateCategoryForAllTransactionsWithSameNameEpic = action$ =>
+export const updateCategoryForAllTransactionsWithSameNameEpic = (action$) =>
 	action$.ofType(types.UPDATE_TRANSACTION_CATEGORY).mergeMap(({ params }) =>
 		Observable.fromPromise(
 			updateCategoryForAllTransactionsWithSameName(params),
 		)
-			.mergeMap(res =>
+			.mergeMap((res) =>
 				Observable.of({
 					type:
 						types.UPDATE_CATEGORY_FOR_ALL_TRANSACTIONS_WITH_SAME_NAME_SUCCESS,
 				}),
 			)
-			.catch(error => ({
+			.catch((error) => ({
 				type:
 					types.UPDATE_CATEGORY_FOR_ALL_TRANSACTIONS_WITH_SAME_NAME_FAILURE,
 				error,
