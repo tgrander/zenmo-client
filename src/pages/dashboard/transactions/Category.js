@@ -5,14 +5,15 @@ import React from 'react';
 class Category extends React.PureComponent {
 	static propTypes = {
 		category: propTypes.string,
+		pendingCategory: propTypes.string,
 	};
 
 	render() {
-		const { category } = this.props;
+		const { category, pendingCategory } = this.props;
 		return (
 			<Dropdown overlay={this.props.menu}>
 				<Button style={{ marginLeft: 8 }}>
-					{category || 'Undefined'}
+					{pendingCategory || (category || 'Undefined')}
 					<Icon type="down" />
 				</Button>
 			</Dropdown>

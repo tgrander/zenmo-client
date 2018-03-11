@@ -5,19 +5,20 @@ const transaction = (state = {}, action) => {
 		case types.UPDATE_TRANSACTION_CATEGORY:
 			return {
 				...state,
-				pendingCategory: action.params.category,
+				pendingCategory: action.payload.category,
 			};
 
 		case types.UPDATE_TRANSACTION_CATEGORY_SUCCESS:
 			return {
 				...state,
+				category: state.pendingCategory,
 				pendingCategory: null,
-				category: action.category,
 			};
 
 		case types.UPDATE_TRANSACTION_CATEGORY_FAILURE:
 			return {
 				...state,
+				failedUpdatedCategory: state.pendingCategory,
 				pendingCategory: null,
 				updateCategoryError: true,
 			};

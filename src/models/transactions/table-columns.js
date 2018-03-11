@@ -1,5 +1,5 @@
 import React from 'react';
-import Category from '../../pages/dashboard/transactions/Category';
+import CategoryContainer from '../../pages/dashboard/transactions/CategoryContainer';
 
 export default (categories) => [
 	{
@@ -17,7 +17,7 @@ export default (categories) => [
 	{
 		dataIndex: 'category',
 		key: 'category',
-		render: (props) => <Category {...props} />,
+		render: (props) => <CategoryContainer {...props} />,
 		title: 'Category',
 		width: 120,
 	},

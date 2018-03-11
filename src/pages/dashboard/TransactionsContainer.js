@@ -27,6 +27,8 @@ const mapTransactionsToTableDataSource = (transactions) =>
 		amount: transaction.amount,
 		category: {
 			category: transaction.category,
+			failedUpdatedCategory: transaction.failedUpdatedCategory,
+			pendingCategory: transaction.pendingCategory,
 			menu: <CategoriesMenuContainer transaction={transaction} />,
 		},
 		date: moment(transaction.date).format('MMM Do, YYYY'),

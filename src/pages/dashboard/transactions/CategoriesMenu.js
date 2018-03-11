@@ -20,8 +20,16 @@ class CategoriesMenu extends React.PureComponent {
 	categorizeTransactionHandler = ({ key, keyPath }) => {
 		const type = last(keyPath);
 		const category = key;
+		const {
+			transaction_id,
+			plaidCategories,
+			name,
+		} = this.props.transaction;
+
 		this.props.categorizeTransaction({
-			transaction: this.props.transaction,
+			transaction_id,
+			plaidCategories,
+			name,
 			category,
 			type,
 		});
@@ -46,9 +54,9 @@ class CategoriesMenu extends React.PureComponent {
 								<span>{type}</span>
 							</span>
 						}
-						onTitleClick={e => console.log(e)}
+						onTitleClick={(e) => console.log(e)}
 					>
-						{allCategories.map(categoryId => (
+						{allCategories.map((categoryId) => (
 							<Menu.Item key={categoryId}>
 								{categoriesById[categoryId].category}
 							</Menu.Item>

@@ -59,16 +59,18 @@ export const fetchTransactionsEpic = (action$, store) =>
 		});
 
 export const updateTransactionCategoryEpic = (action$) =>
-	action$.ofType(types.UPDATE_TRANSACTION_CATEGORY).mergeMap(({ params }) =>
-		Observable.fromPromise(updateSingleTransactionCategory(params))
+	action$.ofType(types.UPDATE_TRANSACTION_CATEGORY).mergeMap(({ payload }) =>
+		Observable.fromPromise(updateSingleTransactionCategory(payload))
 			.mergeMap((res) =>
 				Observable.of({
 					type: types.UPDATE_TRANSACTION_CATEGORY_SUCCESS,
+					payload: payload.transaction_id,
 				}),
 			)
 			.catch((error) =>
 				Observable.of({
 					type: types.UPDATE_TRANSACTION_CATEGORY_FAILURE,
+					payload: payload.transaction_id,
 				}),
 			),
 	);

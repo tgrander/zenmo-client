@@ -9,7 +9,7 @@ const byId = (state = {}, action) => {
 		case types.UPDATE_TRANSACTION_CATEGORY:
 		case types.UPDATE_TRANSACTION_CATEGORY_SUCCESS:
 		case types.UPDATE_TRANSACTION_CATEGORY_FAILURE:
-			const { transaction_id } = action.params.transaction;
+			const { transaction_id } = action.payload;
 			return {
 				...state,
 				[transaction_id]: transaction(state[transaction_id], action),

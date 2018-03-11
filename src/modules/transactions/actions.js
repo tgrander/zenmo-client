@@ -55,9 +55,9 @@ export const resetQuickDisplayFilter = () => ({
 	type: types.RESET_QUICK_DISPLAY_FILTER,
 });
 
-export const categorizeTransaction = (params) => ({
+export const categorizeTransaction = (payload) => ({
 	type: types.UPDATE_TRANSACTION_CATEGORY,
-	params,
+	payload,
 });
 
 export const updateSingleTransactionCategory = (params) =>
