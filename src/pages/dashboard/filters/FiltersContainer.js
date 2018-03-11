@@ -3,22 +3,26 @@ import moment from 'moment';
 import { connect } from 'react-redux';
 import withHandlers from 'recompose/withHandlers';
 import Filters from './Filters';
-import { changeDateRange, getDateRangeDefaultValue } from 'modules/transactions/actions';
-
+import {
+	changeDateRange,
+	getDateRangeDefaultValue,
+} from 'modules/transactions/actions';
 
 // REDUX
 
 const mapStateToProps = ({ filters, transactions }) => ({
-  accountsFilter: filters.accountsFilter,
-  categoryFilter: filters.categoryFilter,
-  defaultDateRange: transactions.defaultDateRange.map(date => moment(date)),
-  dateRange: transactions.dateRange.map(date => moment(date)),
-  transactionsTypeFilter: filters.transactionsTypeFilter,
+	accountsFilter: filters.accountsFilter,
+	categoryFilter: filters.categoryFilter,
+	defaultDateRange: transactions.dateRange.default.map((date) =>
+		moment(date),
+	),
+	dateRange: transactions.dateRange.current.map((date) => moment(date)),
+	transactionsTypeFilter: filters.transactionsTypeFilter,
 });
 
 const actions = {
-  changeDateRange,
-  getDateRangeDefaultValue,
+	changeDateRange,
+	getDateRangeDefaultValue,
 };
 
 const redux = connect(mapStateToProps, actions);
@@ -26,11 +30,8 @@ const redux = connect(mapStateToProps, actions);
 // RECOMPOSE
 
 const handlers = withHandlers({
-  onChangeDate: ({ changeDateRange }) => dateRange =>
-    changeDateRange(dateRange.map(date => date.toDate())),
+	onChangeDate: ({ changeDateRange }) => (dateRange) =>
+		changeDateRange(dateRange.map((date) => date.toDate())),
 });
 
-export default pipe(
-  handlers,
-  redux,
-)(Filters);
+export default pipe(handlers, redux)(Filters);

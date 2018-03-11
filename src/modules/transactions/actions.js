@@ -17,11 +17,11 @@ export const fetchTransactionsError = (error) => ({
 
 export const fetchTransactionsSuccess = (transactions) => ({
 	type: types.TRANSACTIONS_FETCH_SUCCESS,
-	transactionsById: transactions.reduce((accum, curr) => {
+	byId: transactions.reduce((accum, curr) => {
 		accum[curr.transaction_id] = curr;
 		return accum;
 	}, {}),
-	allTransactions: transactions
+	allIds: transactions
 		.sort((a, b) => new Date(b.date) - new Date(a.date))
 		.map(({ transaction_id }) => transaction_id),
 });

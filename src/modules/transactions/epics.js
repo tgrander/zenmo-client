@@ -45,7 +45,7 @@ export const fetchTransactionsEpic = (action$, store) =>
 			const [
 				startDate,
 				endDate,
-			] = store.getState().transactions.dateRange;
+			] = store.getState().transactions.dateRange.default;
 			// const startDate = new Date('February 1, 2018');
 			// const endDate = new Date('February 28, 2018');
 
