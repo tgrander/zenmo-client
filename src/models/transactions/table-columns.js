@@ -19,13 +19,7 @@ export default (categories) => [
 		key: 'category',
 		render: (props) => <CategoryContainer {...props} />,
 		title: 'Category',
-		width: 120,
-	},
-	{
-		dataIndex: 'account',
-		key: 'account',
-		title: 'Account',
-		width: 150,
+		width: 100,
 	},
 	{
 		dataIndex: 'amount',

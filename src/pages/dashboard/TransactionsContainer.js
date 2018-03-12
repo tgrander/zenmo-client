@@ -23,7 +23,6 @@ const mapAccountsToFilters = (accounts) =>
 
 const mapTransactionsToTableDataSource = (transactions) =>
 	map(transactions, (transaction) => ({
-		account: null,
 		amount: transaction.amount,
 		category: {
 			category: transaction.category,
@@ -42,8 +41,6 @@ const mapStateToProps = ({ categories, transactions }) => {
 	const arrayOfTransactions = allIds.map((id) => byId[id]);
 
 	return {
-		accountFilters: mapAccountsToFilters(transactions.accounts),
-		accounts: transactions.accounts,
 		categories: categories.categories,
 		dateRange: transactions.dateRange,
 		defaultDateRange: transactions.defaultDateRange,
